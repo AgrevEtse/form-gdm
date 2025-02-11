@@ -186,34 +186,34 @@ export const GlobalStateProvider = ({ children }) => {
 
     if (!dataDomicilio.message) contador++
 
-    const id_escolaridad = idEscolaridadJson[inscripcion.escolaridad + inscripcion.grado]
+    // const id_escolaridad = idEscolaridadJson[inscripcion.escolaridad + inscripcion.grado]
 
-    let id_ciclo = 'd20edf04-26e5-423b-a84b-12ed7dde9ec5' // ciclo 2025-2026
-    if (id_escolaridad >= 13){
-      id_ciclo = '1c5cd5cb-baa2-425e-befb-25bae3ee2be3' // ciclo 2025B
-    }
+    // let id_ciclo = 'd20edf04-26e5-423b-a84b-12ed7dde9ec5' // ciclo 2025-2026
+    // if (id_escolaridad >= 13){
+    //   id_ciclo = '1c5cd5cb-baa2-425e-befb-25bae3ee2be3' // ciclo 2025B
+    // }
 
-    const fecha_inscripcion = new Date().toISOString()
+    // const fecha_inscripcion = new Date().toISOString()
 
-    const esta_activo = true
+    // const esta_activo = true
 
-    const resInscripcion = await fetch(`${url}/inscripcion`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id_escolaridad,
-        id_ciclo,
-        fecha_inscripcion,
-        esta_activo,
-        curp_alumno: curp,
-      }),
-    })
+    // const resInscripcion = await fetch(`${url}/inscripcion`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     id_escolaridad,
+    //     id_ciclo,
+    //     fecha_inscripcion,
+    //     esta_activo,
+    //     curp_alumno: curp,
+    //   }),
+    // })
 
-    const dataInscripcion = await resInscripcion.json()
+    // const dataInscripcion = await resInscripcion.json()
 
-    if (!dataInscripcion.message) contador++
+    // if (!dataInscripcion.message) contador++
 
     const resTutor1 = await fetch(`${url}/tutor1`, {
       method: 'POST',
@@ -298,67 +298,59 @@ export const GlobalStateProvider = ({ children }) => {
       const dataHermano3 = await resHermano3.json()
     }
 
-    const resContacto1 = await fetch(`${url}/contactoemergencia`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...datosContacto1,
-        curp_alumno: curp,
-      }),
-    })
+    // const resContacto1 = await fetch(`${url}/contactoemergencia`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     ...datosContacto1,
+    //     curp_alumno: curp,
+    //   }),
+    // })
 
-    const dataContacto1 = await resContacto1.json()
+    // const dataContacto1 = await resContacto1.json()
 
-    if (!dataContacto1.message) contador++
+    // const resContacto2 = await fetch(`${url}/contactoemergencia`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     ...datosContacto2,
+    //     curp_alumno: curp,
+    //   }),
+    // })
 
-    const resContacto2 = await fetch(`${url}/contactoemergencia`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...datosContacto2,
-        curp_alumno: curp,
-      }),
-    })
+    // const dataContacto2 = await resContacto2.json()
 
-    const dataContacto2 = await resContacto2.json()
+    // const resContacto3 = await fetch(`${url}/contactoemergencia`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     ...datosContacto3,
+    //     curp_alumno: curp,
+    //   }),
+    // })
 
-    if (!dataContacto2.message) contador++
+    // const dataContacto3 = await resContacto3.json()
 
-    const resContacto3 = await fetch(`${url}/contactoemergencia`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...datosContacto3,
-        curp_alumno: curp,
-      }),
-    })
+    // const resPago = await fetch(`${url}/personapagos`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     ...datosPago,
+    //     curp_alumno: curp,
+    //   }),
+    // })
 
-    const dataContacto3 = await resContacto3.json()
+    // const dataPago = await resPago.json()
 
-    if (!dataContacto3.message) contador++
-
-    const resPago = await fetch(`${url}/personapagos`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...datosPago,
-        curp_alumno: curp,
-      }),
-    })
-
-    const dataPago = await resPago.json()
-
-    if (!dataPago.message) contador++
-
-    if (contador === 9) {
+    if (contador === 4) {
       resetStates()
       alert('Datos enviados correctamente')
     }

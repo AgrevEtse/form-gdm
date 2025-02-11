@@ -25,9 +25,9 @@ const Form = () => {
   const steps = [
     <FormAlumno key='1' />,
     <FormTutores key='2' />,
-    <FormHermanos key='3' />,
-    <FormContacto key='4' />,
-    <FormPago key='5' />,
+    // <FormHermanos key='3' />,
+    // <FormContacto key='4' />,
+    // <FormPago key='5' />
   ]
 
   return (

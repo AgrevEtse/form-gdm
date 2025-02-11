@@ -14,7 +14,7 @@ function App() {
         <div className='flex flex-1 items-center'>
           <Link
             className='btn btn-ghost text-xl'
-            to='/alumnos'
+            to='/'
           >
             GDM
           </Link>
