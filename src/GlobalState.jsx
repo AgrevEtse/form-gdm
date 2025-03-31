@@ -137,7 +137,7 @@ export const GlobalStateProvider = ({ children }) => {
   }
 
   const enviarDatos = async () => {
-    const url = 'http://66.179.241.7:3000'
+    const url = 'http://localhost:3000'
     let contador = 0
 
     const resAlumno = await fetch(`${url}/alumno`, {
