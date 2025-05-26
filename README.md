@@ -1,8 +1,23 @@
-# React + Vite
+# Registro GDM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Registro GDM es una aplicación web para la gestión de registros de las inscripciones de Alumnos en GDM (Gomez De Mendiola). Esta aplicación está construida con Vite y React.js, y utiliza Tailwind CSS para el diseño.
 
-Currently, two official plugins are available:
+## Usage
+- Crear archivo `.env` en la raíz del proyecto con las siguientes variables de entorno, o se puede usar el archivo `.env.example` como referencia:
+  ```env
+  VITE_API_URL="http://localhost:3000/"
+- Instalar las dependencias:
+  ```bash
+  $ npm install
+  ```
+- Iniciar el servidor de desarrollo:
+  ```bash
+  $ npm run dev
+  ```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Build
+Construir el proyecto para producción:
+  ```bash
+  $ npm run build
+  $ npm run preview
+  ```
