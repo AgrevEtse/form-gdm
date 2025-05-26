@@ -1,4 +1,5 @@
 [
+  { "clave": "JAL", "nombre": "Jalisco" },
   { "clave": "AGS", "nombre": "Aguascalientes" },
   { "clave": "BC", "nombre": "Baja California" },
   { "clave": "BCS", "nombre": "Baja California Sur" },
@@ -12,7 +13,6 @@
   { "clave": "GTO", "nombre": "Guanajuato" },
   { "clave": "GRO", "nombre": "Guerrero" },
   { "clave": "HGO", "nombre": "Hidalgo" },
-  { "clave": "JAL", "nombre": "Jalisco" },
   { "clave": "MEX", "nombre": "Estado de México" },
   { "clave": "MCH", "nombre": "Michoacán" },
   { "clave": "MOR", "nombre": "Morelos" },

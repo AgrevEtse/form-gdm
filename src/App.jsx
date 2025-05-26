@@ -2,8 +2,6 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import HomePage from './HomePage'
 import NotFound404 from './NotFound404'
 import Formulario from './Form/Form'
-import ListAlumnos from './Alumnos/ListAlumnos'
-import ConsultarAlumno from './Alumnos/Alumno'
 
 function App() {
   const navigate = useNavigate()
@@ -27,7 +25,7 @@ function App() {
             }}
             className='btn btn-warning mx-1'
           >
-            Formulario Pre-Registro
+            Formulario de Registro
           </button>
         </div>
       </div>
@@ -40,14 +38,6 @@ function App() {
         <Route
           path='/formulario'
           element={<Formulario />}
-        />
-        <Route
-          path='/alumnos'
-          element={<ListAlumnos />}
-        />
-        <Route
-          path='/alumnos/:curp'
-          element={<ConsultarAlumno />}
         />
         <Route
           path='*'

@@ -1,6 +1,6 @@
 {
-  "name": "GDM Pre-Registro",
-  "short_name": "GDM Pre-Registro",
+  "name": "GDM Registro",
+  "short_name": "GDM Registro",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

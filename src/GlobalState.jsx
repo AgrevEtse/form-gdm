@@ -2,6 +2,8 @@ import { createContext, useContext, useState } from 'react'
 
 import idEscolaridadJson from './assets/json/id-escolaridad.json'
 
+const API_URL = import.meta.env.VITE_API_URL
+
 const GlobalStateContext = createContext()
 
 const defaultCurp = ''
@@ -75,7 +77,7 @@ const defaultDatosPago = {
   responsable: '',
 }
 
-function deepEqual(obj1, obj2) {
+const deepEqual = (obj1, obj2) => {
   if (obj1 === obj2) return true
   if (
     typeof obj1 !== 'object' ||
@@ -137,10 +139,9 @@ export const GlobalStateProvider = ({ children }) => {
   }
 
   const enviarDatos = async () => {
-    const url = 'http://localhost:3000'
     let contador = 0
 
-    const resAlumno = await fetch(`${url}/alumno`, {
+    const resAlumno = await fetch(`${API_URL}/alumno`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -156,7 +157,7 @@ export const GlobalStateProvider = ({ children }) => {
 
     if (!dataAlumno.message) contador++
 
-    const resEscuelaProcedencia = await fetch(`${url}/escuelaprocedencia`, {
+    const resEscuelaProcedencia = await fetch(`${API_URL}/escuelaprocedencia`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -171,7 +172,7 @@ export const GlobalStateProvider = ({ children }) => {
 
     if (!dataEscuelaProcedencia.message) contador++
 
-    const resDomicilio = await fetch(`${url}/domicilio`, {
+    const resDomicilio = await fetch(`${API_URL}/domicilio`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -186,36 +187,36 @@ export const GlobalStateProvider = ({ children }) => {
 
     if (!dataDomicilio.message) contador++
 
-    // const id_escolaridad = idEscolaridadJson[inscripcion.escolaridad + inscripcion.grado]
+    const id_escolaridad = idEscolaridadJson[inscripcion.escolaridad + inscripcion.grado]
 
-    // let id_ciclo = 'd20edf04-26e5-423b-a84b-12ed7dde9ec5' // ciclo 2025-2026
-    // if (id_escolaridad >= 13){
-    //   id_ciclo = '1c5cd5cb-baa2-425e-befb-25bae3ee2be3' // ciclo 2025B
-    // }
+    let id_ciclo = '2aa6847f-a77b-459a-a7c0-ebd8b4ea0db7' // ciclo 2025-2026
+    if (id_escolaridad >= 13){
+      id_ciclo = '1c5cd5cb-baa2-425e-befb-25bae3ee2be3' // ciclo 2025B
+    }
 
-    // const fecha_inscripcion = new Date().toISOString()
+    const fecha_inscripcion = new Date().toISOString()
 
-    // const esta_activo = true
+    const esta_activo = true
 
-    // const resInscripcion = await fetch(`${url}/inscripcion`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     id_escolaridad,
-    //     id_ciclo,
-    //     fecha_inscripcion,
-    //     esta_activo,
-    //     curp_alumno: curp,
-    //   }),
-    // })
+    const resInscripcion = await fetch(`${API_URL}/inscripcion`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id_escolaridad,
+        id_ciclo,
+        fecha_inscripcion,
+        esta_activo,
+        curp_alumno: curp,
+      }),
+    })
 
-    // const dataInscripcion = await resInscripcion.json()
+    const dataInscripcion = await resInscripcion.json()
 
-    // if (!dataInscripcion.message) contador++
+    if (!dataInscripcion.message) contador++
 
-    const resTutor1 = await fetch(`${url}/tutor1`, {
+    const resTutor1 = await fetch(`${API_URL}/tutor1`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -232,7 +233,7 @@ export const GlobalStateProvider = ({ children }) => {
     if (!dataTutor1.message) contador++
 
     if (!deepEqual(datosTutor2, defaultDatosTutor)) {
-      const resTutor2 = await fetch(`${url}/tutor2`, {
+      const resTutor2 = await fetch(`${API_URL}/tutor2`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -251,7 +252,7 @@ export const GlobalStateProvider = ({ children }) => {
     }
 
     if (!deepEqual(datosHermano1, defaultDatosHermano)) {
-      const resHermano1 = await fetch(`${url}/hermano`, {
+      const resHermano1 = await fetch(`${API_URL}/hermano`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -267,7 +268,7 @@ export const GlobalStateProvider = ({ children }) => {
     }
 
     if (!deepEqual(datosHermano2, defaultDatosHermano)) {
-      const resHermano2 = await fetch(`${url}/hermano`, {
+      const resHermano2 = await fetch(`${API_URL}/hermano`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -283,7 +284,7 @@ export const GlobalStateProvider = ({ children }) => {
     }
 
     if (!deepEqual(datosHermano3, defaultDatosHermano)) {
-      const resHermano3 = await fetch(`${url}/hermano`, {
+      const resHermano3 = await fetch(`${API_URL}/hermano`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -298,59 +299,69 @@ export const GlobalStateProvider = ({ children }) => {
       const dataHermano3 = await resHermano3.json()
     }
 
-    // const resContacto1 = await fetch(`${url}/contactoemergencia`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosContacto1,
-    //     curp_alumno: curp,
-    //   }),
-    // })
+    const resContacto1 = await fetch(`${API_URL}/contactoemergencia`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...datosContacto1,
+        curp_alumno: curp,
+      }),
+    })
 
-    // const dataContacto1 = await resContacto1.json()
+    const dataContacto1 = await resContacto1.json()
 
-    // const resContacto2 = await fetch(`${url}/contactoemergencia`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosContacto2,
-    //     curp_alumno: curp,
-    //   }),
-    // })
+    if (!dataContacto1.message) contador++
 
-    // const dataContacto2 = await resContacto2.json()
+    if (!deepEqual(datosContacto2, defaultDatosContacto)) {
+      const resContacto2 = await fetch(`${API_URL}/contactoemergencia`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...datosContacto2,
+          curp_alumno: curp,
+        }),
+      })
 
-    // const resContacto3 = await fetch(`${url}/contactoemergencia`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosContacto3,
-    //     curp_alumno: curp,
-    //   }),
-    // })
+      // eslint-disable-next-line no-unused-vars
+      const dataContacto2 = await resContacto2.json()
+    }
 
-    // const dataContacto3 = await resContacto3.json()
+    if (!deepEqual(datosContacto3, defaultDatosContacto)) {
+      const resContacto3 = await fetch(`${API_URL}/contactoemergencia`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...datosContacto3,
+          curp_alumno: curp,
+        }),
+      })
 
-    // const resPago = await fetch(`${url}/personapagos`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosPago,
-    //     curp_alumno: curp,
-    //   }),
-    // })
+      // eslint-disable-next-line no-unused-vars
+      const dataContacto3 = await resContacto3.json()
+    }
 
-    // const dataPago = await resPago.json()
+    const resPago = await fetch(`${API_URL}/personapagos`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...datosPago,
+        curp_alumno: curp,
+      }),
+    })
 
-    if (contador === 4) {
+    const dataPago = await resPago.json()
+
+    if (!dataPago.message) contador++
+
+    if (contador === 7) {
       resetStates()
       alert('Datos enviados correctamente')
     }
