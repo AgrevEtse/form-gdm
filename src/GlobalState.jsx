@@ -192,7 +192,7 @@ export const GlobalStateProvider = ({ children }) => {
 
     let id_ciclo = '2aa6847f-a77b-459a-a7c0-ebd8b4ea0db7' // ciclo 2025-2026
     if (id_escolaridad >= 13) {
-      id_ciclo = '1c5cd5cb-baa2-425e-befb-25bae3ee2be3' // ciclo 2025B
+      id_ciclo = '5b18059e-bfa9-43ca-a3a6-a28fc2488658' // ciclo 2025B
     }
 
     const fecha_inscripcion = new Date().toISOString()
