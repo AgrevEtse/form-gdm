@@ -196,7 +196,7 @@ export const GlobalStateProvider = ({ children }) => {
 
     const fecha_inscripcion = new Date().toISOString()
 
-    const esta_activo = true
+    const esta_activo = false
 
     const resInscripcion = await fetch(`${API_URL}/inscripcion`, {
       method: 'POST',
