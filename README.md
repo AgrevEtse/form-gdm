@@ -3,9 +3,11 @@
 Registro GDM es una aplicación web para la gestión de registros de las inscripciones de Alumnos en GDM (Gomez De Mendiola). Esta aplicación está construida con Vite y React.js, y utiliza Tailwind CSS para el diseño.
 
 ## Usage
+
 - Crear archivo `.env` en la raíz del proyecto con las siguientes variables de entorno, o se puede usar el archivo `.env.example` como referencia:
   ```env
   VITE_API_URL="http://localhost:3000/"
+  ```
 - Instalar las dependencias:
   ```bash
   $ npm install
@@ -16,8 +18,10 @@ Registro GDM es una aplicación web para la gestión de registros de las inscrip
   ```
 
 ## Build
+
 Construir el proyecto para producción:
-  ```bash
-  $ npm run build
-  $ npm run preview
-  ```
+
+```bash
+$ npm run build
+$ npm run preview
+```

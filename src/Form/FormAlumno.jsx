@@ -17,7 +17,7 @@ const FormAlumno = () => {
     datosDomicilio,
     setDatosDomicilio,
     datosEscuelaProcedencia,
-    setDatosEscuelaProcedencia,
+    setDatosEscuelaProcedencia
   } = useGlobalState()
 
   const [estado, setEstado] = useState(datosDomicilio.estado)
@@ -32,13 +32,15 @@ const FormAlumno = () => {
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
         <label className='floating-label'>
-          <span>CCT de Procedencia <span className='text-rose-600'>*</span></span>
+          <span>
+            CCT de Procedencia <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosEscuelaProcedencia.cct}
             onChange={(e) => {
               setDatosEscuelaProcedencia({
                 ...datosEscuelaProcedencia,
-                cct: e.target.value,
+                cct: e.target.value
               })
             }}
             minLength={1}
@@ -51,13 +53,16 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Matricula de Escuela de Procedencia <span className='text-rose-600'>*</span></span>
+          <span>
+            Matricula de Escuela de Procedencia{' '}
+            <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosEscuelaProcedencia.matricula}
             onChange={(e) => {
               setDatosEscuelaProcedencia({
                 ...datosEscuelaProcedencia,
-                matricula: e.target.value,
+                matricula: e.target.value
               })
             }}
             minLength={1}
@@ -70,13 +75,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Escuela de Procedencia <span className='text-rose-600'>*</span></span>
+          <span>
+            Escuela de Procedencia <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosEscuelaProcedencia.nombre}
             onChange={(e) => {
               setDatosEscuelaProcedencia({
                 ...datosEscuelaProcedencia,
-                nombre: e.target.value,
+                nombre: e.target.value
               })
             }}
             minLength={1}
@@ -89,7 +96,9 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>CURP <span className='text-rose-600'>*</span></span>
+          <span>
+            CURP <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={curp}
             onChange={(e) => {
@@ -105,13 +114,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Nombre <span className='text-rose-600'>*</span></span>
+          <span>
+            Nombre <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosAlumno.nombre}
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                nombre: e.target.value,
+                nombre: e.target.value
               })
             }}
             minLength={1}
@@ -124,13 +135,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Apellido Paterno <span className='text-rose-600'>*</span></span>
+          <span>
+            Apellido Paterno <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosAlumno.apellido_paterno}
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                apellido_paterno: e.target.value,
+                apellido_paterno: e.target.value
               })
             }}
             minLength={1}
@@ -143,13 +156,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Apellido Materno <span className='text-rose-600'>*</span></span>
+          <span>
+            Apellido Materno <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosAlumno.apellido_materno}
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                apellido_materno: e.target.value,
+                apellido_materno: e.target.value
               })
             }}
             minLength={1}
@@ -162,13 +177,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Género  <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Género <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                genero: e.target.value,
+                genero: e.target.value
               })
             }}
             value={datosAlumno.genero}
@@ -187,13 +204,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Tipo Sanguíneo <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Tipo Sanguíneo <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                tipo_sanguineo: e.target.value,
+                tipo_sanguineo: e.target.value
               })
             }}
             value={datosAlumno.tipo_sanguineo}
@@ -218,13 +237,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Lateralidad <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Lateralidad <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                es_diestro: e.target.value === 'true',
+                es_diestro: e.target.value === 'true'
               })
             }}
             value={datosAlumno.es_diestro}
@@ -243,13 +264,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='input input-md'>
-          <span className='label'>Fecha Nacimiento <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Fecha Nacimiento <span className='text-rose-600'>*</span>
+          </span>
           <input
             required
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                fecha_nacimiento: e.target.value,
+                fecha_nacimiento: e.target.value
               })
             }}
             value={datosAlumno.fecha_nacimiento}
@@ -258,13 +281,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Nacionalidad <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Nacionalidad <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                nacionalidad: e.target.value,
+                nacionalidad: e.target.value
               })
             }}
             value={datosAlumno.nacionalidad}
@@ -289,7 +314,9 @@ const FormAlumno = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Escolaridad <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Escolaridad <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             value={inscripcion.escolaridad}
@@ -299,7 +326,7 @@ const FormAlumno = () => {
               setInscripcion({
                 ...inscripcion,
                 escolaridad: e.target.value,
-                grado: grados[e.target.value][0].grado,
+                grado: grados[e.target.value][0].grado
               })
             }}
           >
@@ -319,7 +346,9 @@ const FormAlumno = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Grado <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Grado <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             value={inscripcion.grado}
@@ -349,12 +378,14 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Estatura (cm) <span className='text-rose-600'>*</span></span>
+          <span>
+            Estatura (cm) <span className='text-rose-600'>*</span>
+          </span>
           <input
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                estatura_cm: Number(e.target.value),
+                estatura_cm: Number(e.target.value)
               })
             }}
             min={1}
@@ -368,12 +399,14 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Peso (kg) <span className='text-rose-600'>*</span></span>
+          <span>
+            Peso (kg) <span className='text-rose-600'>*</span>
+          </span>
           <input
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                peso_kg: Number(e.target.value),
+                peso_kg: Number(e.target.value)
               })
             }}
             min={1}
@@ -387,13 +420,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Domicilio <span className='text-rose-600'>*</span></span>
+          <span>
+            Domicilio <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosDomicilio.domicilio}
             onChange={(e) => {
               setDatosDomicilio({
                 ...datosDomicilio,
-                domicilio: e.target.value,
+                domicilio: e.target.value
               })
             }}
             minLength={1}
@@ -406,13 +441,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Colonia <span className='text-rose-600'>*</span></span>
+          <span>
+            Colonia <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosDomicilio.colonia}
             onChange={(e) => {
               setDatosDomicilio({
                 ...datosDomicilio,
-                colonia: e.target.value,
+                colonia: e.target.value
               })
             }}
             minLength={1}
@@ -425,13 +462,15 @@ const FormAlumno = () => {
         </label>
 
         <label className='floating-label'>
-          <span>C.P. <span className='text-rose-600'>*</span></span>
+          <span>
+            C.P. <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosDomicilio.codigo_postal}
             onChange={(e) => {
               setDatosDomicilio({
                 ...datosDomicilio,
-                codigo_postal: e.target.value,
+                codigo_postal: e.target.value
               })
             }}
             type='number'
@@ -445,7 +484,9 @@ const FormAlumno = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Estado <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Estado <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             value={estado}
@@ -455,7 +496,7 @@ const FormAlumno = () => {
               setDatosDomicilio({
                 ...datosDomicilio,
                 estado: e.target.value,
-                ciudad: municipios[e.target.value][0],
+                ciudad: municipios[e.target.value][0]
               })
             }}
           >
@@ -479,7 +520,9 @@ const FormAlumno = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Ciudad <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Ciudad <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             value={municipio}
@@ -487,7 +530,7 @@ const FormAlumno = () => {
               setMunicipio(e.target.value)
               setDatosDomicilio({
                 ...datosDomicilio,
-                ciudad: e.target.value,
+                ciudad: e.target.value
               })
             }}
           >
@@ -519,7 +562,7 @@ const FormAlumno = () => {
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                nota_enfermedad: e.target.value,
+                nota_enfermedad: e.target.value
               })
             }}
             minLength={0}
@@ -536,7 +579,7 @@ const FormAlumno = () => {
             onChange={(e) => {
               setDatosAlumno({
                 ...datosAlumno,
-                nota_terapia: e.target.value,
+                nota_terapia: e.target.value
               })
             }}
             minLength={0}

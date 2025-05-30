@@ -11,7 +11,10 @@ const HomePage = () => {
           Completa el formulario para asegurar tu lugar en el próximo ciclo
           escolar.
         </p>
-        <Link to='/formulario' className='block'>
+        <Link
+          to='/formulario'
+          className='block'
+        >
           <button className='w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-xl transition duration-300 cursor-pointer'>
             Iniciar Registro
           </button>

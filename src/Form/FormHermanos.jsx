@@ -7,7 +7,7 @@ const FormHermanos = () => {
     datosHermano2,
     setDatosHermano2,
     datosHermano3,
-    setDatosHermano3,
+    setDatosHermano3
   } = useGlobalState()
 
   return (

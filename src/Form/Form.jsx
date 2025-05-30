@@ -10,7 +10,7 @@ import FormPago from './FormPago'
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth',
+    behavior: 'smooth'
   })
 }
 

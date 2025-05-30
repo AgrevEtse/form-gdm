@@ -10,7 +10,7 @@ const defaultCurp = ''
 
 const defaultInscripcion = {
   escolaridad: '',
-  grado: '',
+  grado: ''
 }
 
 const defaultDatosAlumno = {
@@ -25,13 +25,13 @@ const defaultDatosAlumno = {
   estatura_cm: null,
   peso_kg: null,
   nota_enfermedad: '',
-  nota_terapia: '',
+  nota_terapia: ''
 }
 
 const defaultDatosEscuelaProcedencia = {
   cct: '',
   matricula: '',
-  nombre: '',
+  nombre: ''
 }
 
 const defaultDatosDomicilio = {
@@ -39,7 +39,7 @@ const defaultDatosDomicilio = {
   colonia: '',
   codigo_postal: '',
   ciudad: '',
-  estado: '',
+  estado: ''
 }
 
 const defaultDatosTutor = {
@@ -55,18 +55,18 @@ const defaultDatosTutor = {
   grado_max_estudios: '',
   domicilio: '',
   colonia: '',
-  codigo_postal: '',
+  codigo_postal: ''
 }
 
 const defaultDatosHermano = {
   nombre: '',
-  nivel: '',
+  nivel: ''
 }
 
 const defaultDatosContacto = {
   nombre: '',
   telefono: '',
-  parentesco: '',
+  parentesco: ''
 }
 
 const defaultDatosPago = {
@@ -74,7 +74,7 @@ const defaultDatosPago = {
   telefono: '',
   correo: '',
   factura: false,
-  responsable: '',
+  responsable: ''
 }
 
 const deepEqual = (obj1, obj2) => {
@@ -108,7 +108,7 @@ export const GlobalStateProvider = ({ children }) => {
   const [inscripcion, setInscripcion] = useState(defaultInscripcion)
   const [datosAlumno, setDatosAlumno] = useState(defaultDatosAlumno)
   const [datosEscuelaProcedencia, setDatosEscuelaProcedencia] = useState(
-    defaultDatosEscuelaProcedencia,
+    defaultDatosEscuelaProcedencia
   )
   const [datosDomicilio, setDatosDomicilio] = useState(defaultDatosDomicilio)
   const [datosTutor1, setDatosTutor1] = useState(defaultDatosTutor)
@@ -144,13 +144,13 @@ export const GlobalStateProvider = ({ children }) => {
     const resAlumno = await fetch(`${API_URL}/alumno`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         ...datosAlumno,
         fecha_nacimiento: new Date(datosAlumno.fecha_nacimiento).toISOString(),
-        curp,
-      }),
+        curp
+      })
     })
 
     const dataAlumno = await resAlumno.json()
@@ -160,12 +160,12 @@ export const GlobalStateProvider = ({ children }) => {
     const resEscuelaProcedencia = await fetch(`${API_URL}/escuelaprocedencia`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         ...datosEscuelaProcedencia,
-        curp_alumno: curp,
-      }),
+        curp_alumno: curp
+      })
     })
 
     const dataEscuelaProcedencia = await resEscuelaProcedencia.json()
@@ -175,22 +175,23 @@ export const GlobalStateProvider = ({ children }) => {
     const resDomicilio = await fetch(`${API_URL}/domicilio`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         ...datosDomicilio,
-        curp_alumno: curp,
-      }),
+        curp_alumno: curp
+      })
     })
 
     const dataDomicilio = await resDomicilio.json()
 
     if (!dataDomicilio.message) contador++
 
-    const id_escolaridad = idEscolaridadJson[inscripcion.escolaridad + inscripcion.grado]
+    const id_escolaridad =
+      idEscolaridadJson[inscripcion.escolaridad + inscripcion.grado]
 
     let id_ciclo = '2aa6847f-a77b-459a-a7c0-ebd8b4ea0db7' // ciclo 2025-2026
-    if (id_escolaridad >= 13){
+    if (id_escolaridad >= 13) {
       id_ciclo = '1c5cd5cb-baa2-425e-befb-25bae3ee2be3' // ciclo 2025B
     }
 
@@ -201,15 +202,15 @@ export const GlobalStateProvider = ({ children }) => {
     const resInscripcion = await fetch(`${API_URL}/inscripcion`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         id_escolaridad,
         id_ciclo,
         fecha_inscripcion,
         esta_activo,
-        curp_alumno: curp,
-      }),
+        curp_alumno: curp
+      })
     })
 
     const dataInscripcion = await resInscripcion.json()
@@ -219,13 +220,13 @@ export const GlobalStateProvider = ({ children }) => {
     const resTutor1 = await fetch(`${API_URL}/tutor1`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         ...datosTutor1,
         fecha_nacimiento: new Date(datosTutor1.fecha_nacimiento).toISOString(),
-        curp_alumno: curp,
-      }),
+        curp_alumno: curp
+      })
     })
 
     const dataTutor1 = await resTutor1.json()
@@ -236,15 +237,15 @@ export const GlobalStateProvider = ({ children }) => {
       const resTutor2 = await fetch(`${API_URL}/tutor2`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           ...datosTutor2,
           fecha_nacimiento: new Date(
-            datosTutor2.fecha_nacimiento,
+            datosTutor2.fecha_nacimiento
           ).toISOString(),
-          curp_alumno: curp,
-        }),
+          curp_alumno: curp
+        })
       })
 
       // eslint-disable-next-line no-unused-vars
@@ -255,12 +256,12 @@ export const GlobalStateProvider = ({ children }) => {
       const resHermano1 = await fetch(`${API_URL}/hermano`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           ...datosHermano1,
-          curp_alumno: curp,
-        }),
+          curp_alumno: curp
+        })
       })
 
       // eslint-disable-next-line no-unused-vars
@@ -271,12 +272,12 @@ export const GlobalStateProvider = ({ children }) => {
       const resHermano2 = await fetch(`${API_URL}/hermano`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           ...datosHermano2,
-          curp_alumno: curp,
-        }),
+          curp_alumno: curp
+        })
       })
 
       // eslint-disable-next-line no-unused-vars
@@ -287,12 +288,12 @@ export const GlobalStateProvider = ({ children }) => {
       const resHermano3 = await fetch(`${API_URL}/hermano`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           ...datosHermano3,
-          curp_alumno: curp,
-        }),
+          curp_alumno: curp
+        })
       })
 
       // eslint-disable-next-line no-unused-vars
@@ -302,12 +303,12 @@ export const GlobalStateProvider = ({ children }) => {
     const resContacto1 = await fetch(`${API_URL}/contactoemergencia`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         ...datosContacto1,
-        curp_alumno: curp,
-      }),
+        curp_alumno: curp
+      })
     })
 
     const dataContacto1 = await resContacto1.json()
@@ -318,12 +319,12 @@ export const GlobalStateProvider = ({ children }) => {
       const resContacto2 = await fetch(`${API_URL}/contactoemergencia`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           ...datosContacto2,
-          curp_alumno: curp,
-        }),
+          curp_alumno: curp
+        })
       })
 
       // eslint-disable-next-line no-unused-vars
@@ -334,12 +335,12 @@ export const GlobalStateProvider = ({ children }) => {
       const resContacto3 = await fetch(`${API_URL}/contactoemergencia`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           ...datosContacto3,
-          curp_alumno: curp,
-        }),
+          curp_alumno: curp
+        })
       })
 
       // eslint-disable-next-line no-unused-vars
@@ -349,12 +350,12 @@ export const GlobalStateProvider = ({ children }) => {
     const resPago = await fetch(`${API_URL}/personapagos`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         ...datosPago,
-        curp_alumno: curp,
-      }),
+        curp_alumno: curp
+      })
     })
 
     const dataPago = await resPago.json()
@@ -399,7 +400,7 @@ export const GlobalStateProvider = ({ children }) => {
         datosPago,
         setDatosPago,
         resetStates,
-        enviarDatos,
+        enviarDatos
       }}
     >
       {children}

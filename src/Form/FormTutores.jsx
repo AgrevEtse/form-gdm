@@ -14,13 +14,15 @@ const FormTutores = () => {
       <h3 className='font-bold text-center mb-4'>Tutor 1</h3>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8'>
         <label className='floating-label'>
-          <span>Nombre <span className='text-rose-600'>*</span></span>
+          <span>
+            Nombre <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.nombre}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                nombre: e.target.value,
+                nombre: e.target.value
               })
             }}
             minLength={1}
@@ -33,13 +35,15 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Apellido Paterno <span className='text-rose-600'>*</span></span>
+          <span>
+            Apellido Paterno <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.apellido_paterno}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                apellido_paterno: e.target.value,
+                apellido_paterno: e.target.value
               })
             }}
             minLength={1}
@@ -52,13 +56,15 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Apellido Materno <span className='text-rose-600'>*</span></span>
+          <span>
+            Apellido Materno <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.apellido_materno}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                apellido_materno: e.target.value,
+                apellido_materno: e.target.value
               })
             }}
             minLength={1}
@@ -71,14 +77,16 @@ const FormTutores = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Estado <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Estado <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             value={datosTutor1.estado_nacimiento}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                estado_nacimiento: e.target.value,
+                estado_nacimiento: e.target.value
               })
             }}
           >
@@ -102,14 +110,16 @@ const FormTutores = () => {
         </label>
 
         <label className='input input-md'>
-          <span className='label'>Fecha Nacimiento <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Fecha Nacimiento <span className='text-rose-600'>*</span>
+          </span>
           <input
             required
             value={datosTutor1.fecha_nacimiento}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                fecha_nacimiento: e.target.value,
+                fecha_nacimiento: e.target.value
               })
             }}
             type='date'
@@ -117,13 +127,15 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Domicilio <span className='text-rose-600'>*</span></span>
+          <span>
+            Domicilio <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.domicilio}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                domicilio: e.target.value,
+                domicilio: e.target.value
               })
             }}
             minLength={1}
@@ -136,13 +148,15 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Colonia <span className='text-rose-600'>*</span></span>
+          <span>
+            Colonia <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.colonia}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                colonia: e.target.value,
+                colonia: e.target.value
               })
             }}
             minLength={1}
@@ -155,13 +169,15 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>C.P. <span className='text-rose-600'>*</span></span>
+          <span>
+            C.P. <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.codigo_postal}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                codigo_postal: e.target.value,
+                codigo_postal: e.target.value
               })
             }}
             min={100000}
@@ -174,13 +190,15 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Teléfono (móvil) <span className='text-rose-600'>*</span></span>
+          <span>
+            Teléfono (móvil) <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.telefono_movil}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                telefono_movil: e.target.value,
+                telefono_movil: e.target.value
               })
             }}
             min={1000000000}
@@ -194,13 +212,15 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Teléfono (fijo) <span className='text-rose-600'>*</span></span>
+          <span>
+            Teléfono (fijo) <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.telefono_fijo}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                telefono_fijo: e.target.value,
+                telefono_fijo: e.target.value
               })
             }}
             min={1000000000}
@@ -214,13 +234,15 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Correo Electrónico <span className='text-rose-600'>*</span></span>
+          <span>
+            Correo Electrónico <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.correo_electronico}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                correo_electronico: e.target.value,
+                correo_electronico: e.target.value
               })
             }}
             minLength={1}
@@ -233,13 +255,15 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Ocupación <span className='text-rose-600'>*</span></span>
+          <span>
+            Ocupación <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor1.oupacion}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                oupacion: e.target.value,
+                oupacion: e.target.value
               })
             }}
             minLength={1}
@@ -252,14 +276,16 @@ const FormTutores = () => {
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Grado Máx Estudios <span className='text-rose-600'>*</span></span>
+          <span className='label'>
+            Grado Máx Estudios <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             value={datosTutor1.grado_max_estudios}
             onChange={(e) => {
               setDatosTutor1({
                 ...datosTutor1,
-                grado_max_estudios: e.target.value,
+                grado_max_estudios: e.target.value
               })
             }}
           >
@@ -291,7 +317,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                nombre: e.target.value,
+                nombre: e.target.value
               })
             }}
             minLength={1}
@@ -310,7 +336,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                apellido_paterno: e.target.value,
+                apellido_paterno: e.target.value
               })
             }}
             minLength={1}
@@ -329,7 +355,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                apellido_materno: e.target.value,
+                apellido_materno: e.target.value
               })
             }}
             minLength={1}
@@ -349,7 +375,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                estado_nacimiento: e.target.value,
+                estado_nacimiento: e.target.value
               })
             }}
           >
@@ -380,7 +406,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                fecha_nacimiento: e.target.value,
+                fecha_nacimiento: e.target.value
               })
             }}
             type='date'
@@ -394,7 +420,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                domicilio: e.target.value,
+                domicilio: e.target.value
               })
             }}
             minLength={1}
@@ -413,7 +439,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                colonia: e.target.value,
+                colonia: e.target.value
               })
             }}
             minLength={1}
@@ -432,7 +458,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                codigo_postal: e.target.value,
+                codigo_postal: e.target.value
               })
             }}
             min={100000}
@@ -451,7 +477,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                telefono_movil: e.target.value,
+                telefono_movil: e.target.value
               })
             }}
             min={1000000000}
@@ -471,7 +497,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                telefono_fijo: e.target.value,
+                telefono_fijo: e.target.value
               })
             }}
             min={1000000000}
@@ -491,7 +517,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                correo_electronico: e.target.value,
+                correo_electronico: e.target.value
               })
             }}
             minLength={1}
@@ -510,7 +536,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                oupacion: e.target.value,
+                oupacion: e.target.value
               })
             }}
             minLength={1}
@@ -530,7 +556,7 @@ const FormTutores = () => {
             onChange={(e) => {
               setDatosTutor2({
                 ...datosTutor2,
-                grado_max_estudios: e.target.value,
+                grado_max_estudios: e.target.value
               })
             }}
           >
