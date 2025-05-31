@@ -20,7 +20,7 @@ const FormPago = () => {
               setDatosPago({ ...datosPago, nombre: e.target.value })
             }
             type='text'
-            placeholder='Nombre Completo'
+            placeholder='Nombre Completo *'
             className='input input-md'
           />
         </label>
@@ -65,7 +65,7 @@ const FormPago = () => {
               setDatosPago({ ...datosPago, correo: e.target.value })
             }
             type='email'
-            placeholder='Correo Electrónico'
+            placeholder='Correo Electrónico *'
             className='input input-md'
           />
         </label>
@@ -80,7 +80,7 @@ const FormPago = () => {
               setDatosPago({ ...datosPago, telefono: e.target.value })
             }
             type='tel'
-            placeholder='1234567890'
+            placeholder='Télefono (móvil) *'
             pattern='[0-9]{10}'
             className='input input-md'
           />

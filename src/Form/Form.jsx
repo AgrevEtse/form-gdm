@@ -15,12 +15,29 @@ const scrollToTop = () => {
 }
 
 const Form = () => {
+  const { enviarDatos } = useGlobalState()
+
   const [step, setStep] = useState(1)
+  const [isSending, setIsSending] = useState(false)
 
   const prevStep = () => setStep((prev) => prev - 1)
   const nextStep = () => setStep((prev) => prev + 1)
 
-  const { enviarDatos } = useGlobalState()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    setIsSending(true)
+    enviarDatos()
+      .then(() => {
+        setIsSending(false)
+        alert('Datos enviados correctamente')
+      })
+      .catch((error) => {
+        setIsSending(false)
+        console.error('Error al enviar los datos:', error)
+        alert('Error al enviar los datos. Inténtalo de nuevo más tarde.')
+      })
+  }
 
   const steps = [
     <FormAlumno key='1' />,
@@ -64,9 +81,13 @@ const Form = () => {
         ) : (
           <button
             className='mr-4 px-4 py-2 btn btn-success text-white rounded ml-auto'
-            onClick={enviarDatos}
+            onClick={handleSubmit}
+            disabled={isSending}
           >
-            Enviar
+            {isSending && (
+              <span className='loading loading-spinner loading-sm mr-2'></span>
+            )}
+            {!isSending && 'Enviar'}
           </button>
         )}
       </div>

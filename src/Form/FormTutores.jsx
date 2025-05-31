@@ -15,7 +15,7 @@ const FormTutores = () => {
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8'>
         <label className='floating-label'>
           <span>
-            Nombre <span className='text-rose-600'>*</span>
+            Nombre(s) <span className='text-rose-600'>*</span>
           </span>
           <input
             value={datosTutor1.nombre}
@@ -29,7 +29,7 @@ const FormTutores = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Nombre'
+            placeholder='Nombre(s) *'
             className='input input-md'
           />
         </label>
@@ -50,7 +50,7 @@ const FormTutores = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Apellido Paterno'
+            placeholder='Apellido Paterno *'
             className='input input-md'
           />
         </label>
@@ -71,7 +71,7 @@ const FormTutores = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Apellido Materno'
+            placeholder='Apellido Materno *'
             className='input input-md'
           />
         </label>
@@ -142,7 +142,7 @@ const FormTutores = () => {
             maxLength={30}
             required
             type='text'
-            placeholder='Domicilio'
+            placeholder='Domicilio *'
             className='input input-md'
           />
         </label>
@@ -163,7 +163,7 @@ const FormTutores = () => {
             maxLength={30}
             required
             type='text'
-            placeholder='Colonia'
+            placeholder='Colonia *'
             className='input input-md'
           />
         </label>
@@ -184,7 +184,7 @@ const FormTutores = () => {
             max={999999}
             required
             type='number'
-            placeholder='C.P.'
+            placeholder='C.P. *'
             className='input input-md'
           />
         </label>
@@ -205,7 +205,7 @@ const FormTutores = () => {
             max={9999999999}
             required
             type='tel'
-            placeholder='1234567890'
+            placeholder='Télefono (móvil) *'
             pattern='[0-9]{10}'
             className='input input-md'
           />
@@ -227,7 +227,7 @@ const FormTutores = () => {
             max={9999999999}
             required
             type='tel'
-            placeholder='1234567890'
+            placeholder='Télefono (fijo) *'
             pattern='[0-9]{10}'
             className='input input-md'
           />
@@ -249,7 +249,7 @@ const FormTutores = () => {
             maxLength={50}
             required
             type='email'
-            placeholder='Correo Electrónico'
+            placeholder='Correo Electrónico *'
             className='input input-md'
           />
         </label>
@@ -270,7 +270,7 @@ const FormTutores = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Ocupación'
+            placeholder='Ocupación *'
             className='input input-md'
           />
         </label>
@@ -311,7 +311,9 @@ const FormTutores = () => {
       <h3 className='font-bold text-center mb-4'>Tutor 2</h3>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
         <label className='floating-label'>
-          <span>Nombre</span>
+          <span>
+            Nombre(s) <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.nombre}
             onChange={(e) => {
@@ -324,13 +326,15 @@ const FormTutores = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Nombre'
+            placeholder='Nombre(s) *'
             className='input input-md'
           />
         </label>
 
         <label className='floating-label'>
-          <span>Apellido Paterno</span>
+          <span>
+            Apellido Paterno <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.apellido_paterno}
             onChange={(e) => {
@@ -343,13 +347,15 @@ const FormTutores = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Apellido Paterno'
+            placeholder='Apellido Paterno *'
             className='input input-md'
           />
         </label>
 
         <label className='floating-label'>
-          <span>Apellido Materno</span>
+          <span>
+            Apellido Materno <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.apellido_materno}
             onChange={(e) => {
@@ -362,13 +368,15 @@ const FormTutores = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Apellido Materno'
+            placeholder='Apellido Materno *'
             className='input input-md'
           />
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Estado</span>
+          <span className='label'>
+            Estado <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             value={datosTutor2.estado_nacimiento}
@@ -399,7 +407,9 @@ const FormTutores = () => {
         </label>
 
         <label className='input input-md'>
-          <span className='label'>Fecha Nacimiento</span>
+          <span className='label'>
+            Fecha Nacimiento <span className='text-rose-600'>*</span>
+          </span>
           <input
             required
             value={datosTutor2.fecha_nacimiento}
@@ -414,7 +424,9 @@ const FormTutores = () => {
         </label>
 
         <label className='floating-label'>
-          <span>Domicilio</span>
+          <span>
+            Domicilio <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.domicilio}
             onChange={(e) => {
@@ -427,13 +439,15 @@ const FormTutores = () => {
             maxLength={30}
             required
             type='text'
-            placeholder='Domicilio'
+            placeholder='Domicilio *'
             className='input input-md'
           />
         </label>
 
         <label className='floating-label'>
-          <span>Colonia</span>
+          <span>
+            Colonia <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.colonia}
             onChange={(e) => {
@@ -446,13 +460,15 @@ const FormTutores = () => {
             maxLength={30}
             required
             type='text'
-            placeholder='Colonia'
+            placeholder='Colonia *'
             className='input input-md'
           />
         </label>
 
         <label className='floating-label'>
-          <span>C.P.</span>
+          <span>
+            C.P. <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.codigo_postal}
             onChange={(e) => {
@@ -465,13 +481,15 @@ const FormTutores = () => {
             max={999999}
             required
             type='number'
-            placeholder='C.P.'
+            placeholder='C.P. *'
             className='input input-md'
           />
         </label>
 
         <label className='floating-label'>
-          <span>Teléfono (móvil)</span>
+          <span>
+            Teléfono (móvil) <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.telefono_movil}
             onChange={(e) => {
@@ -484,14 +502,16 @@ const FormTutores = () => {
             max={9999999999}
             required
             type='tel'
-            placeholder='1234567890'
+            placeholder='Teléfono (móvil) *'
             pattern='[0-9]{10}'
             className='input input-md'
           />
         </label>
 
         <label className='floating-label'>
-          <span>Teléfono (fijo)</span>
+          <span>
+            Teléfono (fijo) <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.telefono_fijo}
             onChange={(e) => {
@@ -504,14 +524,16 @@ const FormTutores = () => {
             max={9999999999}
             required
             type='tel'
-            placeholder='1234567890'
+            placeholder='Teléfono (fijo) *'
             pattern='[0-9]{10}'
             className='input input-md'
           />
         </label>
 
         <label className='floating-label'>
-          <span>Correo Electrónico</span>
+          <span>
+            Correo Electrónico <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.correo_electronico}
             onChange={(e) => {
@@ -524,13 +546,15 @@ const FormTutores = () => {
             maxLength={50}
             required
             type='email'
-            placeholder='Correo Electrónico'
+            placeholder='Correo Electrónico *'
             className='input input-md'
           />
         </label>
 
         <label className='floating-label'>
-          <span>Ocupación</span>
+          <span>
+            Ocupación <span className='text-rose-600'>*</span>
+          </span>
           <input
             value={datosTutor2.oupacion}
             onChange={(e) => {
@@ -543,13 +567,15 @@ const FormTutores = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Ocupación'
+            placeholder='Ocupación *'
             className='input input-md'
           />
         </label>
 
         <label className='select select-md'>
-          <span className='label'>Grado Máx Estudios</span>
+          <span className='label'>
+            Grado Máx Estudios <span className='text-rose-600'>*</span>
+          </span>
           <select
             required
             value={datosTutor2.grado_max_estudios}

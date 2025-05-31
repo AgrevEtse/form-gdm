@@ -47,7 +47,7 @@ const FormAlumno = () => {
             maxLength={10}
             required
             type='text'
-            placeholder='CCT'
+            placeholder='CCT *'
             className='input input-md'
           />
         </label>
@@ -69,7 +69,7 @@ const FormAlumno = () => {
             maxLength={10}
             required
             type='text'
-            placeholder='Matricula'
+            placeholder='Matricula *'
             className='input input-md'
           />
         </label>
@@ -90,7 +90,7 @@ const FormAlumno = () => {
             maxLength={100}
             required
             type='text'
-            placeholder='Nombre Escuela'
+            placeholder='Nombre Escuela *'
             className='input input-md'
           />
         </label>
@@ -108,14 +108,14 @@ const FormAlumno = () => {
             maxLength={20}
             required
             type='text'
-            placeholder='CURP'
+            placeholder='CURP *'
             className='input input-md'
           />
         </label>
 
         <label className='floating-label'>
           <span>
-            Nombre <span className='text-rose-600'>*</span>
+            Nombre(s) <span className='text-rose-600'>*</span>
           </span>
           <input
             value={datosAlumno.nombre}
@@ -129,7 +129,7 @@ const FormAlumno = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Nombre'
+            placeholder='Nombre(s) *'
             className='input input-md'
           />
         </label>
@@ -150,7 +150,7 @@ const FormAlumno = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Apellido Paterno'
+            placeholder='Apellido Paterno *'
             className='input input-md'
           />
         </label>
@@ -171,7 +171,7 @@ const FormAlumno = () => {
             maxLength={40}
             required
             type='text'
-            placeholder='Apellido Materno'
+            placeholder='Apellido Materno *'
             className='input input-md'
           />
         </label>
@@ -393,7 +393,7 @@ const FormAlumno = () => {
             required
             value={datosAlumno.estatura_cm}
             type='number'
-            placeholder='Estatura (cm)'
+            placeholder='Estatura (cm) *'
             className='input input-md'
           />
         </label>
@@ -414,7 +414,7 @@ const FormAlumno = () => {
             required
             value={datosAlumno.peso_kg}
             type='number'
-            placeholder='Peso (kg)'
+            placeholder='Peso (kg) *'
             className='input input-md'
           />
         </label>
@@ -435,7 +435,7 @@ const FormAlumno = () => {
             maxLength={30}
             required
             type='text'
-            placeholder='Domicilio'
+            placeholder='Domicilio *'
             className='input input-md'
           />
         </label>
@@ -456,7 +456,7 @@ const FormAlumno = () => {
             maxLength={30}
             required
             type='text'
-            placeholder='Colonia'
+            placeholder='Colonia *'
             className='input input-md'
           />
         </label>
@@ -474,7 +474,7 @@ const FormAlumno = () => {
               })
             }}
             type='number'
-            placeholder='C.P.'
+            placeholder='C.P. *'
             min={100000}
             max={999999}
             required

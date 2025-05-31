@@ -28,7 +28,7 @@ const FormContacto = () => {
               setDatosContacto1({ ...datosContacto1, nombre: e.target.value })
             }
             type='text'
-            placeholder='Nombre Completo'
+            placeholder='Nombre Completo *'
             className='input input-md'
           />
         </label>
@@ -43,7 +43,7 @@ const FormContacto = () => {
               setDatosContacto1({ ...datosContacto1, telefono: e.target.value })
             }
             type='tel'
-            placeholder='1234567890'
+            placeholder='Télefono *'
             pattern='[0-9]{10}'
             className='input input-md'
           />
@@ -92,7 +92,7 @@ const FormContacto = () => {
               setDatosContacto2({ ...datosContacto2, nombre: e.target.value })
             }
             type='text'
-            placeholder='Nombre Completo'
+            placeholder='Nombre Completo *'
             className='input input-md'
           />
         </label>
@@ -107,7 +107,7 @@ const FormContacto = () => {
               setDatosContacto2({ ...datosContacto2, telefono: e.target.value })
             }
             type='tel'
-            placeholder='1234567890'
+            placeholder='Télefono *'
             pattern='[0-9]{10}'
             className='input input-md'
           />
@@ -156,7 +156,7 @@ const FormContacto = () => {
               setDatosContacto3({ ...datosContacto3, nombre: e.target.value })
             }
             type='text'
-            placeholder='Nombre Completo'
+            placeholder='Nombre Completo *'
             className='input input-md'
           />
         </label>
@@ -171,7 +171,7 @@ const FormContacto = () => {
               setDatosContacto3({ ...datosContacto3, telefono: e.target.value })
             }
             type='tel'
-            placeholder='1234567890'
+            placeholder='Télefono *'
             pattern='[0-9]{10}'
             className='input input-md'
           />
