@@ -10,6 +10,29 @@ const FormContacto = () => {
   const [datosContacto1, setDatosContacto1] = useState(DEFAULT_CONTACTO)
   const [datosContacto2, setDatosContacto2] = useState(DEFAULT_CONTACTO)
   const [datosContacto3, setDatosContacto3] = useState(DEFAULT_CONTACTO)
+  const [isSending, setIsSending] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    setIsSending(true)
+
+    const datos = {
+      datosContacto1,
+      datosContacto2,
+      datosContacto3,
+      curp
+    }
+
+    // Aquí puedes enviar los datos a tu API o manejarlos como necesites
+    console.log('Datos enviados:', datos)
+
+    // Simulación de envío exitoso
+    setTimeout(() => {
+      setIsSending(false)
+      alert('Datos enviados correctamente')
+    }, 2000)
+  }
 
   return (
     <FormLayout>
@@ -212,6 +235,19 @@ const FormContacto = () => {
             </select>
           </label>
         </div>
+      </div>
+      <div className='flex justify-between mt-4'>
+        <button
+          className='mr-4 px-4 py-2 btn btn-success text-white rounded ml-auto'
+          onClick={handleSubmit}
+          disabled={isSending}
+          type='submit'
+        >
+          {isSending && (
+            <span className='loading loading-spinner loading-sm'></span>
+          )}
+          {!isSending && 'Enviar'}
+        </button>
       </div>
     </FormLayout>
   )

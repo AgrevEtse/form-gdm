@@ -10,6 +10,28 @@ const FormTutores = () => {
 
   const [datosTutor1, setDatosTutor1] = useState(DEFAULT_TUTOR)
   const [datosTutor2, setDatosTutor2] = useState(DEFAULT_TUTOR)
+  const [isSending, setIsSending] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    setIsSending(true)
+
+    const datos = {
+      datosTutor1,
+      datosTutor2,
+      curp
+    }
+
+    // Aquí puedes enviar los datos a tu API o manejarlos como necesites
+    console.log('Datos enviados:', datos)
+
+    // Simulación de envío exitoso
+    setTimeout(() => {
+      setIsSending(false)
+      alert('Datos enviados correctamente')
+    }, 2000)
+  }
 
   return (
     <FormLayout>
@@ -601,6 +623,19 @@ const FormTutores = () => {
             </select>
           </label>
         </div>
+      </div>
+      <div className='flex justify-between mt-4'>
+        <button
+          className='mr-4 px-4 py-2 btn btn-success text-white rounded ml-auto'
+          onClick={handleSubmit}
+          disabled={isSending}
+          type='submit'
+        >
+          {isSending && (
+            <span className='loading loading-spinner loading-sm'></span>
+          )}
+          {!isSending && 'Enviar'}
+        </button>
       </div>
     </FormLayout>
   )
