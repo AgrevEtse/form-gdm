@@ -1,8 +1,13 @@
-import { useGlobalState } from '@/context/GlobalStateContext'
+import { useState } from 'react'
+
+import useGlobalState from '@/context/useGlobalState'
+import { DEFAULT_PAGO } from '@/utils/defaultStates'
 import FormLayout from '@/Form/FormLayout'
 
 const FormPago = () => {
-  const { datosPago, setDatosPago } = useGlobalState()
+  const { curp } = useGlobalState()
+
+  const [datosPago, setDatosPago] = useState(DEFAULT_PAGO)
 
   return (
     <FormLayout>
@@ -41,10 +46,8 @@ const FormPago = () => {
               }
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge el parentesco...
               </option>
@@ -102,9 +105,8 @@ const FormPago = () => {
               }
             >
               <option
-                selected
                 disabled
-                hidden
+                value='0'
               >
                 Escoge la opción...
               </option>

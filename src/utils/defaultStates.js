@@ -38,13 +38,13 @@ export const DEFAULT_TUTOR = {
   nombre: '',
   apellido_paterno: '',
   apellido_materno: '',
-  estado_nacimiento: '',
+  estado_nacimiento: '0',
   fecha_nacimiento: '',
   telefono_movil: '',
   telefono_fijo: '',
   correo_electronico: '',
   oupacion: '',
-  grado_max_estudios: '',
+  grado_max_estudios: '0',
   domicilio: '',
   colonia: '',
   codigo_postal: ''
@@ -52,19 +52,19 @@ export const DEFAULT_TUTOR = {
 
 export const DEFAULT_HERMANO = {
   nombre: '',
-  nivel: ''
+  nivel: '0'
 }
 
 export const DEFAULT_CONTACTO = {
   nombre: '',
   telefono: '',
-  parentesco: ''
+  parentesco: '0'
 }
 
 export const DEFAULT_PAGO = {
   nombre: '',
   telefono: '',
   correo: '',
-  factura: false,
-  responsable: ''
+  factura: '0',
+  responsable: '0'
 }

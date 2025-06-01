@@ -1,10 +1,15 @@
-import { useGlobalState } from '@/context/GlobalStateContext'
+import { useState } from 'react'
+
+import useGlobalState from '@/context/useGlobalState'
+import { DEFAULT_TUTOR } from '@/utils/defaultStates'
 import FormLayout from '@/Form/FormLayout'
 import estados from '@/assets/json/estados.json'
 
 const FormTutores = () => {
-  const { datosTutor1, setDatosTutor1, datosTutor2, setDatosTutor2 } =
-    useGlobalState()
+  const { curp } = useGlobalState()
+
+  const [datosTutor1, setDatosTutor1] = useState(DEFAULT_TUTOR)
+  const [datosTutor2, setDatosTutor2] = useState(DEFAULT_TUTOR)
 
   return (
     <FormLayout>
@@ -93,10 +98,8 @@ const FormTutores = () => {
               }}
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge el estado...
               </option>
@@ -292,10 +295,8 @@ const FormTutores = () => {
               }}
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge el Grado Estudios...
               </option>
@@ -390,10 +391,8 @@ const FormTutores = () => {
               }}
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge el estado...
               </option>
@@ -589,10 +588,8 @@ const FormTutores = () => {
               }}
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge el Grado Estudios...
               </option>

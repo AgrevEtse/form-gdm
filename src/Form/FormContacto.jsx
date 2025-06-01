@@ -1,15 +1,15 @@
-import { useGlobalState } from '@/context/GlobalStateContext'
+import { useState } from 'react'
+
+import useGlobalState from '@/context/useGlobalState'
+import { DEFAULT_CONTACTO } from '@/utils/defaultStates'
 import FormLayout from '@/Form/FormLayout'
 
 const FormContacto = () => {
-  const {
-    datosContacto1,
-    setDatosContacto1,
-    datosContacto2,
-    setDatosContacto2,
-    datosContacto3,
-    setDatosContacto3
-  } = useGlobalState()
+  const { curp } = useGlobalState()
+
+  const [datosContacto1, setDatosContacto1] = useState(DEFAULT_CONTACTO)
+  const [datosContacto2, setDatosContacto2] = useState(DEFAULT_CONTACTO)
+  const [datosContacto3, setDatosContacto3] = useState(DEFAULT_CONTACTO)
 
   return (
     <FormLayout>
@@ -68,10 +68,8 @@ const FormContacto = () => {
               }
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge el parentesco...
               </option>
@@ -135,10 +133,8 @@ const FormContacto = () => {
               }
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge el parentesco...
               </option>
@@ -202,10 +198,8 @@ const FormContacto = () => {
               }
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge el parentesco...
               </option>

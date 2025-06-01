@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import FormLayout from '@/Form/FormLayout'
-import useGlobalStateContext from '@/context/useGlobalState'
+import useGlobalState from '@/context/useGlobalState'
 import {
   DEFAULT_ESCUELA_PROCEDENCIA,
   DEFAULT_ALUMNO,
@@ -15,7 +15,7 @@ import municipios from '@/assets/json/estados-municipios.json'
 import grados from '@/assets/json/escolaridad-grados.json'
 
 const FormAlumno = () => {
-  const { curp, setCurp } = useGlobalStateContext()
+  const { curp, setCurp } = useGlobalState()
 
   const [datosEscuelaProcedencia, setDatosEscuelaProcedencia] = useState(
     DEFAULT_ESCUELA_PROCEDENCIA
@@ -200,7 +200,6 @@ const FormAlumno = () => {
             >
               <option
                 disabled
-                hidden
                 value='0'
               >
                 Escoge el género...
@@ -226,7 +225,6 @@ const FormAlumno = () => {
             >
               <option
                 disabled
-                hidden
                 value='0'
               >
                 Escoge el tipo sanguineo...
@@ -258,7 +256,6 @@ const FormAlumno = () => {
             >
               <option
                 disabled
-                hidden
                 value='0'
               >
                 Escoge la lateralidad...
@@ -301,7 +298,6 @@ const FormAlumno = () => {
             >
               <option
                 disabled
-                hidden
                 value='0'
               >
                 Escoge la nacionalidad...
@@ -336,7 +332,6 @@ const FormAlumno = () => {
             >
               <option
                 disabled
-                hidden
                 value='0'
               >
                 Escoge la escolaridad...
@@ -366,7 +361,6 @@ const FormAlumno = () => {
             >
               <option
                 disabled
-                hidden
                 value='0'
               >
                 Escoge el grado...
@@ -508,7 +502,6 @@ const FormAlumno = () => {
             >
               <option
                 disabled
-                hidden
                 value='0'
               >
                 Escoge el estado...
@@ -542,7 +535,6 @@ const FormAlumno = () => {
             >
               <option
                 disabled
-                hidden
                 value='0'
               >
                 Escoge el municipio...

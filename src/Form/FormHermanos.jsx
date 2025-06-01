@@ -1,15 +1,15 @@
-import { useGlobalState } from '@/context/GlobalStateContext'
+import { useState } from 'react'
+
+import useGlobalState from '@/context/useGlobalState'
+import { DEFAULT_HERMANO } from '@/utils/defaultStates'
 import FormLayout from '@/Form/FormLayout'
 
 const FormHermanos = () => {
-  const {
-    datosHermano1,
-    setDatosHermano1,
-    datosHermano2,
-    setDatosHermano2,
-    datosHermano3,
-    setDatosHermano3
-  } = useGlobalState()
+  const { curp } = useGlobalState()
+
+  const [datosHermano1, setDatosHermano1] = useState(DEFAULT_HERMANO)
+  const [datosHermano2, setDatosHermano2] = useState(DEFAULT_HERMANO)
+  const [datosHermano3, setDatosHermano3] = useState(DEFAULT_HERMANO)
 
   return (
     <FormLayout>
@@ -44,10 +44,8 @@ const FormHermanos = () => {
               }
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge la escolaridad...
               </option>
@@ -85,10 +83,8 @@ const FormHermanos = () => {
               }
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge la escolaridad...
               </option>
@@ -126,10 +122,8 @@ const FormHermanos = () => {
               }
             >
               <option
-                selected
                 disabled
-                hidden
-                value=''
+                value='0'
               >
                 Escoge la escolaridad...
               </option>

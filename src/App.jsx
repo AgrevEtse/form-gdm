@@ -3,10 +3,10 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import HomePage from '@/HomePage'
 import NotFound404 from '@/NotFound404'
 import FormAlumno from '@/Form/FormAlumno'
-// import FormTutores from '@/Form/FormTutores'
-// import FormHermanos from '@/Form/FormHermanos'
-// import FormContacto from '@/Form/FormContacto'
-// import FormPago from '@/Form/FormPago'
+import FormTutores from '@/Form/FormTutores'
+import FormHermanos from '@/Form/FormHermanos'
+import FormContacto from '@/Form/FormContacto'
+import FormPago from '@/Form/FormPago'
 
 function App() {
   const navigate = useNavigate()
@@ -44,7 +44,7 @@ function App() {
           path='form-alumno'
           element={<FormAlumno />}
         />
-        {/* <Route
+        <Route
           path='form-tutores'
           element={<FormTutores />}
         />
@@ -59,7 +59,7 @@ function App() {
         <Route
           path='form-pago'
           element={<FormPago />}
-        /> */}
+        />
         <Route
           path='*'
           element={<NotFound404 />}
