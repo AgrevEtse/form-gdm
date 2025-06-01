@@ -12,7 +12,7 @@ const HomePage = () => {
           escolar.
         </p>
         <Link
-          to='/formulario'
+          to='/form-alumno'
           className='block'
         >
           <button className='w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-xl transition duration-300 cursor-pointer'>

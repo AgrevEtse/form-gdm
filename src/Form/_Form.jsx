@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { useGlobalState } from '../GlobalState'
+import { useGlobalState } from '../context/GlobalStateContext'
 import FormAlumno from './FormAlumno'
 import FormTutores from './FormTutores'
 import FormHermanos from './FormHermanos'

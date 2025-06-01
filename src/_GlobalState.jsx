@@ -1,81 +1,10 @@
 import { createContext, useContext, useState } from 'react'
 
-import idEscolaridadJson from './assets/json/id-escolaridad.json'
+import idEscolaridadJson from '@/assets/json/id-escolaridad.json'
 
 const API_URL = import.meta.env.VITE_API_URL
 
 const GlobalStateContext = createContext()
-
-const defaultCurp = ''
-
-const defaultInscripcion = {
-  escolaridad: '',
-  grado: ''
-}
-
-const defaultDatosAlumno = {
-  nombre: '',
-  apellido_paterno: '',
-  apellido_materno: '',
-  genero: '',
-  es_diestro: true,
-  fecha_nacimiento: '',
-  nacionalidad: '',
-  tipo_sanguineo: '',
-  estatura_cm: null,
-  peso_kg: null,
-  nota_enfermedad: '',
-  nota_terapia: ''
-}
-
-const defaultDatosEscuelaProcedencia = {
-  cct: '',
-  matricula: '',
-  nombre: ''
-}
-
-const defaultDatosDomicilio = {
-  domicilio: '',
-  colonia: '',
-  codigo_postal: '',
-  ciudad: '',
-  estado: ''
-}
-
-const defaultDatosTutor = {
-  nombre: '',
-  apellido_paterno: '',
-  apellido_materno: '',
-  estado_nacimiento: '',
-  fecha_nacimiento: '',
-  telefono_movil: '',
-  telefono_fijo: '',
-  correo_electronico: '',
-  oupacion: '',
-  grado_max_estudios: '',
-  domicilio: '',
-  colonia: '',
-  codigo_postal: ''
-}
-
-const defaultDatosHermano = {
-  nombre: '',
-  nivel: ''
-}
-
-const defaultDatosContacto = {
-  nombre: '',
-  telefono: '',
-  parentesco: ''
-}
-
-const defaultDatosPago = {
-  nombre: '',
-  telefono: '',
-  correo: '',
-  factura: false,
-  responsable: ''
-}
 
 const deepEqual = (obj1, obj2) => {
   if (obj1 === obj2) return true
