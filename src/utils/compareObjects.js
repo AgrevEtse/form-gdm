@@ -1,4 +1,4 @@
-export const compareObjects = (obj1, obj2) => {
+export const equalObjects = (obj1, obj2) => {
   if (obj1 === obj2) return true
   if (
     typeof obj1 !== 'object' ||
@@ -15,7 +15,7 @@ export const compareObjects = (obj1, obj2) => {
   if (keys1.length !== keys2.length) return false
 
   for (let key of keys1) {
-    if (!keys2.includes(key) || !compareObjects(obj1[key], obj2[key])) {
+    if (!keys2.includes(key) || !equalObjects(obj1[key], obj2[key])) {
       return false
     }
   }

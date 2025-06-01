@@ -1,37 +1,103 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { DEFAULT_CONTACTO } from '@/utils/defaultStates'
+import { equalObjects } from '@/utils/compareObjects'
 import FormLayout from '@/Form/FormLayout'
+
+const API_URL = import.meta.env.VITE_API_URL
 
 const FormContacto = () => {
   const { curp } = useGlobalState()
+  const navigate = useNavigate()
 
   const [datosContacto1, setDatosContacto1] = useState(DEFAULT_CONTACTO)
   const [datosContacto2, setDatosContacto2] = useState(DEFAULT_CONTACTO)
   const [datosContacto3, setDatosContacto3] = useState(DEFAULT_CONTACTO)
   const [isSending, setIsSending] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     setIsSending(true)
 
-    const datos = {
-      datosContacto1,
-      datosContacto2,
-      datosContacto3,
-      curp
+    if (!equalObjects(datosContacto1, DEFAULT_CONTACTO)) {
+      const resContacto1 = await fetch(`${API_URL}/contactoemergencia`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...datosContacto1,
+          curp_alumno: curp
+        })
+      })
+
+      const dataContacto1 = await resContacto1.json()
+
+      if (!resContacto1.ok) {
+        toast.error('Error al enviar los datos del contacto 1')
+        console.error(
+          `Error al enviar los datos del contacto 1: ${dataContacto1.message}`
+        )
+        setIsSending(false)
+        return
+      }
     }
 
-    // Aquí puedes enviar los datos a tu API o manejarlos como necesites
-    console.log('Datos enviados:', datos)
+    if (!equalObjects(datosContacto2, DEFAULT_CONTACTO)) {
+      const resContacto2 = await fetch(`${API_URL}/contactoemergencia`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...datosContacto2,
+          curp_alumno: curp
+        })
+      })
 
-    // Simulación de envío exitoso
-    setTimeout(() => {
-      setIsSending(false)
-      alert('Datos enviados correctamente')
-    }, 2000)
+      const dataContacto2 = await resContacto2.json()
+
+      if (!resContacto2.ok) {
+        toast.error('Error al enviar los datos del contacto 2')
+        console.error(
+          `Error al enviar los datos del contacto 2: ${dataContacto2.message}`
+        )
+        setIsSending(false)
+        return
+      }
+    }
+
+    if (!equalObjects(datosContacto3, DEFAULT_CONTACTO)) {
+      const resContacto3 = await fetch(`${API_URL}/contactoemergencia`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...datosContacto3,
+          curp_alumno: curp
+        })
+      })
+
+      const dataContacto3 = await resContacto3.json()
+
+      if (!resContacto3.ok) {
+        toast.error('Error al enviar los datos del contacto 3')
+        console.error(
+          `Error al enviar los datos del contacto 3: ${dataContacto3.message}`
+        )
+        setIsSending(false)
+        return
+      }
+    }
+
+    setIsSending(false)
+    toast.success('Datos de contactos de emergencia enviados correctamente')
+    navigate('/form-pago')
   }
 
   return (

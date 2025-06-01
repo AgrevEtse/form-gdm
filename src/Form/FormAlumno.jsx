@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 import FormLayout from '@/Form/FormLayout'
 import useGlobalState from '@/context/useGlobalState'
@@ -13,9 +15,15 @@ import paises from '@/assets/json/paises.json'
 import estados from '@/assets/json/estados.json'
 import municipios from '@/assets/json/estados-municipios.json'
 import grados from '@/assets/json/escolaridad-grados.json'
+import idEscolaridadJson from '@/assets/json/id-escolaridad.json'
+
+const API_URL = import.meta.env.VITE_API_URL
+const UUID_ANNUAL = import.meta.env.VITE_UUID_ANNUAL
+const UUID_BIANNUAL = import.meta.env.VITE_UUID_BIANNUAL
 
 const FormAlumno = () => {
   const { curp, setCurp } = useGlobalState()
+  const navigate = useNavigate()
 
   const [datosEscuelaProcedencia, setDatosEscuelaProcedencia] = useState(
     DEFAULT_ESCUELA_PROCEDENCIA
@@ -24,7 +32,7 @@ const FormAlumno = () => {
   const [datosDomicilio, setDatosDomicilio] = useState(DEFAULT_DOMICILIO)
   const [inscripcion, setInscripcion] = useState(DEFAULT_INSCRIPCION)
 
-  // Grado se inicializa como '0' para evitar problemas con el select
+  // Se inicializan con '0' para evitar problemas con el select
   const [estado, setEstado] = useState('0')
   const [municipio, setMunicipio] = useState('0')
   const [escolaridad, setEscolaridad] = useState('0')
@@ -32,27 +40,111 @@ const FormAlumno = () => {
   const [grado, setGrado] = useState('0')
   const [isSending, setIsSending] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     setIsSending(true)
 
-    const datos = {
-      datosEscuelaProcedencia,
-      datosAlumno,
-      datosDomicilio,
-      inscripcion,
-      curp
+    const resAlumno = await fetch(`${API_URL}/alumno`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ...datosAlumno,
+        fecha_nacimiento: new Date(datosAlumno.fecha_nacimiento).toISOString(),
+        curp
+      })
+    })
+
+    const dataAlumno = await resAlumno.json()
+
+    if (!resAlumno.ok) {
+      setIsSending(false)
+      toast.error(`Error al enviar los datos del alumno.`)
+      console.error(
+        `Error al enviar los datos del alumno: ${dataAlumno.message}`
+      )
+      return
     }
 
-    // Aquí puedes enviar los datos a tu API o manejarlos como necesites
-    console.log('Datos enviados:', datos)
+    const resEscuelaProcedencia = await fetch(`${API_URL}/escuelaprocedencia`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ...datosEscuelaProcedencia,
+        curp_alumno: curp
+      })
+    })
 
-    // Simulación de envío exitoso
-    setTimeout(() => {
+    const dataEscuelaProcedencia = await resEscuelaProcedencia.json()
+
+    if (!resEscuelaProcedencia.ok) {
       setIsSending(false)
-      alert('Datos enviados correctamente')
-    }, 2000)
+      toast.error(`Error al enviar los datos de la escuela de procedencia.`)
+      console.error(
+        `Error al enviar los datos de la escuela de procedencia: ${dataEscuelaProcedencia.message}`
+      )
+      return
+    }
+
+    const resDomicilio = await fetch(`${API_URL}/domicilio`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ...datosDomicilio,
+        curp_alumno: curp
+      })
+    })
+
+    const dataDomicilio = await resDomicilio.json()
+
+    if (!resDomicilio.ok) {
+      setIsSending(false)
+      toast.error(`Error al enviar los datos del domicilio.`)
+      console.error(
+        `Error al enviar los datos del domicilio: ${dataDomicilio.message}`
+      )
+      return
+    }
+
+    const id_escolaridad =
+      idEscolaridadJson[inscripcion.escolaridad + inscripcion.grado]
+    const id_ciclo = id_escolaridad >= 13 ? UUID_BIANNUAL : UUID_ANNUAL
+    const fecha_inscripcion = new Date().toISOString()
+
+    const resInscripcion = await fetch(`${API_URL}/inscripcion`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id_escolaridad,
+        id_ciclo,
+        fecha_inscripcion,
+        esta_activo: false,
+        curp_alumno: curp
+      })
+    })
+
+    const dataInscripcion = await resInscripcion.json()
+
+    if (!resInscripcion.ok) {
+      setIsSending(false)
+      toast.error(`Error al enviar los datos de inscripción.`)
+      console.error(
+        `Error al enviar los datos de inscripción: ${dataInscripcion.message}`
+      )
+      return
+    }
+
+    setIsSending(false)
+    toast.success('Alumno enviado correctamente.')
+    navigate('/form-tutores')
   }
 
   return (

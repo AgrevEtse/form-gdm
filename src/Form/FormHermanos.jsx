@@ -1,37 +1,103 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { DEFAULT_HERMANO } from '@/utils/defaultStates'
+import { equalObjects } from '@/utils/compareObjects'
 import FormLayout from '@/Form/FormLayout'
+
+const API_URL = import.meta.env.VITE_API_URL
 
 const FormHermanos = () => {
   const { curp } = useGlobalState()
+  const navigate = useNavigate()
 
   const [datosHermano1, setDatosHermano1] = useState(DEFAULT_HERMANO)
   const [datosHermano2, setDatosHermano2] = useState(DEFAULT_HERMANO)
   const [datosHermano3, setDatosHermano3] = useState(DEFAULT_HERMANO)
   const [isSending, setIsSending] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     setIsSending(true)
 
-    const datos = {
-      datosHermano1,
-      datosHermano2,
-      datosHermano3,
-      curp
+    if (!equalObjects(datosHermano1, DEFAULT_HERMANO)) {
+      const resHermano1 = await fetch(`${API_URL}/hermano`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...datosHermano1,
+          curp_alumno: curp
+        })
+      })
+
+      const dataHermano1 = await resHermano1.json()
+
+      if (!resHermano1.ok) {
+        toast.error(`Error al enviar los datos del hermano 1`)
+        console.error(
+          `Error al enviar los datos del hermano 1: ${dataHermano1.message}`
+        )
+        setIsSending(false)
+        return
+      }
     }
 
-    // Aquí puedes enviar los datos a tu API o manejarlos como necesites
-    console.log('Datos enviados:', datos)
+    if (!equalObjects(datosHermano2, DEFAULT_HERMANO)) {
+      const resHermano2 = await fetch(`${API_URL}/hermano`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...datosHermano2,
+          curp_alumno: curp
+        })
+      })
 
-    // Simulación de envío exitoso
-    setTimeout(() => {
-      setIsSending(false)
-      alert('Datos enviados correctamente')
-    }, 2000)
+      const dataHermano2 = await resHermano2.json()
+
+      if (!resHermano2.ok) {
+        toast.error(`Error al enviar los datos del hermano 2`)
+        console.error(
+          `Error al enviar los datos del hermano 2: ${dataHermano2.message}`
+        )
+        setIsSending(false)
+        return
+      }
+    }
+
+    if (!equalObjects(datosHermano3, DEFAULT_HERMANO)) {
+      const resHermano3 = await fetch(`${API_URL}/hermano`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...datosHermano3,
+          curp_alumno: curp
+        })
+      })
+
+      const dataHermano3 = await resHermano3.json()
+
+      if (!resHermano3.ok) {
+        toast.error(`Error al enviar los datos del hermano 3`)
+        console.error(
+          `Error al enviar los datos del hermano 3: ${dataHermano3.message}`
+        )
+        setIsSending(false)
+        return
+      }
+    }
+
+    setIsSending(false)
+    toast.success('Datos de hermanos enviados correctamente')
+    navigate('/form-contacto')
   }
 
   return (

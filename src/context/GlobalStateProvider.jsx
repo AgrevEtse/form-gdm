@@ -6,12 +6,12 @@ import { DEFAULT_CURP } from '@/utils/defaultStates.js'
 const GlobalStateProvider = ({ children }) => {
   const [curp, setCurp] = useState(DEFAULT_CURP)
 
-  const resetStates = () => {
+  const resetCurp = () => {
     setCurp(DEFAULT_CURP)
   }
 
   return (
-    <GlobalStateContext.Provider value={{ curp, setCurp, resetStates }}>
+    <GlobalStateContext.Provider value={{ curp, setCurp, resetCurp }}>
       {children}
     </GlobalStateContext.Provider>
   )

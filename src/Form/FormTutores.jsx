@@ -1,36 +1,76 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { DEFAULT_TUTOR } from '@/utils/defaultStates'
 import FormLayout from '@/Form/FormLayout'
 import estados from '@/assets/json/estados.json'
 
+const API_URL = import.meta.env.VITE_API_URL
+
 const FormTutores = () => {
   const { curp } = useGlobalState()
+  const navigate = useNavigate()
 
   const [datosTutor1, setDatosTutor1] = useState(DEFAULT_TUTOR)
   const [datosTutor2, setDatosTutor2] = useState(DEFAULT_TUTOR)
   const [isSending, setIsSending] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     setIsSending(true)
 
-    const datos = {
-      datosTutor1,
-      datosTutor2,
-      curp
+    const resTutor1 = await fetch(`${API_URL}/tutor1`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ...datosTutor1,
+        fecha_nacimiento: new Date(datosTutor1.fecha_nacimiento).toISOString(),
+        curp_alumno: curp
+      })
+    })
+
+    const dataTutor1 = await resTutor1.json()
+
+    if (!resTutor1.ok) {
+      setIsSending(false)
+      toast.error('Error al enviar los datos del Tutor 1')
+      console.error(
+        `Error al enviar los datos del Tutor 1: ${dataTutor1.message}`
+      )
+      return
     }
 
-    // Aquí puedes enviar los datos a tu API o manejarlos como necesites
-    console.log('Datos enviados:', datos)
+    const resTutor2 = await fetch(`${API_URL}/tutor2`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ...datosTutor2,
+        fecha_nacimiento: new Date(datosTutor2.fecha_nacimiento).toISOString(),
+        curp_alumno: curp
+      })
+    })
 
-    // Simulación de envío exitoso
-    setTimeout(() => {
+    const dataTutor2 = await resTutor2.json()
+
+    if (!resTutor2.ok) {
       setIsSending(false)
-      alert('Datos enviados correctamente')
-    }, 2000)
+      toast.error('Error al enviar los datos del Tutor 2')
+      console.error(
+        `Error al enviar los datos del Tutor 2: ${dataTutor2.message}`
+      )
+      return
+    }
+
+    setIsSending(false)
+    toast.success('Datos de los tutores enviados correctamente')
+    navigate('/form-hermanos')
   }
 
   return (

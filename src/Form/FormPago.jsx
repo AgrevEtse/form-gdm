@@ -1,33 +1,49 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { DEFAULT_PAGO } from '@/utils/defaultStates'
 import FormLayout from '@/Form/FormLayout'
 
+const API_URL = import.meta.env.VITE_API_URL
+
 const FormPago = () => {
-  const { curp } = useGlobalState()
+  const { curp, resetCurp } = useGlobalState()
+  const navigate = useNavigate()
 
   const [datosPago, setDatosPago] = useState(DEFAULT_PAGO)
   const [isSending, setIsSending] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     setIsSending(true)
 
-    const datos = {
-      datosPago,
-      curp
+    const resPago = await fetch(`${API_URL}/personapagos`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ...datosPago,
+        curp_alumno: curp
+      })
+    })
+
+    const dataPago = await resPago.json()
+
+    if (!resPago.ok) {
+      setIsSending(false)
+      toast.error(`Error al enviar los datos de pago`)
+      console.error(`Error al enviar los datos de pago: ${dataPago.message}`)
+      return
     }
 
-    // Aquí puedes enviar los datos a tu API o manejarlos como necesites
-    console.log('Datos enviados:', datos)
-
-    // Simulación de envío exitoso
-    setTimeout(() => {
-      setIsSending(false)
-      alert('Datos enviados correctamente')
-    }, 2000)
+    setIsSending(false)
+    toast.success('Datos de pago enviados correctamente')
+    resetCurp()
+    navigate('/')
   }
 
   return (
