@@ -1,5 +1,12 @@
 [
   {
+    "nameES": "México",
+    "nameEN": "Mexico",
+    "iso2": "MX",
+    "iso3": "MEX",
+    "phoneCode": "52"
+  },
+  {
     "nameES": "Afganistán",
     "nameEN": "Afghanistan",
     "iso2": "AF",
@@ -978,13 +985,6 @@
     "iso2": "LU",
     "iso3": "LUX",
     "phoneCode": "352"
-  },
-  {
-    "nameES": "México",
-    "nameEN": "Mexico",
-    "iso2": "MX",
-    "iso3": "MEX",
-    "phoneCode": "52"
   },
   {
     "nameES": "Mónaco",

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
-import FormLayout from '@/Form/FormLayout'
+import FormLayout from '@/components/Layout/FormLayout'
 import useGlobalState from '@/context/useGlobalState'
 import {
   DEFAULT_ESCUELA_PROCEDENCIA,
@@ -149,7 +149,7 @@ const FormAlumno = () => {
 
   return (
     <FormLayout>
-      <div className='w-full mx-auto p-6 bg-gray-900 text-white rounded-md shadow-md'>
+      <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
         <h2 className='font-bold text-2xl mb-6 text-center'>
           Datos del Alumno
         </h2>
@@ -178,28 +178,6 @@ const FormAlumno = () => {
 
           <label className='floating-label'>
             <span>
-              Matricula de Escuela de Procedencia{' '}
-              <span className='text-rose-600'>*</span>
-            </span>
-            <input
-              value={datosEscuelaProcedencia.matricula}
-              onChange={(e) => {
-                setDatosEscuelaProcedencia({
-                  ...datosEscuelaProcedencia,
-                  matricula: e.target.value
-                })
-              }}
-              minLength={1}
-              maxLength={10}
-              required
-              type='text'
-              placeholder='Matricula *'
-              className='input input-md'
-            />
-          </label>
-
-          <label className='floating-label'>
-            <span>
               Escuela de Procedencia <span className='text-rose-600'>*</span>
             </span>
             <input
@@ -215,6 +193,24 @@ const FormAlumno = () => {
               required
               type='text'
               placeholder='Nombre Escuela *'
+              className='input input-md'
+            />
+          </label>
+
+          <label className='floating-label'>
+            <span>Matricula de Escuela de Procedencia</span>
+            <input
+              value={datosEscuelaProcedencia.matricula}
+              onChange={(e) => {
+                setDatosEscuelaProcedencia({
+                  ...datosEscuelaProcedencia,
+                  matricula: e.target.value
+                })
+              }}
+              minLength={1}
+              maxLength={10}
+              type='text'
+              placeholder='Matricula'
               className='input input-md'
             />
           </label>
@@ -706,7 +702,7 @@ const FormAlumno = () => {
       </div>
       <div className='flex justify-between mt-4'>
         <button
-          className='mr-4 px-4 py-2 btn btn-success text-white rounded ml-auto'
+          className='mr-4 px-4 py-2 btn btn-success rounded ml-auto'
           onClick={handleSubmit}
           disabled={isSending}
           type='submit'

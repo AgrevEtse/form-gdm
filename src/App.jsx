@@ -3,11 +3,11 @@ import { Toaster } from 'react-hot-toast'
 
 import HomePage from '@/HomePage'
 import NotFound404 from '@/NotFound404'
-import FormAlumno from '@/Form/FormAlumno'
-import FormTutores from '@/Form/FormTutores'
-import FormHermanos from '@/Form/FormHermanos'
-import FormContacto from '@/Form/FormContacto'
-import FormPago from '@/Form/FormPago'
+import FormAlumno from '@/components/Form/FormAlumno'
+import FormTutores from '@/components/Form/FormTutores'
+import FormHermanos from '@/components/Form/FormHermanos'
+import FormContacto from '@/components/Form/FormContacto'
+import FormPago from '@/components/Form/FormPago'
 
 function App() {
   const navigate = useNavigate()

@@ -38,7 +38,7 @@ export const DEFAULT_TUTOR = {
   nombre: '',
   apellido_paterno: '',
   apellido_materno: '',
-  estado_nacimiento: '0',
+  estado_nacimiento: '',
   fecha_nacimiento: '',
   telefono_movil: '',
   telefono_fijo: '',

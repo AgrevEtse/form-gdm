@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { DEFAULT_PAGO } from '@/utils/defaultStates'
-import FormLayout from '@/Form/FormLayout'
+import FormLayout from '@/components/Layout/FormLayout'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -48,9 +48,9 @@ const FormPago = () => {
 
   return (
     <FormLayout>
-      <div className='w-full mx-auto p-6 bg-gray-900 text-white rounded-md shadow-mds'>
+      <div className='w-full mx-auto p-6 text-white rounded-md shadow-mds'>
         <h2 className='font-bold text-2xl mb-6 text-center'>
-          Datos de Estados de Cuenta
+          Responsable de Pagos
         </h2>
 
         <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
@@ -155,7 +155,7 @@ const FormPago = () => {
       </div>
       <div className='flex justify-between mt-4'>
         <button
-          className='mr-4 px-4 py-2 btn btn-success text-white rounded ml-auto'
+          className='mr-4 px-4 py-2 btn btn-success rounded ml-auto'
           onClick={handleSubmit}
           disabled={isSending}
           type='submit'

@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast'
 import useGlobalState from '@/context/useGlobalState'
 import { DEFAULT_CONTACTO } from '@/utils/defaultStates'
 import { equalObjects } from '@/utils/compareObjects'
-import FormLayout from '@/Form/FormLayout'
+import FormLayout from '@/components/Layout/FormLayout'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -102,7 +102,7 @@ const FormContacto = () => {
 
   return (
     <FormLayout>
-      <div className='w-full mx-auto p-6 bg-gray-900 text-white rounded-md shadow-md'>
+      <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
         <h2 className='font-bold text-2xl mb-6 text-center'>
           Contactos de Emergencia
         </h2>
@@ -304,7 +304,7 @@ const FormContacto = () => {
       </div>
       <div className='flex justify-between mt-4'>
         <button
-          className='mr-4 px-4 py-2 btn btn-success text-white rounded ml-auto'
+          className='mr-4 px-4 py-2 btn btn-success rounded ml-auto'
           onClick={handleSubmit}
           disabled={isSending}
           type='submit'

@@ -4,8 +4,7 @@ import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { DEFAULT_TUTOR } from '@/utils/defaultStates'
-import FormLayout from '@/Form/FormLayout'
-import estados from '@/assets/json/estados.json'
+import FormLayout from '@/components/Layout/FormLayout'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -75,12 +74,14 @@ const FormTutores = () => {
 
   return (
     <FormLayout>
-      <div className='w-full mx-auto p-6 bg-gray-900 text-white rounded-md shadow-md'>
+      <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
         <h2 className='font-bold text-2xl mb-6 text-center'>
           Datos de los Tutores
         </h2>
 
-        <h3 className='font-bold text-center mb-4'>Tutor 1</h3>
+        <h3 className='font-bold text-center mb-4'>
+          Papá (Contacto Principal)
+        </h3>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8'>
           <label className='floating-label'>
             <span>
@@ -145,12 +146,11 @@ const FormTutores = () => {
             />
           </label>
 
-          <label className='select select-md'>
-            <span className='label'>
-              Estado <span className='text-rose-600'>*</span>
+          <label className='floating-label'>
+            <span>
+              Lugar de Nacimiento <span className='text-rose-600'>*</span>
             </span>
-            <select
-              required
+            <input
               value={datosTutor1.estado_nacimiento}
               onChange={(e) => {
                 setDatosTutor1({
@@ -158,22 +158,13 @@ const FormTutores = () => {
                   estado_nacimiento: e.target.value
                 })
               }}
-            >
-              <option
-                disabled
-                value='0'
-              >
-                Escoge el estado...
-              </option>
-              {estados.map((estado) => (
-                <option
-                  key={estado.clave}
-                  value={estado.nombre}
-                >
-                  {estado.nombre}
-                </option>
-              ))}
-            </select>
+              minLength={1}
+              maxLength={40}
+              required
+              type='text'
+              placeholder='Lugar de Nacimiento *'
+              className='input input-md'
+            />
           </label>
 
           <label className='input input-md'>
@@ -279,9 +270,7 @@ const FormTutores = () => {
           </label>
 
           <label className='floating-label'>
-            <span>
-              Teléfono (fijo) <span className='text-rose-600'>*</span>
-            </span>
+            <span>Teléfono (fijo)</span>
             <input
               value={datosTutor1.telefono_fijo}
               onChange={(e) => {
@@ -292,9 +281,8 @@ const FormTutores = () => {
               }}
               min={1000000000}
               max={9999999999}
-              required
               type='tel'
-              placeholder='Télefono (fijo) *'
+              placeholder='Télefono (fijo)'
               pattern='[0-9]{10}'
               className='input input-md'
             />
@@ -362,18 +350,26 @@ const FormTutores = () => {
               >
                 Escoge el Grado Estudios...
               </option>
+              <option value='Sin Estudios'>Sin Estudios</option>
               <option value='Preescolar'>Preescolar</option>
+              <option value='Preescolar Trunco'>Preescolar Trunco</option>
               <option value='Primaria'>Primaria</option>
+              <option value='Primaria Trunca'>Primaria Trunca</option>
               <option value='Secundaria'>Secundaria</option>
+              <option value='Secundaria Trunca'>Secundaria Trunca</option>
               <option value='Bachillerato'>Bachillerato</option>
+              <option value='Bachillerato Trunco'>Bachillerato Trunco</option>
               <option value='Licenciatura'>Licenciatura</option>
+              <option value='Licenciatura Trunca'>Licenciatura Trunca</option>
+              <option value='Posgrado'>Posgrado</option>
+              <option value='Posgrado Trunco'>Posgrado Trunco</option>
             </select>
           </label>
         </div>
 
         {/* --------------------------------------------------------------------------- */}
 
-        <h3 className='font-bold text-center mb-4'>Tutor 2</h3>
+        <h3 className='font-bold text-center mb-4'>Mamá</h3>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
           <label className='floating-label'>
             <span>
@@ -438,12 +434,11 @@ const FormTutores = () => {
             />
           </label>
 
-          <label className='select select-md'>
-            <span className='label'>
-              Estado <span className='text-rose-600'>*</span>
+          <label className='floating-label'>
+            <span>
+              Lugar de Nacimiento <span className='text-rose-600'>*</span>
             </span>
-            <select
-              required
+            <input
               value={datosTutor2.estado_nacimiento}
               onChange={(e) => {
                 setDatosTutor2({
@@ -451,22 +446,13 @@ const FormTutores = () => {
                   estado_nacimiento: e.target.value
                 })
               }}
-            >
-              <option
-                disabled
-                value='0'
-              >
-                Escoge el estado...
-              </option>
-              {estados.map((estado) => (
-                <option
-                  key={estado.clave}
-                  value={estado.nombre}
-                >
-                  {estado.nombre}
-                </option>
-              ))}
-            </select>
+              minLength={1}
+              maxLength={40}
+              required
+              type='text'
+              placeholder='Lugar de Nacimiento *'
+              className='input input-md'
+            />
           </label>
 
           <label className='input input-md'>
@@ -572,9 +558,7 @@ const FormTutores = () => {
           </label>
 
           <label className='floating-label'>
-            <span>
-              Teléfono (fijo) <span className='text-rose-600'>*</span>
-            </span>
+            <span>Teléfono (fijo)</span>
             <input
               value={datosTutor2.telefono_fijo}
               onChange={(e) => {
@@ -585,9 +569,8 @@ const FormTutores = () => {
               }}
               min={1000000000}
               max={9999999999}
-              required
               type='tel'
-              placeholder='Teléfono (fijo) *'
+              placeholder='Teléfono (fijo)'
               pattern='[0-9]{10}'
               className='input input-md'
             />
@@ -655,18 +638,26 @@ const FormTutores = () => {
               >
                 Escoge el Grado Estudios...
               </option>
+              <option value='Sin Estudios'>Sin Estudios</option>
               <option value='Preescolar'>Preescolar</option>
+              <option value='Preescolar Trunco'>Preescolar Trunco</option>
               <option value='Primaria'>Primaria</option>
+              <option value='Primaria Trunca'>Primaria Trunca</option>
               <option value='Secundaria'>Secundaria</option>
+              <option value='Secundaria Trunca'>Secundaria Trunca</option>
               <option value='Bachillerato'>Bachillerato</option>
+              <option value='Bachillerato Trunco'>Bachillerato Trunco</option>
               <option value='Licenciatura'>Licenciatura</option>
+              <option value='Licenciatura Trunca'>Licenciatura Trunca</option>
+              <option value='Posgrado'>Posgrado</option>
+              <option value='Posgrado Trunco'>Posgrado Trunco</option>
             </select>
           </label>
         </div>
       </div>
       <div className='flex justify-between mt-4'>
         <button
-          className='mr-4 px-4 py-2 btn btn-success text-white rounded ml-auto'
+          className='mr-4 px-4 py-2 btn btn-success rounded ml-auto'
           onClick={handleSubmit}
           disabled={isSending}
           type='submit'

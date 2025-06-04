@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "nombre": "Sin Estudios",
+    "value": "Sin Estudios"
+  },
+  {
+    "id": 2,
+    "nombre": "Preescolar",
+    "value": "Preescolar"
+  },
+  {
+    "id": 3,
+    "nombre": "Preescolar Trunco",
+    "value": "Preescolar Trunco"
+  },
+  {
+    "id": 4,
+    "nombre": "Primaria",
+    "value": "Primaria"
+  },
+  {
+    "id": 5,
+    "nombre": "Primaria Trunca",
+    "value": "Primaria Trunca"
+  },
+  {
+    "id": 6,
+    "nombre": "Secundaria",
+    "value": "Secundaria"
+  },
+  {
+    "id": 7,
+    "nombre": "Secundaria Trunca",
+    "value": "Secundaria Trunca"
+  },
+  {
+    "id": 8,
+    "nombre": "Bachillerato",
+    "value": "Bachillerato"
+  },
+  {
+    "id": 9,
+    "nombre": "Bachillerato Trunco",
+    "value": "Bachillerato Trunco"
+  },
+  {
+    "id": 10,
+    "nombre": "Licenciatura",
+    "value": "Licenciatura"
+  },
+  {
+    "id": 11,
+    "nombre": "Licenciatura Trunca",
+    "value": "Licenciatura Trunca"
+  },
+  {
+    "id": 12,
+    "nombre": "Posgrado",
+    "value": "Posgrado"
+  },
+  {
+    "id": 13,
+    "nombre": "Posgrado Trunco",
+    "value": "Posgrado Trunco"
+  }
+]
