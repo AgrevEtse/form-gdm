@@ -104,7 +104,7 @@ const FormHermanos = () => {
     <FormLayout>
       <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
         <h2 className='font-bold text-2xl mb-6 text-center'>
-          Inscritos en el colegio
+          Hermanos Inscritos en el Colegio
         </h2>
 
         <h3 className='font-bold text-center mb-4'>Hermano 1</h3>
