@@ -10,12 +10,12 @@ const FormEnd = () => {
         </p>
         <div className='flex flex-row justify-center gap-4'>
           <Link to='/'>
-            <button className='btn btn-success py-2 rounded-xl'>
+            <button className='btn btn-info py-2 rounded-xl'>
               Volver al Inicio
             </button>
           </Link>
           <Link to='/form-alumno'>
-            <button className='btn btn-info py-2 rounded-xl'>
+            <button className='btn btn-success py-2 rounded-xl'>
               Registar otro Alumno
             </button>
           </Link>

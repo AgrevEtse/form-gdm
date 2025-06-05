@@ -568,7 +568,14 @@ const FormTutores = () => {
       </div>
       <div className='flex justify-between mt-4'>
         <button
-          className='mr-4 px-4 py-2 btn btn-info rounded ml-auto'
+          className='btn btn-error rounded px-4 py-2 ml-4 mr-auto'
+          onClick={() => navigate('/form-alumno')}
+          disabled={isSending}
+        >
+          Regresar
+        </button>
+        <button
+          className='btn btn-info rounded ml-auto mr-4 px-4 py-2'
           onClick={handleSubmit}
           disabled={isSending}
           type='submit'

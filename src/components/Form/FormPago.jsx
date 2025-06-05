@@ -149,7 +149,14 @@ const FormPago = () => {
       </div>
       <div className='flex justify-between mt-4'>
         <button
-          className='mr-4 px-4 py-2 btn btn-success rounded ml-auto'
+          className='btn btn-error rounded px-4 py-2 ml-4 mr-auto'
+          onClick={() => navigate('/form-contacto')}
+          disabled={isSending}
+        >
+          Regresar
+        </button>
+        <button
+          className='btn btn-success rounded ml-auto mr-4 px-4 py-2'
           onClick={handleSubmit}
           disabled={isSending}
           type='submit'
