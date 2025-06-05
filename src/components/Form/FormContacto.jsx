@@ -3,19 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
-import { DEFAULT_CONTACTO } from '@/utils/defaultStates'
-import { equalObjects } from '@/utils/compareObjects'
 import FormLayout from '@/components/Layout/FormLayout'
-
-const API_URL = import.meta.env.VITE_API_URL
+import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
 
 const FormContacto = () => {
-  const { curp } = useGlobalState()
+  const { form, updateFieldForm } = useGlobalState()
   const navigate = useNavigate()
 
-  const [datosContacto1, setDatosContacto1] = useState(DEFAULT_CONTACTO)
-  const [datosContacto2, setDatosContacto2] = useState(DEFAULT_CONTACTO)
-  const [datosContacto3, setDatosContacto3] = useState(DEFAULT_CONTACTO)
   const [isSending, setIsSending] = useState(false)
 
   const handleSubmit = async (e) => {
@@ -23,77 +17,81 @@ const FormContacto = () => {
 
     setIsSending(true)
 
-    if (!equalObjects(datosContacto1, DEFAULT_CONTACTO)) {
-      const resContacto1 = await fetch(`${API_URL}/contactoemergencia`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ...datosContacto1,
-          curp_alumno: curp
-        })
-      })
+    // if (!equalObjects(datosContacto1, DEFAULT_CONTACTO)) {
+    //   const resContacto1 = await fetch(`${API_URL}/contactoemergencia`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       ...datosContacto1,
+    //       curp_alumno: curp
+    //     })
+    //   })
 
-      const dataContacto1 = await resContacto1.json()
+    //   const dataContacto1 = await resContacto1.json()
 
-      if (!resContacto1.ok) {
-        toast.error('Error al enviar los datos del contacto 1')
-        console.error(
-          `Error al enviar los datos del contacto 1: ${dataContacto1.message}`
-        )
-        setIsSending(false)
-        return
-      }
-    }
+    //   if (!resContacto1.ok) {
+    //     toast.error('Error al enviar los datos del contacto 1')
+    //     console.error(
+    //       `Error al enviar los datos del contacto 1: ${dataContacto1.message}`
+    //     )
+    //     setIsSending(false)
+    //     return
+    //   }
+    // }
 
-    if (!equalObjects(datosContacto2, DEFAULT_CONTACTO)) {
-      const resContacto2 = await fetch(`${API_URL}/contactoemergencia`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ...datosContacto2,
-          curp_alumno: curp
-        })
-      })
+    // if (!equalObjects(datosContacto2, DEFAULT_CONTACTO)) {
+    //   const resContacto2 = await fetch(`${API_URL}/contactoemergencia`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       ...datosContacto2,
+    //       curp_alumno: curp
+    //     })
+    //   })
 
-      const dataContacto2 = await resContacto2.json()
+    //   const dataContacto2 = await resContacto2.json()
 
-      if (!resContacto2.ok) {
-        toast.error('Error al enviar los datos del contacto 2')
-        console.error(
-          `Error al enviar los datos del contacto 2: ${dataContacto2.message}`
-        )
-        setIsSending(false)
-        return
-      }
-    }
+    //   if (!resContacto2.ok) {
+    //     toast.error('Error al enviar los datos del contacto 2')
+    //     console.error(
+    //       `Error al enviar los datos del contacto 2: ${dataContacto2.message}`
+    //     )
+    //     setIsSending(false)
+    //     return
+    //   }
+    // }
 
-    if (!equalObjects(datosContacto3, DEFAULT_CONTACTO)) {
-      const resContacto3 = await fetch(`${API_URL}/contactoemergencia`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ...datosContacto3,
-          curp_alumno: curp
-        })
-      })
+    // if (!equalObjects(datosContacto3, DEFAULT_CONTACTO)) {
+    //   const resContacto3 = await fetch(`${API_URL}/contactoemergencia`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       ...datosContacto3,
+    //       curp_alumno: curp
+    //     })
+    //   })
 
-      const dataContacto3 = await resContacto3.json()
+    //   const dataContacto3 = await resContacto3.json()
 
-      if (!resContacto3.ok) {
-        toast.error('Error al enviar los datos del contacto 3')
-        console.error(
-          `Error al enviar los datos del contacto 3: ${dataContacto3.message}`
-        )
-        setIsSending(false)
-        return
-      }
-    }
+    //   if (!resContacto3.ok) {
+    //     toast.error('Error al enviar los datos del contacto 3')
+    //     console.error(
+    //       `Error al enviar los datos del contacto 3: ${dataContacto3.message}`
+    //     )
+    //     setIsSending(false)
+    //     return
+    //   }
+    // }
+
+    console.log('Contacto 1:', form.contacto1)
+    console.log('Contacto 2:', form.contacto2)
+    console.log('Contacto 3:', form.contacto3)
 
     setIsSending(false)
     toast.success('Datos de contactos de emergencia enviados correctamente')
@@ -114,9 +112,9 @@ const FormContacto = () => {
               Nombre Completo <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosContacto1.nombre}
+              value={form.contacto1.nombre}
               onChange={(e) =>
-                setDatosContacto1({ ...datosContacto1, nombre: e.target.value })
+                updateFieldForm('contacto1', 'nombre', e.target.value)
               }
               type='text'
               placeholder='Nombre Completo *'
@@ -129,12 +127,9 @@ const FormContacto = () => {
               Teléfono <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosContacto1.telefono}
+              value={form.contacto1.telefono}
               onChange={(e) =>
-                setDatosContacto1({
-                  ...datosContacto1,
-                  telefono: e.target.value
-                })
+                updateFieldForm('contacto1', 'telefono', e.target.value)
               }
               type='tel'
               placeholder='Télefono *'
@@ -148,12 +143,13 @@ const FormContacto = () => {
               Parentesco <span className='text-rose-600'>*</span>
             </span>
             <select
-              value={datosContacto1.parentesco}
+              value={form.contacto1.parentesco}
               onChange={(e) =>
-                setDatosContacto1({
-                  ...datosContacto1,
-                  parentesco: Number(e.target.value)
-                })
+                updateFieldForm(
+                  'contacto1',
+                  'parentesco',
+                  Number(e.target.value)
+                )
               }
             >
               <option
@@ -162,12 +158,14 @@ const FormContacto = () => {
               >
                 Escoge el parentesco...
               </option>
-              <option value='1'>Papá</option>
-              <option value='2'>Mamá</option>
-              <option value='3'>Tío</option>
-              <option value='4'>Tía</option>
-              <option value='5'>Abuelo</option>
-              <option value='6'>Abuela</option>
+              {PARENTESCO_ARRAY.map((parentesco) => (
+                <option
+                  key={parentesco.id}
+                  value={parentesco.value}
+                >
+                  {parentesco.label}
+                </option>
+              ))}
             </select>
           </label>
         </div>
@@ -179,9 +177,9 @@ const FormContacto = () => {
               Nombre Completo <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosContacto2.nombre}
+              value={form.contacto2.nombre}
               onChange={(e) =>
-                setDatosContacto2({ ...datosContacto2, nombre: e.target.value })
+                updateFieldForm('contacto2', 'nombre', e.target.value)
               }
               type='text'
               placeholder='Nombre Completo *'
@@ -194,12 +192,9 @@ const FormContacto = () => {
               Teléfono <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosContacto2.telefono}
+              value={form.contacto2.telefono}
               onChange={(e) =>
-                setDatosContacto2({
-                  ...datosContacto2,
-                  telefono: e.target.value
-                })
+                updateFieldForm('contacto2', 'telefono', e.target.value)
               }
               type='tel'
               placeholder='Télefono *'
@@ -213,12 +208,13 @@ const FormContacto = () => {
               Parentesco <span className='text-rose-600'>*</span>
             </span>
             <select
-              value={datosContacto2.parentesco}
+              value={form.contacto2.parentesco}
               onChange={(e) =>
-                setDatosContacto2({
-                  ...datosContacto2,
-                  parentesco: Number(e.target.value)
-                })
+                updateFieldForm(
+                  'contacto2',
+                  'parentesco',
+                  Number(e.target.value)
+                )
               }
             >
               <option
@@ -227,12 +223,14 @@ const FormContacto = () => {
               >
                 Escoge el parentesco...
               </option>
-              <option value='1'>Papá</option>
-              <option value='2'>Mamá</option>
-              <option value='3'>Tío</option>
-              <option value='4'>Tía</option>
-              <option value='5'>Abuelo</option>
-              <option value='6'>Abuela</option>
+              {PARENTESCO_ARRAY.map((parentesco) => (
+                <option
+                  key={parentesco.id}
+                  value={parentesco.value}
+                >
+                  {parentesco.label}
+                </option>
+              ))}
             </select>
           </label>
         </div>
@@ -244,9 +242,9 @@ const FormContacto = () => {
               Nombre Completo <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosContacto3.nombre}
+              value={form.contacto3.nombre}
               onChange={(e) =>
-                setDatosContacto3({ ...datosContacto3, nombre: e.target.value })
+                updateFieldForm('contacto3', 'nombre', e.target.value)
               }
               type='text'
               placeholder='Nombre Completo *'
@@ -259,12 +257,9 @@ const FormContacto = () => {
               Teléfono <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosContacto3.telefono}
+              value={form.contacto3.telefono}
               onChange={(e) =>
-                setDatosContacto3({
-                  ...datosContacto3,
-                  telefono: e.target.value
-                })
+                updateFieldForm('contacto3', 'telefono', e.target.value)
               }
               type='tel'
               placeholder='Télefono *'
@@ -278,12 +273,13 @@ const FormContacto = () => {
               Parentesco <span className='text-rose-600'>*</span>
             </span>
             <select
-              value={datosContacto3.parentesco}
+              value={form.contacto3.parentesco}
               onChange={(e) =>
-                setDatosContacto3({
-                  ...datosContacto3,
-                  parentesco: Number(e.target.value)
-                })
+                updateFieldForm(
+                  'contacto3',
+                  'parentesco',
+                  Number(e.target.value)
+                )
               }
             >
               <option
@@ -292,19 +288,21 @@ const FormContacto = () => {
               >
                 Escoge el parentesco...
               </option>
-              <option value='1'>Papá</option>
-              <option value='2'>Mamá</option>
-              <option value='3'>Tío</option>
-              <option value='4'>Tía</option>
-              <option value='5'>Abuelo</option>
-              <option value='6'>Abuela</option>
+              {PARENTESCO_ARRAY.map((parentesco) => (
+                <option
+                  key={parentesco.id}
+                  value={parentesco.value}
+                >
+                  {parentesco.label}
+                </option>
+              ))}
             </select>
           </label>
         </div>
       </div>
       <div className='flex justify-between mt-4'>
         <button
-          className='mr-4 px-4 py-2 btn btn-success rounded ml-auto'
+          className='mr-4 px-4 py-2 btn btn-info rounded ml-auto'
           onClick={handleSubmit}
           disabled={isSending}
           type='submit'
@@ -312,7 +310,7 @@ const FormContacto = () => {
           {isSending && (
             <span className='loading loading-spinner loading-sm'></span>
           )}
-          {!isSending && 'Enviar'}
+          {!isSending && 'Siguiente'}
         </button>
       </div>
     </FormLayout>

@@ -1,67 +1,54 @@
 [
   {
     "id": 1,
-    "nombre": "Sin Estudios",
-    "value": "Sin Estudios"
+    "nombre": "Sin Estudios"
   },
   {
     "id": 2,
-    "nombre": "Preescolar",
-    "value": "Preescolar"
+    "nombre": "Preescolar"
   },
   {
     "id": 3,
-    "nombre": "Preescolar Trunco",
-    "value": "Preescolar Trunco"
+    "nombre": "Preescolar Trunco"
   },
   {
     "id": 4,
-    "nombre": "Primaria",
-    "value": "Primaria"
+    "nombre": "Primaria"
   },
   {
     "id": 5,
-    "nombre": "Primaria Trunca",
-    "value": "Primaria Trunca"
+    "nombre": "Primaria Trunca"
   },
   {
     "id": 6,
-    "nombre": "Secundaria",
-    "value": "Secundaria"
+    "nombre": "Secundaria"
   },
   {
     "id": 7,
-    "nombre": "Secundaria Trunca",
-    "value": "Secundaria Trunca"
+    "nombre": "Secundaria Trunca"
   },
   {
     "id": 8,
-    "nombre": "Bachillerato",
-    "value": "Bachillerato"
+    "nombre": "Bachillerato"
   },
   {
     "id": 9,
-    "nombre": "Bachillerato Trunco",
-    "value": "Bachillerato Trunco"
+    "nombre": "Bachillerato Trunco"
   },
   {
     "id": 10,
-    "nombre": "Licenciatura",
-    "value": "Licenciatura"
+    "nombre": "Licenciatura"
   },
   {
     "id": 11,
-    "nombre": "Licenciatura Trunca",
-    "value": "Licenciatura Trunca"
+    "nombre": "Licenciatura Trunca"
   },
   {
     "id": 12,
-    "nombre": "Posgrado",
-    "value": "Posgrado"
+    "nombre": "Posgrado"
   },
   {
     "id": 13,
-    "nombre": "Posgrado Trunco",
-    "value": "Posgrado Trunco"
+    "nombre": "Posgrado Trunco"
   }
 ]

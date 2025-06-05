@@ -4,40 +4,21 @@ import { toast } from 'react-hot-toast'
 
 import FormLayout from '@/components/Layout/FormLayout'
 import useGlobalState from '@/context/useGlobalState'
+
+import { PAISES_ARRAY } from '@/utils/paisesHelpers'
+import { ESTADOS_ARRAY } from '@/utils/estadosHelpers'
+import { getMunicipiosByEstado } from '@/utils/municipiosHelpers'
 import {
-  DEFAULT_ESCUELA_PROCEDENCIA,
-  DEFAULT_ALUMNO,
-  DEFAULT_DOMICILIO,
-  DEFAULT_INSCRIPCION
-} from '@/utils/defaultStates'
-
-import paises from '@/assets/json/paises.json'
-import estados from '@/assets/json/estados.json'
-import municipios from '@/assets/json/estados-municipios.json'
-import grados from '@/assets/json/escolaridad-grados.json'
-import idEscolaridadJson from '@/assets/json/id-escolaridad.json'
-
-const API_URL = import.meta.env.VITE_API_URL
-const UUID_ANNUAL = import.meta.env.VITE_UUID_ANNUAL
-const UUID_BIANNUAL = import.meta.env.VITE_UUID_BIANNUAL
+  getFirstGradoByEscolaridad,
+  getGradosByEscolaridad,
+  getIdEscolaridad,
+  getUUIDByEscolaridad
+} from '@/utils/escolaridadGradosHelpers'
 
 const FormAlumno = () => {
-  const { curp, setCurp } = useGlobalState()
+  const { curp, setCurp, form, updateFieldForm } = useGlobalState()
   const navigate = useNavigate()
 
-  const [datosEscuelaProcedencia, setDatosEscuelaProcedencia] = useState(
-    DEFAULT_ESCUELA_PROCEDENCIA
-  )
-  const [datosAlumno, setDatosAlumno] = useState(DEFAULT_ALUMNO)
-  const [datosDomicilio, setDatosDomicilio] = useState(DEFAULT_DOMICILIO)
-  const [inscripcion, setInscripcion] = useState(DEFAULT_INSCRIPCION)
-
-  // Se inicializan con '0' para evitar problemas con el select
-  const [estado, setEstado] = useState('0')
-  const [municipio, setMunicipio] = useState('0')
-  const [escolaridad, setEscolaridad] = useState('0')
-  // eslint-disable-next-line no-unused-vars
-  const [grado, setGrado] = useState('0')
   const [isSending, setIsSending] = useState(false)
 
   const handleSubmit = async (e) => {
@@ -45,102 +26,101 @@ const FormAlumno = () => {
 
     setIsSending(true)
 
-    const resAlumno = await fetch(`${API_URL}/alumno`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        ...datosAlumno,
-        fecha_nacimiento: new Date(datosAlumno.fecha_nacimiento).toISOString(),
-        curp
-      })
-    })
+    // const resAlumno = await fetch(`${API_URL}/alumno`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     ...datosAlumno,
+    //     fecha_nacimiento: new Date(datosAlumno.fecha_nacimiento).toISOString(),
+    //     curp
+    //   })
+    // })
 
-    const dataAlumno = await resAlumno.json()
+    // const dataAlumno = await resAlumno.json()
 
-    if (!resAlumno.ok) {
-      setIsSending(false)
-      toast.error(`Error al enviar los datos del alumno.`)
-      console.error(
-        `Error al enviar los datos del alumno: ${dataAlumno.message}`
-      )
-      return
-    }
+    // if (!resAlumno.ok) {
+    //   setIsSending(false)
+    //   toast.error(`Error al enviar los datos del alumno.`)
+    //   console.error(
+    //     `Error al enviar los datos del alumno: ${dataAlumno.message}`
+    //   )
+    //   return
+    // }
 
-    const resEscuelaProcedencia = await fetch(`${API_URL}/escuelaprocedencia`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        ...datosEscuelaProcedencia,
-        curp_alumno: curp
-      })
-    })
+    // const resEscuelaProcedencia = await fetch(`${API_URL}/escuelaprocedencia`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     ...datosEscuelaProcedencia,
+    //     curp_alumno: curp
+    //   })
+    // })
 
-    const dataEscuelaProcedencia = await resEscuelaProcedencia.json()
+    // const dataEscuelaProcedencia = await resEscuelaProcedencia.json()
 
-    if (!resEscuelaProcedencia.ok) {
-      setIsSending(false)
-      toast.error(`Error al enviar los datos de la escuela de procedencia.`)
-      console.error(
-        `Error al enviar los datos de la escuela de procedencia: ${dataEscuelaProcedencia.message}`
-      )
-      return
-    }
+    // if (!resEscuelaProcedencia.ok) {
+    //   setIsSending(false)
+    //   toast.error(`Error al enviar los datos de la escuela de procedencia.`)
+    //   console.error(
+    //     `Error al enviar los datos de la escuela de procedencia: ${dataEscuelaProcedencia.message}`
+    //   )
+    //   return
+    // }
 
-    const resDomicilio = await fetch(`${API_URL}/domicilio`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        ...datosDomicilio,
-        curp_alumno: curp
-      })
-    })
+    // const resDomicilio = await fetch(`${API_URL}/domicilio`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     ...datosDomicilio,
+    //     curp_alumno: curp
+    //   })
+    // })
 
-    const dataDomicilio = await resDomicilio.json()
+    // const dataDomicilio = await resDomicilio.json()
 
-    if (!resDomicilio.ok) {
-      setIsSending(false)
-      toast.error(`Error al enviar los datos del domicilio.`)
-      console.error(
-        `Error al enviar los datos del domicilio: ${dataDomicilio.message}`
-      )
-      return
-    }
+    // if (!resDomicilio.ok) {
+    //   setIsSending(false)
+    //   toast.error(`Error al enviar los datos del domicilio.`)
+    //   console.error(
+    //     `Error al enviar los datos del domicilio: ${dataDomicilio.message}`
+    //   )
+    //   return
+    // }
 
-    const id_escolaridad =
-      idEscolaridadJson[inscripcion.escolaridad + inscripcion.grado]
-    const id_ciclo = id_escolaridad >= 13 ? UUID_BIANNUAL : UUID_ANNUAL
-    const fecha_inscripcion = new Date().toISOString()
+    // const resInscripcion = await fetch(`${API_URL}/inscripcion`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     id_escolaridad,
+    //     id_ciclo,
+    //     fecha_inscripcion,
+    //     curp_alumno: curp
+    //   })
+    // })
 
-    const resInscripcion = await fetch(`${API_URL}/inscripcion`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id_escolaridad,
-        id_ciclo,
-        fecha_inscripcion,
-        esta_activo: false,
-        curp_alumno: curp
-      })
-    })
+    // const dataInscripcion = await resInscripcion.json()
 
-    const dataInscripcion = await resInscripcion.json()
+    // if (!resInscripcion.ok) {
+    //   setIsSending(false)
+    //   toast.error(`Error al enviar los datos de inscripción.`)
+    //   console.error(
+    //     `Error al enviar los datos de inscripción: ${dataInscripcion.message}`
+    //   )
+    //   return
+    // }
 
-    if (!resInscripcion.ok) {
-      setIsSending(false)
-      toast.error(`Error al enviar los datos de inscripción.`)
-      console.error(
-        `Error al enviar los datos de inscripción: ${dataInscripcion.message}`
-      )
-      return
-    }
+    console.log('Alumno:', form.alumno)
+    console.log('Escuela Procedencia:', form.escuela_procedencia)
+    console.log('Domicilio:', form.domicilio)
+    console.log('Inscripción:', form.inscripcion)
 
     setIsSending(false)
     toast.success('Alumno enviado correctamente.')
@@ -160,13 +140,10 @@ const FormAlumno = () => {
               CCT de Procedencia <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosEscuelaProcedencia.cct}
-              onChange={(e) => {
-                setDatosEscuelaProcedencia({
-                  ...datosEscuelaProcedencia,
-                  cct: e.target.value
-                })
-              }}
+              value={form.escuela_procedencia.cct}
+              onChange={(e) =>
+                updateFieldForm('escuela_procedencia', 'cct', e.target.value)
+              }
               minLength={1}
               maxLength={10}
               required
@@ -181,13 +158,10 @@ const FormAlumno = () => {
               Escuela de Procedencia <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosEscuelaProcedencia.nombre}
-              onChange={(e) => {
-                setDatosEscuelaProcedencia({
-                  ...datosEscuelaProcedencia,
-                  nombre: e.target.value
-                })
-              }}
+              value={form.escuela_procedencia.nombre}
+              onChange={(e) =>
+                updateFieldForm('escuela_procedencia', 'nombre', e.target.value)
+              }
               minLength={1}
               maxLength={100}
               required
@@ -200,13 +174,14 @@ const FormAlumno = () => {
           <label className='floating-label'>
             <span>Matricula de Escuela de Procedencia</span>
             <input
-              value={datosEscuelaProcedencia.matricula}
-              onChange={(e) => {
-                setDatosEscuelaProcedencia({
-                  ...datosEscuelaProcedencia,
-                  matricula: e.target.value
-                })
-              }}
+              value={form.escuela_procedencia.matricula}
+              onChange={(e) =>
+                updateFieldForm(
+                  'escuela_procedencia',
+                  'matricula',
+                  e.target.value
+                )
+              }
               minLength={1}
               maxLength={10}
               type='text'
@@ -238,13 +213,10 @@ const FormAlumno = () => {
               Nombre(s) <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosAlumno.nombre}
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  nombre: e.target.value
-                })
-              }}
+              value={form.alumno.nombre}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'nombre', e.target.value)
+              }
               minLength={1}
               maxLength={40}
               required
@@ -259,13 +231,10 @@ const FormAlumno = () => {
               Apellido Paterno <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosAlumno.apellido_paterno}
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  apellido_paterno: e.target.value
-                })
-              }}
+              value={form.alumno.apellido_paterno}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'apellido_paterno', e.target.value)
+              }
               minLength={1}
               maxLength={40}
               required
@@ -280,13 +249,10 @@ const FormAlumno = () => {
               Apellido Materno <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosAlumno.apellido_materno}
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  apellido_materno: e.target.value
-                })
-              }}
+              value={form.alumno.apellido_materno}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'apellido_materno', e.target.value)
+              }
               minLength={1}
               maxLength={40}
               required
@@ -301,14 +267,11 @@ const FormAlumno = () => {
               Género <span className='text-rose-600'>*</span>
             </span>
             <select
+              value={form.alumno.genero}
               required
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  genero: e.target.value
-                })
-              }}
-              value={datosAlumno.genero}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'genero', e.target.value)
+              }
             >
               <option
                 disabled
@@ -326,14 +289,11 @@ const FormAlumno = () => {
               Tipo Sanguíneo <span className='text-rose-600'>*</span>
             </span>
             <select
+              value={form.alumno.tipo_sanguineo}
               required
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  tipo_sanguineo: e.target.value
-                })
-              }}
-              value={datosAlumno.tipo_sanguineo}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'tipo_sanguineo', e.target.value)
+              }
             >
               <option
                 disabled
@@ -357,14 +317,15 @@ const FormAlumno = () => {
               Lateralidad <span className='text-rose-600'>*</span>
             </span>
             <select
+              value={form.alumno.es_diestro}
               required
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  es_diestro: e.target.value === 'true'
-                })
-              }}
-              value={datosAlumno.es_diestro}
+              onChange={(e) =>
+                updateFieldForm(
+                  'alumno',
+                  'es_diestro',
+                  e.target.value === 'true'
+                )
+              }
             >
               <option
                 disabled
@@ -382,14 +343,11 @@ const FormAlumno = () => {
               Fecha Nacimiento <span className='text-rose-600'>*</span>
             </span>
             <input
+              value={form.alumno.fecha_nacimiento}
               required
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  fecha_nacimiento: e.target.value
-                })
-              }}
-              value={datosAlumno.fecha_nacimiento}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'fecha_nacimiento', e.target.value)
+              }
               type='date'
             />
           </label>
@@ -399,14 +357,11 @@ const FormAlumno = () => {
               Nacionalidad <span className='text-rose-600'>*</span>
             </span>
             <select
+              value={form.alumno.nacionalidad}
               required
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  nacionalidad: e.target.value
-                })
-              }}
-              value={datosAlumno.nacionalidad}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'nacionalidad', e.target.value)
+              }
             >
               <option
                 disabled
@@ -414,12 +369,12 @@ const FormAlumno = () => {
               >
                 Escoge la nacionalidad...
               </option>
-              {paises.map((pais) => (
+              {PAISES_ARRAY.map((pais) => (
                 <option
-                  key={pais.iso3}
-                  value={pais.nameES}
+                  key={pais.id}
+                  value={pais.value}
                 >
-                  {pais.nameES}
+                  {pais.label}
                 </option>
               ))}
             </select>
@@ -431,15 +386,27 @@ const FormAlumno = () => {
             </span>
             <select
               required
-              value={inscripcion.escolaridad}
+              value={form.inscripcion.escolaridad}
               onChange={(e) => {
-                setEscolaridad(e.target.value)
-                setGrado(grados[e.target.value][0].grado)
-                setInscripcion({
-                  ...inscripcion,
-                  escolaridad: e.target.value,
-                  grado: grados[e.target.value][0].grado
-                })
+                updateFieldForm('inscripcion', 'escolaridad', e.target.value)
+                updateFieldForm(
+                  'inscripcion',
+                  'grado',
+                  Number(getFirstGradoByEscolaridad(e.target.value))
+                )
+                updateFieldForm(
+                  'inscripcion',
+                  'id_escolaridad',
+                  getIdEscolaridad(
+                    e.target.value,
+                    getFirstGradoByEscolaridad(e.target.value)
+                  )
+                )
+                updateFieldForm(
+                  'inscripcion',
+                  'id_ciclo',
+                  getUUIDByEscolaridad(e.target.value)
+                )
               }}
             >
               <option
@@ -461,14 +428,15 @@ const FormAlumno = () => {
             </span>
             <select
               required
-              disabled={escolaridad === '0'}
-              value={inscripcion.grado}
+              disabled={form.inscripcion.escolaridad === '0'}
+              value={form.inscripcion.grado}
               onChange={(e) => {
-                setInscripcion({
-                  ...inscripcion,
-                  grado: Number(e.target.value)
-                })
-                setGrado(e.target.value)
+                updateFieldForm('inscripcion', 'grado', Number(e.target.value))
+                updateFieldForm(
+                  'inscripcion',
+                  'id_escolaridad',
+                  getIdEscolaridad(form.inscripcion.escolaridad, e.target.value)
+                )
               }}
             >
               <option
@@ -477,15 +445,17 @@ const FormAlumno = () => {
               >
                 Escoge el grado...
               </option>
-              {escolaridad !== '0' &&
-                grados[escolaridad].map((grado) => (
-                  <option
-                    key={grado.grado}
-                    value={grado.grado}
-                  >
-                    {grado.nombre}
-                  </option>
-                ))}
+              {form.inscripcion.escolaridad !== '0' &&
+                getGradosByEscolaridad(form.inscripcion.escolaridad).map(
+                  (grado) => (
+                    <option
+                      key={grado.grado}
+                      value={grado.grado}
+                    >
+                      {grado.nombre}
+                    </option>
+                  )
+                )}
             </select>
           </label>
 
@@ -494,16 +464,13 @@ const FormAlumno = () => {
               Estatura (cm) <span className='text-rose-600'>*</span>
             </span>
             <input
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  estatura_cm: Number(e.target.value)
-                })
-              }}
+              value={form.alumno.estatura_cm}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'estatura_cm', Number(e.target.value))
+              }
               min={1}
               max={300}
               required
-              value={datosAlumno.estatura_cm}
               type='number'
               placeholder='Estatura (cm) *'
               className='input input-md'
@@ -515,16 +482,13 @@ const FormAlumno = () => {
               Peso (kg) <span className='text-rose-600'>*</span>
             </span>
             <input
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  peso_kg: Number(e.target.value)
-                })
-              }}
+              value={form.alumno.peso_kg}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'peso_kg', Number(e.target.value))
+              }
               min={1}
               max={300}
               required
-              value={datosAlumno.peso_kg}
               type='number'
               placeholder='Peso (kg) *'
               className='input input-md'
@@ -536,13 +500,10 @@ const FormAlumno = () => {
               Domicilio <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosDomicilio.domicilio}
-              onChange={(e) => {
-                setDatosDomicilio({
-                  ...datosDomicilio,
-                  domicilio: e.target.value
-                })
-              }}
+              value={form.domicilio.domicilio}
+              onChange={(e) =>
+                updateFieldForm('domicilio', 'domicilio', e.target.value)
+              }
               minLength={1}
               maxLength={30}
               required
@@ -557,13 +518,10 @@ const FormAlumno = () => {
               Colonia <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosDomicilio.colonia}
-              onChange={(e) => {
-                setDatosDomicilio({
-                  ...datosDomicilio,
-                  colonia: e.target.value
-                })
-              }}
+              value={form.domicilio.colonia}
+              onChange={(e) =>
+                updateFieldForm('domicilio', 'colonia', e.target.value)
+              }
               minLength={1}
               maxLength={30}
               required
@@ -578,13 +536,10 @@ const FormAlumno = () => {
               C.P. <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosDomicilio.codigo_postal}
-              onChange={(e) => {
-                setDatosDomicilio({
-                  ...datosDomicilio,
-                  codigo_postal: e.target.value
-                })
-              }}
+              value={form.domicilio.codigo_postal}
+              onChange={(e) =>
+                updateFieldForm('domicilio', 'codigo_postal', e.target.value)
+              }
               type='number'
               placeholder='C.P. *'
               min={100000}
@@ -601,15 +556,14 @@ const FormAlumno = () => {
             </span>
             <select
               required
-              value={estado}
+              value={form.domicilio.estado}
               onChange={(e) => {
-                setEstado(e.target.value)
-                setMunicipio(municipios[e.target.value][0])
-                setDatosDomicilio({
-                  ...datosDomicilio,
-                  estado: e.target.value,
-                  ciudad: municipios[e.target.value][0]
-                })
+                updateFieldForm('domicilio', 'estado', e.target.value)
+                updateFieldForm(
+                  'domicilio',
+                  'ciudad',
+                  getMunicipiosByEstado(e.target.value)[0]
+                )
               }}
             >
               <option
@@ -618,12 +572,12 @@ const FormAlumno = () => {
               >
                 Escoge el estado...
               </option>
-              {estados.map((estado) => (
+              {ESTADOS_ARRAY.map((estado) => (
                 <option
-                  key={estado.clave}
-                  value={estado.nombre}
+                  key={estado.id}
+                  value={estado.value}
                 >
-                  {estado.nombre}
+                  {estado.label}
                 </option>
               ))}
             </select>
@@ -635,14 +589,10 @@ const FormAlumno = () => {
             </span>
             <select
               required
-              disabled={estado === '0'}
-              value={municipio}
+              disabled={form.domicilio.estado === '0'}
+              value={form.domicilio.ciudad}
               onChange={(e) => {
-                setMunicipio(e.target.value)
-                setDatosDomicilio({
-                  ...datosDomicilio,
-                  ciudad: e.target.value
-                })
+                updateFieldForm('domicilio', 'ciudad', e.target.value)
               }}
             >
               <option
@@ -651,32 +601,31 @@ const FormAlumno = () => {
               >
                 Escoge el municipio...
               </option>
-              {estado !== '0' &&
-                municipios[estado].map((municipio) => {
-                  return (
-                    <option
-                      key={municipio}
-                      value={municipio}
-                    >
-                      {municipio}
-                    </option>
-                  )
-                })}
+              {form.domicilio.estado !== '0' &&
+                getMunicipiosByEstado(form.domicilio.estado).map(
+                  (municipio) => {
+                    return (
+                      <option
+                        key={municipio}
+                        value={municipio}
+                      >
+                        {municipio}
+                      </option>
+                    )
+                  }
+                )}
             </select>
           </label>
 
           <fieldset className='fieldset'>
             <legend className='fieldset-legend'>Cuestiones Médicas</legend>
             <textarea
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  nota_enfermedad: e.target.value
-                })
-              }}
+              value={form.alumno.nota_enfermedad}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'nota_enfermedad', e.target.value)
+              }
               minLength={0}
               maxLength={200}
-              value={datosAlumno.nota_enfermedad}
               className='textarea h-24'
               placeholder='Indique si el alumno padece de alguna discapacidad, enfermedad crónica, alergias o algún tipo de tratamiento médico.'
             ></textarea>
@@ -685,15 +634,12 @@ const FormAlumno = () => {
           <fieldset className='fieldset'>
             <legend className='fieldset-legend'>Terapias</legend>
             <textarea
-              onChange={(e) => {
-                setDatosAlumno({
-                  ...datosAlumno,
-                  nota_terapia: e.target.value
-                })
-              }}
+              value={form.alumno.nota_terapia}
+              onChange={(e) =>
+                updateFieldForm('alumno', 'nota_terapia', e.target.value)
+              }
               minLength={0}
               maxLength={200}
-              value={datosAlumno.nota_terapia}
               className='textarea h-24'
               placeholder='Indique si el alumno asiste a terapia, explique de que tipo: físico, psicológica u otra y por qué'
             ></textarea>
@@ -702,7 +648,7 @@ const FormAlumno = () => {
       </div>
       <div className='flex justify-between mt-4'>
         <button
-          className='mr-4 px-4 py-2 btn btn-success rounded ml-auto'
+          className='mr-4 px-4 py-2 btn btn-info rounded ml-auto'
           onClick={handleSubmit}
           disabled={isSending}
           type='submit'
@@ -710,7 +656,7 @@ const FormAlumno = () => {
           {isSending && (
             <span className='loading loading-spinner loading-sm'></span>
           )}
-          {!isSending && 'Enviar'}
+          {!isSending && 'Siguiente'}
         </button>
       </div>
     </FormLayout>

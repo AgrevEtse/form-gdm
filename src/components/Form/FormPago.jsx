@@ -3,16 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
-import { DEFAULT_PAGO } from '@/utils/defaultStates'
 import FormLayout from '@/components/Layout/FormLayout'
-
-const API_URL = import.meta.env.VITE_API_URL
+import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
 
 const FormPago = () => {
-  const { curp, resetCurp } = useGlobalState()
+  const { form, updateFieldForm } = useGlobalState()
   const navigate = useNavigate()
 
-  const [datosPago, setDatosPago] = useState(DEFAULT_PAGO)
   const [isSending, setIsSending] = useState(false)
 
   const handleSubmit = async (e) => {
@@ -20,29 +17,30 @@ const FormPago = () => {
 
     setIsSending(true)
 
-    const resPago = await fetch(`${API_URL}/personapagos`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        ...datosPago,
-        curp_alumno: curp
-      })
-    })
+    // const resPago = await fetch(`${API_URL}/personapagos`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     ...datosPago,
+    //     curp_alumno: curp
+    //   })
+    // })
 
-    const dataPago = await resPago.json()
+    // const dataPago = await resPago.json()
 
-    if (!resPago.ok) {
-      setIsSending(false)
-      toast.error(`Error al enviar los datos de pago`)
-      console.error(`Error al enviar los datos de pago: ${dataPago.message}`)
-      return
-    }
+    // if (!resPago.ok) {
+    //   setIsSending(false)
+    //   toast.error(`Error al enviar los datos de pago`)
+    //   console.error(`Error al enviar los datos de pago: ${dataPago.message}`)
+    //   return
+    // }
+
+    console.log('Pago :', form.pago)
 
     setIsSending(false)
     toast.success('Datos de pago enviados correctamente')
-    resetCurp()
     navigate('/')
   }
 
@@ -59,9 +57,9 @@ const FormPago = () => {
               Nombre Completo <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosPago.nombre}
+              value={form.pago.nombre}
               onChange={(e) =>
-                setDatosPago({ ...datosPago, nombre: e.target.value })
+                updateFieldForm('pago', 'nombre', e.target.value)
               }
               type='text'
               placeholder='Nombre Completo *'
@@ -74,12 +72,9 @@ const FormPago = () => {
               Parentesco <span className='text-rose-600'>*</span>
             </span>
             <select
-              value={datosPago.responsable}
+              value={form.pago.responsable}
               onChange={(e) =>
-                setDatosPago({
-                  ...datosPago,
-                  responsable: Number(e.target.value)
-                })
+                updateFieldForm('pago', 'responsable', Number(e.target.value))
               }
             >
               <option
@@ -88,12 +83,14 @@ const FormPago = () => {
               >
                 Escoge el parentesco...
               </option>
-              <option value='1'>Papá</option>
-              <option value='2'>Mamá</option>
-              <option value='3'>Tío</option>
-              <option value='4'>Tía</option>
-              <option value='5'>Abuelo</option>
-              <option value='6'>Abuela</option>
+              {PARENTESCO_ARRAY.map((parentesco) => (
+                <option
+                  key={parentesco.id}
+                  value={parentesco.value}
+                >
+                  {parentesco.label}
+                </option>
+              ))}
             </select>
           </label>
 
@@ -102,9 +99,9 @@ const FormPago = () => {
               Correo Electrónico <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosPago.correo}
+              value={form.pago.correo}
               onChange={(e) =>
-                setDatosPago({ ...datosPago, correo: e.target.value })
+                updateFieldForm('pago', 'correo', e.target.value)
               }
               type='email'
               placeholder='Correo Electrónico *'
@@ -117,9 +114,9 @@ const FormPago = () => {
               Teléfono (móvil) <span className='text-rose-600'>*</span>
             </span>
             <input
-              value={datosPago.telefono}
+              value={form.pago.telefono}
               onChange={(e) =>
-                setDatosPago({ ...datosPago, telefono: e.target.value })
+                updateFieldForm('pago', 'telefono', e.target.value)
               }
               type='tel'
               placeholder='Télefono (móvil) *'
@@ -133,12 +130,9 @@ const FormPago = () => {
               ¿Requiere Factura? <span className='text-rose-600'>*</span>
             </span>
             <select
-              value={datosPago.factura}
+              value={form.pago.factura}
               onChange={(e) =>
-                setDatosPago({
-                  ...datosPago,
-                  factura: e.target.value === 'true'
-                })
+                updateFieldForm('pago', 'factura', e.target.value === 'true')
               }
             >
               <option

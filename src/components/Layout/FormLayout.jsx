@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const FormLayout = ({ children }) => {
   return (
     <div className='container my-16'>
@@ -7,6 +9,10 @@ const FormLayout = ({ children }) => {
       {children}
     </div>
   )
+}
+
+FormLayout.propTypes = {
+  children: PropTypes.node
 }
 
 export default FormLayout
