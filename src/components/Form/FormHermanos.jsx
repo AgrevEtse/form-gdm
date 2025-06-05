@@ -1,20 +1,13 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { forwardRef, useImperativeHandle } from 'react'
 import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
-import FormLayout from '@/components/Layout/FormLayout'
 
-const FormHermanos = () => {
+const FormHermanos = forwardRef((_, ref) => {
   const { form, updateFieldForm } = useGlobalState()
-  const navigate = useNavigate()
-
-  const [isSending, setIsSending] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    setIsSending(true)
 
     // if (!equalObjects(datosHermano1, DEFAULT_HERMANO)) {
     //   const resHermano1 = await fetch(`${API_URL}/hermano`, {
@@ -92,157 +85,135 @@ const FormHermanos = () => {
     console.log('Hermano 2:', form.hermano2)
     console.log('Hermano 3:', form.hermano3)
 
-    setIsSending(false)
     toast.success('Hermanos Guardados Correctamente.')
-    navigate('/form-contacto')
   }
 
   return (
-    <FormLayout>
-      <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
-        <h2 className='font-bold text-2xl mb-6 text-center'>
-          Hermanos Inscritos en el Colegio
-        </h2>
+    <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
+      <h2 className='font-bold text-2xl mb-6 text-center'>
+        Hermanos Inscritos en el Colegio
+      </h2>
 
-        <h3 className='font-bold text-center mb-4'>Hermano 1</h3>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:px-60 mb-16'>
-          <label className='floating-label m-auto w-sm md:w-md'>
-            <span>Nombre Completo</span>
-            <input
-              value={form.hermano1.nombre}
-              onChange={(e) =>
-                updateFieldForm('hermano1', 'nombre', e.target.value)
-              }
-              minLength={0}
-              maxLength={70}
-              type='text'
-              placeholder='Nombre Completo'
-              className='input input-md'
-            />
-          </label>
+      <h3 className='font-bold text-center mb-4'>Hermano 1</h3>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:px-60 mb-16'>
+        <label className='floating-label m-auto w-sm md:w-md'>
+          <span>Nombre Completo</span>
+          <input
+            value={form.hermano1.nombre}
+            onChange={(e) =>
+              updateFieldForm('hermano1', 'nombre', e.target.value)
+            }
+            minLength={0}
+            maxLength={70}
+            type='text'
+            placeholder='Nombre Completo'
+            className='input input-md'
+          />
+        </label>
 
-          <label className='select select-md m-auto'>
-            <span className='label'>Escolaridad</span>
-            <select
-              value={form.hermano1.nivel}
-              onChange={(e) =>
-                updateFieldForm('hermano1', 'nivel', e.target.value)
-              }
+        <label className='select select-md m-auto'>
+          <span className='label'>Escolaridad</span>
+          <select
+            value={form.hermano1.nivel}
+            onChange={(e) =>
+              updateFieldForm('hermano1', 'nivel', e.target.value)
+            }
+          >
+            <option
+              disabled
+              value='0'
             >
-              <option
-                disabled
-                value='0'
-              >
-                Escoge la escolaridad...
-              </option>
-              <option value='Preescolar'>Preescolar</option>
-              <option value='Primaria'>Primaria</option>
-              <option value='Secundaria'>Secundaria</option>
-              <option value='Bachillerato'>Bachillerato</option>
-            </select>
-          </label>
-        </div>
-
-        <h3 className='font-bold text-center mb-4'>Hermano 2</h3>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:px-60 mb-16'>
-          <label className='floating-label m-auto w-sm md:w-md'>
-            <span>Nombre Completo</span>
-            <input
-              value={form.hermano2.nombre}
-              onChange={(e) =>
-                updateFieldForm('hermano2', 'nombre', e.target.value)
-              }
-              minLength={0}
-              maxLength={70}
-              type='text'
-              placeholder='Nombre Completo'
-              className='input input-md'
-            />
-          </label>
-
-          <label className='select select-md m-auto'>
-            <span className='label'>Escolaridad</span>
-            <select
-              value={form.hermano2.nivel}
-              onChange={(e) =>
-                updateFieldForm('hermano2', 'nivel', e.target.value)
-              }
-            >
-              <option
-                disabled
-                value='0'
-              >
-                Escoge la escolaridad...
-              </option>
-              <option value='Preescolar'>Preescolar</option>
-              <option value='Primaria'>Primaria</option>
-              <option value='Secundaria'>Secundaria</option>
-              <option value='Bachillerato'>Bachillerato</option>
-            </select>
-          </label>
-        </div>
-
-        <h3 className='font-bold text-center mb-4'>Hermano 3</h3>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:px-60 mb-16'>
-          <label className='floating-label m-auto w-sm md:w-md'>
-            <span>Nombre Completo</span>
-            <input
-              value={form.hermano3.nombre}
-              onChange={(e) =>
-                updateFieldForm('hermano3', 'nombre', e.target.value)
-              }
-              minLength={0}
-              maxLength={70}
-              type='text'
-              placeholder='Nombre Completo'
-              className='input input-md'
-            />
-          </label>
-
-          <label className='select select-md m-auto'>
-            <span className='label'>Escolaridad</span>
-            <select
-              value={form.hermano3.nivel}
-              onChange={(e) =>
-                updateFieldForm('hermano3', 'nivel', e.target.value)
-              }
-            >
-              <option
-                disabled
-                value='0'
-              >
-                Escoge la escolaridad...
-              </option>
-              <option value='Preescolar'>Preescolar</option>
-              <option value='Primaria'>Primaria</option>
-              <option value='Secundaria'>Secundaria</option>
-              <option value='Bachillerato'>Bachillerato</option>
-            </select>
-          </label>
-        </div>
+              Escoge la escolaridad...
+            </option>
+            <option value='Preescolar'>Preescolar</option>
+            <option value='Primaria'>Primaria</option>
+            <option value='Secundaria'>Secundaria</option>
+            <option value='Bachillerato'>Bachillerato</option>
+          </select>
+        </label>
       </div>
-      <div className='flex justify-between mt-4'>
-        <button
-          className='btn btn-error rounded px-4 py-2 ml-4 mr-auto'
-          onClick={() => navigate('/form-tutores')}
-          disabled={isSending}
-        >
-          Regresar
-        </button>
-        <button
-          className='btn btn-info rounded ml-auto mr-4 px-4 py-2'
-          onClick={handleSubmit}
-          disabled={isSending}
-          type='submit'
-        >
-          {isSending && (
-            <span className='loading loading-spinner loading-sm'></span>
-          )}
-          {!isSending && 'Siguiente'}
-        </button>
+
+      <h3 className='font-bold text-center mb-4'>Hermano 2</h3>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:px-60 mb-16'>
+        <label className='floating-label m-auto w-sm md:w-md'>
+          <span>Nombre Completo</span>
+          <input
+            value={form.hermano2.nombre}
+            onChange={(e) =>
+              updateFieldForm('hermano2', 'nombre', e.target.value)
+            }
+            minLength={0}
+            maxLength={70}
+            type='text'
+            placeholder='Nombre Completo'
+            className='input input-md'
+          />
+        </label>
+
+        <label className='select select-md m-auto'>
+          <span className='label'>Escolaridad</span>
+          <select
+            value={form.hermano2.nivel}
+            onChange={(e) =>
+              updateFieldForm('hermano2', 'nivel', e.target.value)
+            }
+          >
+            <option
+              disabled
+              value='0'
+            >
+              Escoge la escolaridad...
+            </option>
+            <option value='Preescolar'>Preescolar</option>
+            <option value='Primaria'>Primaria</option>
+            <option value='Secundaria'>Secundaria</option>
+            <option value='Bachillerato'>Bachillerato</option>
+          </select>
+        </label>
       </div>
-    </FormLayout>
+
+      <h3 className='font-bold text-center mb-4'>Hermano 3</h3>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:px-60 mb-16'>
+        <label className='floating-label m-auto w-sm md:w-md'>
+          <span>Nombre Completo</span>
+          <input
+            value={form.hermano3.nombre}
+            onChange={(e) =>
+              updateFieldForm('hermano3', 'nombre', e.target.value)
+            }
+            minLength={0}
+            maxLength={70}
+            type='text'
+            placeholder='Nombre Completo'
+            className='input input-md'
+          />
+        </label>
+
+        <label className='select select-md m-auto'>
+          <span className='label'>Escolaridad</span>
+          <select
+            value={form.hermano3.nivel}
+            onChange={(e) =>
+              updateFieldForm('hermano3', 'nivel', e.target.value)
+            }
+          >
+            <option
+              disabled
+              value='0'
+            >
+              Escoge la escolaridad...
+            </option>
+            <option value='Preescolar'>Preescolar</option>
+            <option value='Primaria'>Primaria</option>
+            <option value='Secundaria'>Secundaria</option>
+            <option value='Bachillerato'>Bachillerato</option>
+          </select>
+        </label>
+      </div>
+    </div>
   )
-}
+})
+
+FormHermanos.displayName = 'FormHermanos'
 
 export default FormHermanos

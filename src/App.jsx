@@ -3,14 +3,9 @@ import { Toaster } from 'react-hot-toast'
 
 import HomePage from '@/HomePage'
 import NotFound404 from '@/NotFound404'
-import FormAlumno from '@/components/Form/FormAlumno'
-import FormTutores from '@/components/Form/FormTutores'
-import FormHermanos from '@/components/Form/FormHermanos'
-import FormContacto from '@/components/Form/FormContacto'
-import FormPago from '@/components/Form/FormPago'
-import FormEnd from '@/components/Form/FormEnd'
+import Form from '@/components/Form/Form'
 
-function App() {
+const App = () => {
   const navigate = useNavigate()
 
   return (
@@ -29,7 +24,7 @@ function App() {
             <button
               onClick={() => {
                 navigate('/')
-                setTimeout(() => navigate('/form-alumno'), 0)
+                setTimeout(() => navigate('/form'), 0)
               }}
               className='btn btn-warning mx-1'
             >
@@ -44,28 +39,8 @@ function App() {
             element={<HomePage />}
           />
           <Route
-            path='form-alumno'
-            element={<FormAlumno />}
-          />
-          <Route
-            path='form-tutores'
-            element={<FormTutores />}
-          />
-          <Route
-            path='form-hermanos'
-            element={<FormHermanos />}
-          />
-          <Route
-            path='form-contacto'
-            element={<FormContacto />}
-          />
-          <Route
-            path='form-pago'
-            element={<FormPago />}
-          />
-          <Route
-            path='form-end'
-            element={<FormEnd />}
+            path='/form'
+            element={<Form />}
           />
           <Route
             path='*'

@@ -1,21 +1,14 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { forwardRef, useImperativeHandle } from 'react'
 import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
-import FormLayout from '@/components/Layout/FormLayout'
 import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
 
-const FormContacto = () => {
+const FormContacto = forwardRef((_, ref) => {
   const { form, updateFieldForm } = useGlobalState()
-  const navigate = useNavigate()
-
-  const [isSending, setIsSending] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    setIsSending(true)
 
     // if (!equalObjects(datosContacto1, DEFAULT_CONTACTO)) {
     //   const resContacto1 = await fetch(`${API_URL}/contactoemergencia`, {
@@ -93,235 +86,201 @@ const FormContacto = () => {
     console.log('Contacto 2:', form.contacto2)
     console.log('Contacto 3:', form.contacto3)
 
-    setIsSending(false)
     toast.success('Contactos de Emergencia Guardados Correctamente.')
-    navigate('/form-pago')
   }
 
   return (
-    <FormLayout>
-      <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
-        <h2 className='font-bold text-2xl mb-6 text-center'>
-          Contactos de Emergencia
-        </h2>
+    <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
+      <h2 className='font-bold text-2xl mb-6 text-center'>
+        Contactos de Emergencia
+      </h2>
 
-        <h3 className='font-bold text-center mb-4'>Contacto de Emergencia 1</h3>
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
-          <label className='floating-label m-auto w-sm md:w-md'>
-            <span>
-              Nombre Completo <span className='text-rose-600'>*</span>
-            </span>
-            <input
-              value={form.contacto1.nombre}
-              onChange={(e) =>
-                updateFieldForm('contacto1', 'nombre', e.target.value)
-              }
-              type='text'
-              placeholder='Nombre Completo *'
-              className='input input-md'
-            />
-          </label>
+      <h3 className='font-bold text-center mb-4'>Contacto de Emergencia 1</h3>
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
+        <label className='floating-label m-auto w-sm md:w-md'>
+          <span>
+            Nombre Completo <span className='text-rose-600'>*</span>
+          </span>
+          <input
+            value={form.contacto1.nombre}
+            onChange={(e) =>
+              updateFieldForm('contacto1', 'nombre', e.target.value)
+            }
+            type='text'
+            placeholder='Nombre Completo *'
+            className='input input-md'
+          />
+        </label>
 
-          <label className='floating-label m-auto w-sm md:w-md'>
-            <span>
-              Teléfono <span className='text-rose-600'>*</span>
-            </span>
-            <input
-              value={form.contacto1.telefono}
-              onChange={(e) =>
-                updateFieldForm('contacto1', 'telefono', e.target.value)
-              }
-              type='tel'
-              placeholder='Télefono *'
-              pattern='[0-9]{10}'
-              className='input input-md'
-            />
-          </label>
+        <label className='floating-label m-auto w-sm md:w-md'>
+          <span>
+            Teléfono <span className='text-rose-600'>*</span>
+          </span>
+          <input
+            value={form.contacto1.telefono}
+            onChange={(e) =>
+              updateFieldForm('contacto1', 'telefono', e.target.value)
+            }
+            type='tel'
+            placeholder='Télefono *'
+            pattern='[0-9]{10}'
+            className='input input-md'
+          />
+        </label>
 
-          <label className='select select-md m-auto'>
-            <span className='label'>
-              Parentesco <span className='text-rose-600'>*</span>
-            </span>
-            <select
-              value={form.contacto1.parentesco}
-              onChange={(e) =>
-                updateFieldForm(
-                  'contacto1',
-                  'parentesco',
-                  Number(e.target.value)
-                )
-              }
+        <label className='select select-md m-auto'>
+          <span className='label'>
+            Parentesco <span className='text-rose-600'>*</span>
+          </span>
+          <select
+            value={form.contacto1.parentesco}
+            onChange={(e) =>
+              updateFieldForm('contacto1', 'parentesco', Number(e.target.value))
+            }
+          >
+            <option
+              disabled
+              value='0'
             >
+              Escoge el parentesco...
+            </option>
+            {PARENTESCO_ARRAY.map((parentesco) => (
               <option
-                disabled
-                value='0'
+                key={parentesco.id}
+                value={parentesco.value}
               >
-                Escoge el parentesco...
+                {parentesco.label}
               </option>
-              {PARENTESCO_ARRAY.map((parentesco) => (
-                <option
-                  key={parentesco.id}
-                  value={parentesco.value}
-                >
-                  {parentesco.label}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-
-        <h3 className='font-bold text-center mb-4'>Contacto de Emergencia 2</h3>
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
-          <label className='floating-label m-auto w-sm md:w-md'>
-            <span>
-              Nombre Completo <span className='text-rose-600'>*</span>
-            </span>
-            <input
-              value={form.contacto2.nombre}
-              onChange={(e) =>
-                updateFieldForm('contacto2', 'nombre', e.target.value)
-              }
-              type='text'
-              placeholder='Nombre Completo *'
-              className='input input-md'
-            />
-          </label>
-
-          <label className='floating-label m-auto w-sm md:w-md'>
-            <span>
-              Teléfono <span className='text-rose-600'>*</span>
-            </span>
-            <input
-              value={form.contacto2.telefono}
-              onChange={(e) =>
-                updateFieldForm('contacto2', 'telefono', e.target.value)
-              }
-              type='tel'
-              placeholder='Télefono *'
-              pattern='[0-9]{10}'
-              className='input input-md'
-            />
-          </label>
-
-          <label className='select select-md m-auto'>
-            <span className='label'>
-              Parentesco <span className='text-rose-600'>*</span>
-            </span>
-            <select
-              value={form.contacto2.parentesco}
-              onChange={(e) =>
-                updateFieldForm(
-                  'contacto2',
-                  'parentesco',
-                  Number(e.target.value)
-                )
-              }
-            >
-              <option
-                disabled
-                value='0'
-              >
-                Escoge el parentesco...
-              </option>
-              {PARENTESCO_ARRAY.map((parentesco) => (
-                <option
-                  key={parentesco.id}
-                  value={parentesco.value}
-                >
-                  {parentesco.label}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-
-        <h3 className='font-bold text-center mb-4'>Contacto de Emergencia 3</h3>
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
-          <label className='floating-label m-auto w-sm md:w-md'>
-            <span>
-              Nombre Completo <span className='text-rose-600'>*</span>
-            </span>
-            <input
-              value={form.contacto3.nombre}
-              onChange={(e) =>
-                updateFieldForm('contacto3', 'nombre', e.target.value)
-              }
-              type='text'
-              placeholder='Nombre Completo *'
-              className='input input-md'
-            />
-          </label>
-
-          <label className='floating-label m-auto w-sm md:w-md'>
-            <span>
-              Teléfono <span className='text-rose-600'>*</span>
-            </span>
-            <input
-              value={form.contacto3.telefono}
-              onChange={(e) =>
-                updateFieldForm('contacto3', 'telefono', e.target.value)
-              }
-              type='tel'
-              placeholder='Télefono *'
-              pattern='[0-9]{10}'
-              className='input input-md'
-            />
-          </label>
-
-          <label className='select select-md m-auto'>
-            <span className='label'>
-              Parentesco <span className='text-rose-600'>*</span>
-            </span>
-            <select
-              value={form.contacto3.parentesco}
-              onChange={(e) =>
-                updateFieldForm(
-                  'contacto3',
-                  'parentesco',
-                  Number(e.target.value)
-                )
-              }
-            >
-              <option
-                disabled
-                value='0'
-              >
-                Escoge el parentesco...
-              </option>
-              {PARENTESCO_ARRAY.map((parentesco) => (
-                <option
-                  key={parentesco.id}
-                  value={parentesco.value}
-                >
-                  {parentesco.label}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
+            ))}
+          </select>
+        </label>
       </div>
-      <div className='flex justify-between mt-4'>
-        <button
-          className='btn btn-error rounded px-4 py-2 ml-4 mr-auto'
-          onClick={() => navigate('/form-hermanos')}
-          disabled={isSending}
-        >
-          Regresar
-        </button>
-        <button
-          className='btn btn-info rounded ml-auto mr-4 px-4 py-2'
-          onClick={handleSubmit}
-          disabled={isSending}
-          type='submit'
-        >
-          {isSending && (
-            <span className='loading loading-spinner loading-sm'></span>
-          )}
-          {!isSending && 'Siguiente'}
-        </button>
+
+      <h3 className='font-bold text-center mb-4'>Contacto de Emergencia 2</h3>
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
+        <label className='floating-label m-auto w-sm md:w-md'>
+          <span>
+            Nombre Completo <span className='text-rose-600'>*</span>
+          </span>
+          <input
+            value={form.contacto2.nombre}
+            onChange={(e) =>
+              updateFieldForm('contacto2', 'nombre', e.target.value)
+            }
+            type='text'
+            placeholder='Nombre Completo *'
+            className='input input-md'
+          />
+        </label>
+
+        <label className='floating-label m-auto w-sm md:w-md'>
+          <span>
+            Teléfono <span className='text-rose-600'>*</span>
+          </span>
+          <input
+            value={form.contacto2.telefono}
+            onChange={(e) =>
+              updateFieldForm('contacto2', 'telefono', e.target.value)
+            }
+            type='tel'
+            placeholder='Télefono *'
+            pattern='[0-9]{10}'
+            className='input input-md'
+          />
+        </label>
+
+        <label className='select select-md m-auto'>
+          <span className='label'>
+            Parentesco <span className='text-rose-600'>*</span>
+          </span>
+          <select
+            value={form.contacto2.parentesco}
+            onChange={(e) =>
+              updateFieldForm('contacto2', 'parentesco', Number(e.target.value))
+            }
+          >
+            <option
+              disabled
+              value='0'
+            >
+              Escoge el parentesco...
+            </option>
+            {PARENTESCO_ARRAY.map((parentesco) => (
+              <option
+                key={parentesco.id}
+                value={parentesco.value}
+              >
+                {parentesco.label}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
-    </FormLayout>
+
+      <h3 className='font-bold text-center mb-4'>Contacto de Emergencia 3</h3>
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
+        <label className='floating-label m-auto w-sm md:w-md'>
+          <span>
+            Nombre Completo <span className='text-rose-600'>*</span>
+          </span>
+          <input
+            value={form.contacto3.nombre}
+            onChange={(e) =>
+              updateFieldForm('contacto3', 'nombre', e.target.value)
+            }
+            type='text'
+            placeholder='Nombre Completo *'
+            className='input input-md'
+          />
+        </label>
+
+        <label className='floating-label m-auto w-sm md:w-md'>
+          <span>
+            Teléfono <span className='text-rose-600'>*</span>
+          </span>
+          <input
+            value={form.contacto3.telefono}
+            onChange={(e) =>
+              updateFieldForm('contacto3', 'telefono', e.target.value)
+            }
+            type='tel'
+            placeholder='Télefono *'
+            pattern='[0-9]{10}'
+            className='input input-md'
+          />
+        </label>
+
+        <label className='select select-md m-auto'>
+          <span className='label'>
+            Parentesco <span className='text-rose-600'>*</span>
+          </span>
+          <select
+            value={form.contacto3.parentesco}
+            onChange={(e) =>
+              updateFieldForm('contacto3', 'parentesco', Number(e.target.value))
+            }
+          >
+            <option
+              disabled
+              value='0'
+            >
+              Escoge el parentesco...
+            </option>
+            {PARENTESCO_ARRAY.map((parentesco) => (
+              <option
+                key={parentesco.id}
+                value={parentesco.value}
+              >
+                {parentesco.label}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+    </div>
   )
-}
+})
+
+FormContacto.displayName = 'FormContacto'
 
 export default FormContacto

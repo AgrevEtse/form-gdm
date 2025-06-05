@@ -7,6 +7,7 @@ import { DEFAULT_CURP, DEFAULT_FORM } from '@/utils/defaultStates.js'
 const GlobalStateProvider = ({ children }) => {
   const [curp, setCurp] = useState(DEFAULT_CURP)
   const [form, setForm] = useState(DEFAULT_FORM)
+  const [currentStep, setCurrentStep] = useState(0)
 
   const updateFieldForm = (section, field, value) => {
     setForm((prev) => ({
@@ -21,11 +22,20 @@ const GlobalStateProvider = ({ children }) => {
   const resetStates = () => {
     setCurp(DEFAULT_CURP)
     setForm(DEFAULT_FORM)
+    setCurrentStep(0)
   }
 
   return (
     <GlobalStateContext.Provider
-      value={{ curp, setCurp, form, updateFieldForm, resetStates }}
+      value={{
+        curp,
+        setCurp,
+        form,
+        updateFieldForm,
+        resetStates,
+        currentStep,
+        setCurrentStep
+      }}
     >
       {children}
     </GlobalStateContext.Provider>
