@@ -94,7 +94,7 @@ const FormContacto = () => {
     console.log('Contacto 3:', form.contacto3)
 
     setIsSending(false)
-    toast.success('Datos de contactos de emergencia enviados correctamente')
+    toast.success('Contactos de Emergencia Guardados Correctamente.')
     navigate('/form-pago')
   }
 

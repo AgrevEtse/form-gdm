@@ -123,7 +123,7 @@ const FormAlumno = () => {
     console.log('Inscripción:', form.inscripcion)
 
     setIsSending(false)
-    toast.success('Alumno enviado correctamente.')
+    toast.success('Alumno Guardado correctamente.')
     navigate('/form-tutores')
   }
 

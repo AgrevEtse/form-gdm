@@ -67,7 +67,7 @@ const FormTutores = () => {
     console.log('Tutor 2:', form.tutor2)
 
     setIsSending(false)
-    toast.success('Datos de los tutores enviados correctamente')
+    toast.success('Tutores Guardados Correctamente.')
     navigate('/form-hermanos')
   }
 

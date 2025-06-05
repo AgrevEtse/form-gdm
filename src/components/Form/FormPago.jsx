@@ -40,8 +40,8 @@ const FormPago = () => {
     console.log('Pago :', form.pago)
 
     setIsSending(false)
-    toast.success('Datos de pago enviados correctamente')
-    navigate('/')
+    toast.success('Responsable de Pagos Guardado Correctamente.')
+    navigate('/form-end')
   }
 
   return (

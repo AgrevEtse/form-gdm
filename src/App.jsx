@@ -8,6 +8,7 @@ import FormTutores from '@/components/Form/FormTutores'
 import FormHermanos from '@/components/Form/FormHermanos'
 import FormContacto from '@/components/Form/FormContacto'
 import FormPago from '@/components/Form/FormPago'
+import FormEnd from '@/components/Form/FormEnd'
 
 function App() {
   const navigate = useNavigate()
@@ -61,6 +62,10 @@ function App() {
           <Route
             path='form-pago'
             element={<FormPago />}
+          />
+          <Route
+            path='form-end'
+            element={<FormEnd />}
           />
           <Route
             path='*'

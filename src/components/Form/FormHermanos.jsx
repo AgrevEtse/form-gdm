@@ -93,7 +93,7 @@ const FormHermanos = () => {
     console.log('Hermano 3:', form.hermano3)
 
     setIsSending(false)
-    toast.success('Datos de hermanos enviados correctamente')
+    toast.success('Hermanos Guardados Correctamente.')
     navigate('/form-contacto')
   }
 
