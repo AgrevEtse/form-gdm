@@ -22,7 +22,6 @@ const GlobalStateProvider = ({ children }) => {
   const resetStates = () => {
     setCurp(DEFAULT_CURP)
     setForm(DEFAULT_FORM)
-    setCurrentStep(0)
   }
 
   return (

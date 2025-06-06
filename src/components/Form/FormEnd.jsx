@@ -5,7 +5,12 @@ import { Link } from 'react-router-dom'
 import useGlobalState from '@/context/useGlobalState'
 
 const FormEnd = forwardRef(() => {
-  const { resetStates } = useGlobalState()
+  const { resetStates, setCurrentStep } = useGlobalState()
+
+  const handleClick = () => {
+    resetStates()
+    setCurrentStep(0)
+  }
 
   return (
     <div className='flex items-center justify-center p-4'>
@@ -18,7 +23,7 @@ const FormEnd = forwardRef(() => {
           <Link to='/'>
             <button
               className='btn btn-info py-2 rounded-xl'
-              onClick={resetStates}
+              onClick={handleClick}
             >
               Volver al Inicio
             </button>
@@ -26,7 +31,7 @@ const FormEnd = forwardRef(() => {
           <Link to='/form'>
             <button
               className='btn btn-success py-2 rounded-xl'
-              onClick={resetStates}
+              onClick={handleClick}
             >
               Registar otro Alumno
             </button>
