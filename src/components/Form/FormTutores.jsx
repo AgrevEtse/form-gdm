@@ -3,64 +3,24 @@ import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { GRADO_MAX_ESTUDIOS_ARRAY } from '@/utils/gradoMaxEstudiosHelpers'
+import { TutorSchema } from '@/schemas/TutorSchema'
 
 const FormTutores = forwardRef((_, ref) => {
   const { form, updateFieldForm } = useGlobalState()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  useImperativeHandle(ref, () => ({
+    validate: () => {
+      const tutor1Result = TutorSchema.safeParse(form.tutor1)
+      if (!tutor1Result.success)
+        throw new Error(tutor1Result.error.issues[0].message)
 
-    // const resTutor1 = await fetch(`${API_URL}/tutor1`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosTutor1,
-    //     fecha_nacimiento: new Date(datosTutor1.fecha_nacimiento).toISOString(),
-    //     curp_alumno: curp
-    //   })
-    // })
+      const tutor2Result = TutorSchema.safeParse(form.tutor2)
+      if (!tutor2Result.success)
+        throw new Error(tutor2Result.error.issues[0].message)
 
-    // const dataTutor1 = await resTutor1.json()
-
-    // if (!resTutor1.ok) {
-    //   setIsSending(false)
-    //   toast.error('Error al enviar los datos del Tutor 1')
-    //   console.error(
-    //     `Error al enviar los datos del Tutor 1: ${dataTutor1.message}`
-    //   )
-    //   return
-    // }
-
-    // const resTutor2 = await fetch(`${API_URL}/tutor2`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosTutor2,
-    //     fecha_nacimiento: new Date(datosTutor2.fecha_nacimiento).toISOString(),
-    //     curp_alumno: curp
-    //   })
-    // })
-
-    // const dataTutor2 = await resTutor2.json()
-
-    // if (!resTutor2.ok) {
-    //   setIsSending(false)
-    //   toast.error('Error al enviar los datos del Tutor 2')
-    //   console.error(
-    //     `Error al enviar los datos del Tutor 2: ${dataTutor2.message}`
-    //   )
-    //   return
-    // }
-
-    console.log('Tutor 1:', form.tutor1)
-    console.log('Tutor 2:', form.tutor2)
-
-    toast.success('Tutores Guardados Correctamente.')
-  }
+      toast.success('Tutores Guardados')
+    }
+  }))
 
   return (
     <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>

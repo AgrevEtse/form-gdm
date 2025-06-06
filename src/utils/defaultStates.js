@@ -35,7 +35,7 @@ export const DEFAULT_INSCRIPCION = {
   id_ciclo: '',
   id_escolaridad: '',
   escolaridad: '0',
-  grado: '',
+  grado: 0,
   fecha_inscripcion: createCurrentDate(),
   esta_activo: false
 }
@@ -64,15 +64,15 @@ export const DEFAULT_HERMANO = {
 export const DEFAULT_CONTACTO = {
   nombre: '',
   telefono: '',
-  parentesco: '0'
+  parentesco: 0
 }
 
 export const DEFAULT_PAGO = {
   nombre: '',
   telefono: '',
   correo: '',
-  factura: '0',
-  responsable: '0'
+  factura: false,
+  responsable: 0
 }
 
 export const DEFAULT_FORM = {

@@ -3,37 +3,20 @@ import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
+import { PagoSchema } from '@/schemas/PagoSchema'
 
 const FormPago = forwardRef((_, ref) => {
   const { form, updateFieldForm } = useGlobalState()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  useImperativeHandle(ref, () => ({
+    validate: () => {
+      const pagoResult = PagoSchema.safeParse(form.pago)
+      if (!pagoResult.success)
+        throw new Error(pagoResult.error.issues[0].message)
 
-    // const resPago = await fetch(`${API_URL}/personapagos`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosPago,
-    //     curp_alumno: curp
-    //   })
-    // })
-
-    // const dataPago = await resPago.json()
-
-    // if (!resPago.ok) {
-    //   setIsSending(false)
-    //   toast.error(`Error al enviar los datos de pago`)
-    //   console.error(`Error al enviar los datos de pago: ${dataPago.message}`)
-    //   return
-    // }
-
-    console.log('Pago :', form.pago)
-
-    toast.success('Responsable de Pagos Guardado Correctamente.')
-  }
+      toast.success('Responsable de Pagos Guardado')
+    }
+  }))
 
   return (
     <div className='w-full mx-auto p-6 text-white rounded-md shadow-mds'>

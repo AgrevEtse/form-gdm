@@ -12,111 +12,41 @@ import {
   getIdEscolaridad,
   getUUIDByEscolaridad
 } from '@/utils/escolaridadGradosHelpers'
+import { AlumnoSchema, CURPSchema } from '@/schemas/AlumnoSchema'
+import { EscuelaProcedenciaSchema } from '@/schemas/EscuelaProcedenciaSchema'
+import { InscripcionSchema } from '@/schemas/InscripcionSchema'
+import { DomicilioSchema } from '@/schemas/DomicilioSchema'
 
 const FormAlumno = forwardRef((_, ref) => {
   const { curp, setCurp, form, updateFieldForm } = useGlobalState()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  useImperativeHandle(ref, () => ({
+    validate: () => {
+      const escuelaProcedenciaResult = EscuelaProcedenciaSchema.safeParse(
+        form.escuela_procedencia
+      )
+      if (!escuelaProcedenciaResult.success)
+        throw new Error(escuelaProcedenciaResult.error.issues[0].message)
 
-    // const resAlumno = await fetch(`${API_URL}/alumno`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosAlumno,
-    //     fecha_nacimiento: new Date(datosAlumno.fecha_nacimiento).toISOString(),
-    //     curp
-    //   })
-    // })
+      const curpResult = CURPSchema.safeParse(curp)
+      if (!curpResult.success)
+        throw new Error(curpResult.error.issues[0].message)
 
-    // const dataAlumno = await resAlumno.json()
+      const alumnoResult = AlumnoSchema.safeParse(form.alumno)
+      if (!alumnoResult.success)
+        throw new Error(alumnoResult.error.issues[0].message)
 
-    // if (!resAlumno.ok) {
-    //   setIsSending(false)
-    //   toast.error(`Error al enviar los datos del alumno.`)
-    //   console.error(
-    //     `Error al enviar los datos del alumno: ${dataAlumno.message}`
-    //   )
-    //   return
-    // }
+      const inscripcionResult = InscripcionSchema.safeParse(form.inscripcion)
+      if (!inscripcionResult.success)
+        throw new Error(inscripcionResult.error.issues[0].message)
 
-    // const resEscuelaProcedencia = await fetch(`${API_URL}/escuelaprocedencia`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosEscuelaProcedencia,
-    //     curp_alumno: curp
-    //   })
-    // })
+      const domicilioResult = DomicilioSchema.safeParse(form.domicilio)
+      if (!domicilioResult.success)
+        throw new Error(domicilioResult.error.issues[0].message)
 
-    // const dataEscuelaProcedencia = await resEscuelaProcedencia.json()
-
-    // if (!resEscuelaProcedencia.ok) {
-    //   setIsSending(false)
-    //   toast.error(`Error al enviar los datos de la escuela de procedencia.`)
-    //   console.error(
-    //     `Error al enviar los datos de la escuela de procedencia: ${dataEscuelaProcedencia.message}`
-    //   )
-    //   return
-    // }
-
-    // const resDomicilio = await fetch(`${API_URL}/domicilio`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     ...datosDomicilio,
-    //     curp_alumno: curp
-    //   })
-    // })
-
-    // const dataDomicilio = await resDomicilio.json()
-
-    // if (!resDomicilio.ok) {
-    //   setIsSending(false)
-    //   toast.error(`Error al enviar los datos del domicilio.`)
-    //   console.error(
-    //     `Error al enviar los datos del domicilio: ${dataDomicilio.message}`
-    //   )
-    //   return
-    // }
-
-    // const resInscripcion = await fetch(`${API_URL}/inscripcion`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     id_escolaridad,
-    //     id_ciclo,
-    //     fecha_inscripcion,
-    //     curp_alumno: curp
-    //   })
-    // })
-
-    // const dataInscripcion = await resInscripcion.json()
-
-    // if (!resInscripcion.ok) {
-    //   setIsSending(false)
-    //   toast.error(`Error al enviar los datos de inscripción.`)
-    //   console.error(
-    //     `Error al enviar los datos de inscripción: ${dataInscripcion.message}`
-    //   )
-    //   return
-    // }
-
-    console.log('Alumno:', form.alumno)
-    console.log('Escuela Procedencia:', form.escuela_procedencia)
-    console.log('Domicilio:', form.domicilio)
-    console.log('Inscripción:', form.inscripcion)
-
-    toast.success('Alumno Guardado correctamente.')
-  }
+      toast.success('Alumno Guardado')
+    }
+  }))
 
   return (
     <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>

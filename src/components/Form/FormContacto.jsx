@@ -3,91 +3,28 @@ import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
+import { ContactoSchema } from '@/schemas/ContactoSchema'
 
 const FormContacto = forwardRef((_, ref) => {
   const { form, updateFieldForm } = useGlobalState()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  useImperativeHandle(ref, () => ({
+    validate: () => {
+      const contacto1Result = ContactoSchema.safeParse(form.contacto1)
+      if (!contacto1Result.success)
+        throw new Error(contacto1Result.error.issues[0].message)
 
-    // if (!equalObjects(datosContacto1, DEFAULT_CONTACTO)) {
-    //   const resContacto1 = await fetch(`${API_URL}/contactoemergencia`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       ...datosContacto1,
-    //       curp_alumno: curp
-    //     })
-    //   })
+      const contacto2Result = ContactoSchema.safeParse(form.contacto2)
+      if (!contacto2Result.success)
+        throw new Error(contacto2Result.error.issues[0].message)
 
-    //   const dataContacto1 = await resContacto1.json()
+      const contacto3Result = ContactoSchema.safeParse(form.contacto3)
+      if (!contacto3Result.success)
+        throw new Error(contacto3Result.error.issues[0].message)
 
-    //   if (!resContacto1.ok) {
-    //     toast.error('Error al enviar los datos del contacto 1')
-    //     console.error(
-    //       `Error al enviar los datos del contacto 1: ${dataContacto1.message}`
-    //     )
-    //     setIsSending(false)
-    //     return
-    //   }
-    // }
-
-    // if (!equalObjects(datosContacto2, DEFAULT_CONTACTO)) {
-    //   const resContacto2 = await fetch(`${API_URL}/contactoemergencia`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       ...datosContacto2,
-    //       curp_alumno: curp
-    //     })
-    //   })
-
-    //   const dataContacto2 = await resContacto2.json()
-
-    //   if (!resContacto2.ok) {
-    //     toast.error('Error al enviar los datos del contacto 2')
-    //     console.error(
-    //       `Error al enviar los datos del contacto 2: ${dataContacto2.message}`
-    //     )
-    //     setIsSending(false)
-    //     return
-    //   }
-    // }
-
-    // if (!equalObjects(datosContacto3, DEFAULT_CONTACTO)) {
-    //   const resContacto3 = await fetch(`${API_URL}/contactoemergencia`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       ...datosContacto3,
-    //       curp_alumno: curp
-    //     })
-    //   })
-
-    //   const dataContacto3 = await resContacto3.json()
-
-    //   if (!resContacto3.ok) {
-    //     toast.error('Error al enviar los datos del contacto 3')
-    //     console.error(
-    //       `Error al enviar los datos del contacto 3: ${dataContacto3.message}`
-    //     )
-    //     setIsSending(false)
-    //     return
-    //   }
-    // }
-
-    console.log('Contacto 1:', form.contacto1)
-    console.log('Contacto 2:', form.contacto2)
-    console.log('Contacto 3:', form.contacto3)
-
-    toast.success('Contactos de Emergencia Guardados Correctamente.')
-  }
+      toast.success('Contactos Guardados')
+    }
+  }))
 
   return (
     <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>

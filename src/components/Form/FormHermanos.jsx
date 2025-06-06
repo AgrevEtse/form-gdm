@@ -2,91 +2,28 @@ import { forwardRef, useImperativeHandle } from 'react'
 import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
+import { HermanoSchema } from '@/schemas/HermanoSchema'
 
 const FormHermanos = forwardRef((_, ref) => {
   const { form, updateFieldForm } = useGlobalState()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  useImperativeHandle(ref, () => ({
+    validate: () => {
+      const hermano1Result = HermanoSchema.safeParse(form.hermano1)
+      if (!hermano1Result.success)
+        throw new Error(hermano1Result.error.issues[0].message)
 
-    // if (!equalObjects(datosHermano1, DEFAULT_HERMANO)) {
-    //   const resHermano1 = await fetch(`${API_URL}/hermano`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       ...datosHermano1,
-    //       curp_alumno: curp
-    //     })
-    //   })
+      const hermano2Result = HermanoSchema.safeParse(form.hermano2)
+      if (!hermano2Result.success)
+        throw new Error(hermano2Result.error.issues[0].message)
 
-    //   const dataHermano1 = await resHermano1.json()
+      const hermano3Result = HermanoSchema.safeParse(form.hermano3)
+      if (!hermano3Result.success)
+        throw new Error(hermano3Result.error.issues[0].message)
 
-    //   if (!resHermano1.ok) {
-    //     toast.error(`Error al enviar los datos del hermano 1`)
-    //     console.error(
-    //       `Error al enviar los datos del hermano 1: ${dataHermano1.message}`
-    //     )
-    //     setIsSending(false)
-    //     return
-    //   }
-    // }
-
-    // if (!equalObjects(datosHermano2, DEFAULT_HERMANO)) {
-    //   const resHermano2 = await fetch(`${API_URL}/hermano`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       ...datosHermano2,
-    //       curp_alumno: curp
-    //     })
-    //   })
-
-    //   const dataHermano2 = await resHermano2.json()
-
-    //   if (!resHermano2.ok) {
-    //     toast.error(`Error al enviar los datos del hermano 2`)
-    //     console.error(
-    //       `Error al enviar los datos del hermano 2: ${dataHermano2.message}`
-    //     )
-    //     setIsSending(false)
-    //     return
-    //   }
-    // }
-
-    // if (!equalObjects(datosHermano3, DEFAULT_HERMANO)) {
-    //   const resHermano3 = await fetch(`${API_URL}/hermano`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       ...datosHermano3,
-    //       curp_alumno: curp
-    //     })
-    //   })
-
-    //   const dataHermano3 = await resHermano3.json()
-
-    //   if (!resHermano3.ok) {
-    //     toast.error(`Error al enviar los datos del hermano 3`)
-    //     console.error(
-    //       `Error al enviar los datos del hermano 3: ${dataHermano3.message}`
-    //     )
-    //     setIsSending(false)
-    //     return
-    //   }
-    // }
-
-    console.log('Hermano 1:', form.hermano1)
-    console.log('Hermano 2:', form.hermano2)
-    console.log('Hermano 3:', form.hermano3)
-
-    toast.success('Hermanos Guardados Correctamente.')
-  }
+      toast.success('Hermanos Guardados')
+    }
+  }))
 
   return (
     <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>

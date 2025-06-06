@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import toast from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import FormAlumno from '@/components/Form/FormAlumno'
@@ -33,13 +34,20 @@ const Form = () => {
 
   const nextStep = async () => {
     setIsLoading(true)
-    // const isValid = await stepRef.current?.validate?.()
-    // if (isValid) {
-    //   setCurrentStep((prev) => prev + 1)
-    // }
-    scrollToTop()
-    setCurrentStep((prev) => prev + 1)
-    setIsLoading(false)
+    try {
+      await stepRef.current?.validate?.()
+
+      scrollToTop()
+      setCurrentStep((prev) => prev + 1)
+      setIsLoading(false)
+    } catch (error) {
+      toast.error(error.message)
+      setIsLoading(false)
+      return
+    }
+    // scrollToTop()
+    // setCurrentStep((prev) => prev + 1)
+    // setIsLoading(false)
   }
 
   const prevStep = () => {
@@ -49,8 +57,17 @@ const Form = () => {
 
   const enviarForm = async () => {
     setIsLoading(true)
-    setCurrentStep((prev) => prev + 1)
-    setIsLoading(false)
+    try {
+      await stepRef.current?.validate?.()
+
+      scrollToTop()
+      setCurrentStep((prev) => prev + 1)
+      setIsLoading(false)
+    } catch (error) {
+      toast.error(error.message)
+      setIsLoading(false)
+      return
+    }
   }
 
   return (
