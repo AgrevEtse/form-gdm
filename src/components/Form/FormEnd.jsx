@@ -20,12 +20,12 @@ const FormEnd = forwardRef(() => {
           Concluiste satifactoriamente el registro del alumno.
         </p>
         <div className='flex flex-row justify-center gap-4'>
-          <Link to='/'>
+          <Link to='https://gomezdemendiola.edu.mx/'>
             <button
               className='btn btn-info py-2 rounded-xl'
               onClick={handleClick}
             >
-              Volver al Inicio
+              Salir
             </button>
           </Link>
           <Link to='/form'>

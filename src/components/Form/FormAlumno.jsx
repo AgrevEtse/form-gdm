@@ -437,7 +437,7 @@ const FormAlumno = forwardRef((_, ref) => {
               updateFieldForm('domicilio', 'colonia', e.target.value)
             }
             minLength={1}
-            maxLength={30}
+            maxLength={60}
             required
             type='text'
             placeholder='Colonia *'

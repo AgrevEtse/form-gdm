@@ -243,7 +243,7 @@ const Form = () => {
   }
 
   return (
-    <div className='container my-16'>
+    <div className='h-full my-16 container'>
       {currentStep !== 5 && (
         <h3 className='text-center font-bold text-4xl mb-6'>
           Registro del Alumno

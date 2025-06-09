@@ -126,7 +126,7 @@ const FormTutores = forwardRef((_, ref) => {
               updateFieldForm('tutor1', 'domicilio', e.target.value)
             }
             minLength={1}
-            maxLength={30}
+            maxLength={60}
             required
             type='text'
             placeholder='Domicilio *'
@@ -370,7 +370,7 @@ const FormTutores = forwardRef((_, ref) => {
               updateFieldForm('tutor2', 'domicilio', e.target.value)
             }
             minLength={1}
-            maxLength={30}
+            maxLength={60}
             required
             type='text'
             placeholder='Domicilio *'
