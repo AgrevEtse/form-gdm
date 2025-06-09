@@ -28,7 +28,7 @@ const FormTutores = forwardRef((_, ref) => {
         Datos de los Tutores
       </h2>
 
-      <h3 className='font-bold text-center mb-4'>Papá (Contacto Principal)</h3>
+      <h3 className='font-bold text-center mb-4'>Papá / Tutor 1</h3>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8'>
         <label className='floating-label'>
           <span>
@@ -272,7 +272,7 @@ const FormTutores = forwardRef((_, ref) => {
 
       {/* --------------------------------------------------------------------------- */}
 
-      <h3 className='font-bold text-center mb-4'>Mamá</h3>
+      <h3 className='font-bold text-center mb-4'>Mamá / Tutor 2</h3>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
         <label className='floating-label'>
           <span>
