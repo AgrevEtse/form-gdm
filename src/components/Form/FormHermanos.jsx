@@ -44,11 +44,11 @@ const FormHermanos = forwardRef((_, ref) => {
             maxLength={70}
             type='text'
             placeholder='Nombre Completo'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md m-auto'>
+        <label className='select select-md m-auto border-white'>
           <span className='label'>Escolaridad</span>
           <select
             value={form.hermano1.nivel}
@@ -83,11 +83,11 @@ const FormHermanos = forwardRef((_, ref) => {
             maxLength={70}
             type='text'
             placeholder='Nombre Completo'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md m-auto'>
+        <label className='select select-md m-auto border-white'>
           <span className='label'>Escolaridad</span>
           <select
             value={form.hermano2.nivel}
@@ -122,11 +122,11 @@ const FormHermanos = forwardRef((_, ref) => {
             maxLength={70}
             type='text'
             placeholder='Nombre Completo'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md m-auto'>
+        <label className='select select-md m-auto border-white'>
           <span className='label'>Escolaridad</span>
           <select
             value={form.hermano3.nivel}

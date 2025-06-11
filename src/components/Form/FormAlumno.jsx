@@ -67,7 +67,7 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='CCT *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -85,7 +85,7 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Nombre Escuela *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -104,7 +104,7 @@ const FormAlumno = forwardRef((_, ref) => {
             maxLength={10}
             type='text'
             placeholder='Matricula'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -122,7 +122,7 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='CURP *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -140,7 +140,7 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Nombre(s) *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -158,7 +158,7 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Apellido Paterno *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -176,11 +176,11 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Apellido Materno *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Género <span className='text-rose-600'>*</span>
           </span>
@@ -202,7 +202,7 @@ const FormAlumno = forwardRef((_, ref) => {
           </select>
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Tipo Sanguíneo <span className='text-rose-600'>*</span>
           </span>
@@ -230,7 +230,7 @@ const FormAlumno = forwardRef((_, ref) => {
           </select>
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Lateralidad <span className='text-rose-600'>*</span>
           </span>
@@ -252,7 +252,7 @@ const FormAlumno = forwardRef((_, ref) => {
           </select>
         </label>
 
-        <label className='input input-md'>
+        <label className='input input-md border-white'>
           <span className='label'>
             Fecha Nacimiento <span className='text-rose-600'>*</span>
           </span>
@@ -266,7 +266,7 @@ const FormAlumno = forwardRef((_, ref) => {
           />
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Nacionalidad <span className='text-rose-600'>*</span>
           </span>
@@ -294,7 +294,7 @@ const FormAlumno = forwardRef((_, ref) => {
           </select>
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Escolaridad <span className='text-rose-600'>*</span>
           </span>
@@ -336,7 +336,7 @@ const FormAlumno = forwardRef((_, ref) => {
           </select>
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Grado <span className='text-rose-600'>*</span>
           </span>
@@ -387,7 +387,7 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='number'
             placeholder='Estatura (cm) *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -405,7 +405,7 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='number'
             placeholder='Peso (kg) *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -423,7 +423,7 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Domicilio *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -441,7 +441,7 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Colonia *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -460,11 +460,11 @@ const FormAlumno = forwardRef((_, ref) => {
             max={999999}
             required
             pattern='[0-9]{6}'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Estado <span className='text-rose-600'>*</span>
           </span>
@@ -497,7 +497,7 @@ const FormAlumno = forwardRef((_, ref) => {
           </select>
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Ciudad <span className='text-rose-600'>*</span>
           </span>
@@ -538,7 +538,7 @@ const FormAlumno = forwardRef((_, ref) => {
             }
             minLength={0}
             maxLength={200}
-            className='textarea h-24'
+            className='textarea h-24 border-white'
             placeholder='Indique si el alumno padece de alguna discapacidad, enfermedad crónica, alergias o algún tipo de tratamiento médico.'
           ></textarea>
         </fieldset>
@@ -552,7 +552,7 @@ const FormAlumno = forwardRef((_, ref) => {
             }
             minLength={0}
             maxLength={200}
-            className='textarea h-24'
+            className='textarea h-24 border-white'
             placeholder='Indique si el alumno asiste a terapia, explique de que tipo: físico, psicológica u otra y por qué'
           ></textarea>
         </fieldset>

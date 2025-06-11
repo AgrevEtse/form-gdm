@@ -14,7 +14,7 @@ export const AlumnoSchema = z.object({
     ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
     'El tipo sanguíneo es obligatorio'
   ),
-  es_diestro: z.boolean().default(true),
+  es_diestro: z.boolean('La lateralidad es obligatoria'),
   fecha_nacimiento: z.string().refine(
     (value) => {
       const date = new Date(value)

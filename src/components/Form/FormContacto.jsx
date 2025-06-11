@@ -45,7 +45,7 @@ const FormContacto = forwardRef((_, ref) => {
             }
             type='text'
             placeholder='Nombre Completo *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -61,11 +61,11 @@ const FormContacto = forwardRef((_, ref) => {
             type='tel'
             placeholder='Télefono *'
             pattern='[0-9]{10}'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md m-auto'>
+        <label className='select select-md m-auto border-white'>
           <span className='label'>
             Parentesco <span className='text-rose-600'>*</span>
           </span>
@@ -106,7 +106,7 @@ const FormContacto = forwardRef((_, ref) => {
             }
             type='text'
             placeholder='Nombre Completo *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -122,11 +122,11 @@ const FormContacto = forwardRef((_, ref) => {
             type='tel'
             placeholder='Télefono *'
             pattern='[0-9]{10}'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md m-auto'>
+        <label className='select select-md m-auto border-white'>
           <span className='label'>
             Parentesco <span className='text-rose-600'>*</span>
           </span>
@@ -167,7 +167,7 @@ const FormContacto = forwardRef((_, ref) => {
             }
             type='text'
             placeholder='Nombre Completo *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -183,11 +183,11 @@ const FormContacto = forwardRef((_, ref) => {
             type='tel'
             placeholder='Télefono *'
             pattern='[0-9]{10}'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md m-auto'>
+        <label className='select select-md m-auto border-white'>
           <span className='label'>
             Parentesco <span className='text-rose-600'>*</span>
           </span>

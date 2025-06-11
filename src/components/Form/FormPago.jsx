@@ -34,11 +34,11 @@ const FormPago = forwardRef((_, ref) => {
             onChange={(e) => updateFieldForm('pago', 'nombre', e.target.value)}
             type='text'
             placeholder='Nombre Completo *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md m-auto'>
+        <label className='select select-md m-auto border-white'>
           <span className='label'>
             Parentesco <span className='text-rose-600'>*</span>
           </span>
@@ -74,7 +74,7 @@ const FormPago = forwardRef((_, ref) => {
             onChange={(e) => updateFieldForm('pago', 'correo', e.target.value)}
             type='email'
             placeholder='Correo Electrónico *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -90,11 +90,11 @@ const FormPago = forwardRef((_, ref) => {
             type='tel'
             placeholder='Télefono (móvil) *'
             pattern='[0-9]{10}'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md m-auto'>
+        <label className='select select-md m-auto border-white'>
           <span className='label'>
             ¿Requiere Factura? <span className='text-rose-600'>*</span>
           </span>

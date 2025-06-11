@@ -44,7 +44,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Nombre(s) *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -62,7 +62,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Apellido Paterno *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -80,7 +80,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Apellido Materno *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -98,11 +98,11 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Lugar de Nacimiento *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='input input-md'>
+        <label className='input input-md border-white'>
           <span className='label'>
             Fecha Nacimiento <span className='text-rose-600'>*</span>
           </span>
@@ -130,7 +130,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Domicilio *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -148,7 +148,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Colonia *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -166,7 +166,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='number'
             placeholder='C.P. *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -185,7 +185,7 @@ const FormTutores = forwardRef((_, ref) => {
             type='tel'
             placeholder='Télefono (móvil) *'
             pattern='[0-9]{10}'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -201,7 +201,7 @@ const FormTutores = forwardRef((_, ref) => {
             type='tel'
             placeholder='Télefono (fijo)'
             pattern='[0-9]{10}'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -219,7 +219,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='email'
             placeholder='Correo Electrónico *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -237,11 +237,11 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Ocupación *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Grado Máx Estudios <span className='text-rose-600'>*</span>
           </span>
@@ -288,7 +288,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Nombre(s) *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -306,7 +306,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Apellido Paterno *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -324,7 +324,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Apellido Materno *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -342,11 +342,11 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Lugar de Nacimiento *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='input input-md'>
+        <label className='input input-md border-white'>
           <span className='label'>
             Fecha Nacimiento <span className='text-rose-600'>*</span>
           </span>
@@ -374,7 +374,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Domicilio *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -392,7 +392,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Colonia *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -410,7 +410,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='number'
             placeholder='C.P. *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -429,7 +429,7 @@ const FormTutores = forwardRef((_, ref) => {
             type='tel'
             placeholder='Teléfono (móvil) *'
             pattern='[0-9]{10}'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -445,7 +445,7 @@ const FormTutores = forwardRef((_, ref) => {
             type='tel'
             placeholder='Teléfono (fijo)'
             pattern='[0-9]{10}'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -463,7 +463,7 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='email'
             placeholder='Correo Electrónico *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
@@ -481,11 +481,11 @@ const FormTutores = forwardRef((_, ref) => {
             required
             type='text'
             placeholder='Ocupación *'
-            className='input input-md'
+            className='input input-md border-white'
           />
         </label>
 
-        <label className='select select-md'>
+        <label className='select select-md border-white'>
           <span className='label'>
             Grado Máx Estudios <span className='text-rose-600'>*</span>
           </span>

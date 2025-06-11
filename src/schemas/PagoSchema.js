@@ -15,5 +15,5 @@ export const PagoSchema = z.object({
   responsable: z
     .number()
     .min(1, 'El parentesco es requerido')
-    .max(3, 'El parentesco debe ser un valor entre 1 y 3')
+    .max(7, 'El parentesco debe ser un valor entre 1 y 7')
 })
