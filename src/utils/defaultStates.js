@@ -53,7 +53,8 @@ export const DEFAULT_TUTOR = {
   grado_max_estudios: '0',
   domicilio: '',
   colonia: '',
-  codigo_postal: ''
+  codigo_postal: '',
+  primario: 0
 }
 
 export const DEFAULT_HERMANO = {

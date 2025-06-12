@@ -268,6 +268,29 @@ const FormTutores = forwardRef((_, ref) => {
             ))}
           </select>
         </label>
+
+        <label className='select select-md border-white'>
+          <span className='label'>
+            ¿Es tutor principal? <span className='text-rose-600'>*</span>
+          </span>
+          <select
+            value={form.tutor1.primario}
+            onChange={(e) => {
+                updateFieldForm('tutor1', 'primario', e.target.value === 'true')
+                updateFieldForm('tutor2', 'primario', e.target.value !== 'true')
+              }
+            }
+          >
+            <option
+              disabled
+              value='0'
+            >
+              Escoge la opción...
+            </option>
+            <option value={true}>Sí</option>
+            <option value={false}>No</option>
+          </select>
+        </label>
       </div>
 
       {/* --------------------------------------------------------------------------- */}
@@ -510,6 +533,29 @@ const FormTutores = forwardRef((_, ref) => {
                 {label}
               </option>
             ))}
+          </select>
+        </label>
+
+        <label className='select select-md border-white'>
+          <span className='label'>
+            ¿Es tutor principal? <span className='text-rose-600'>*</span>
+          </span>
+          <select
+            value={form.tutor2.primario}
+            onChange={(e) => {
+                updateFieldForm('tutor2', 'primario', e.target.value === 'true')
+                updateFieldForm('tutor1', 'primario', e.target.value !== 'true')
+              }
+            }
+          >
+            <option
+              disabled
+              value='0'
+            >
+              Escoge la opción...
+            </option>
+            <option value={true}>Sí</option>
+            <option value={false}>No</option>
           </select>
         </label>
       </div>
