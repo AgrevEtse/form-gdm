@@ -24,6 +24,10 @@ const FormPago = forwardRef((_, ref) => {
         Responsable de Pagos
       </h2>
 
+      <p className='text-center mb-6 text-gray-300 text-lg'>
+        El registro del alumno concluye aquí.
+      </p>
+
       <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>
