@@ -276,10 +276,9 @@ const FormTutores = forwardRef((_, ref) => {
           <select
             value={form.tutor1.primario}
             onChange={(e) => {
-                updateFieldForm('tutor1', 'primario', e.target.value === 'true')
-                updateFieldForm('tutor2', 'primario', e.target.value !== 'true')
-              }
-            }
+              updateFieldForm('tutor1', 'primario', e.target.value === 'true')
+              updateFieldForm('tutor2', 'primario', e.target.value !== 'true')
+            }}
           >
             <option
               disabled
@@ -543,10 +542,9 @@ const FormTutores = forwardRef((_, ref) => {
           <select
             value={form.tutor2.primario}
             onChange={(e) => {
-                updateFieldForm('tutor2', 'primario', e.target.value === 'true')
-                updateFieldForm('tutor1', 'primario', e.target.value !== 'true')
-              }
-            }
+              updateFieldForm('tutor2', 'primario', e.target.value === 'true')
+              updateFieldForm('tutor1', 'primario', e.target.value !== 'true')
+            }}
           >
             <option
               disabled

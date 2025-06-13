@@ -7,13 +7,13 @@ import FormTutores from '@/components/Form/FormTutores'
 import FormHermanos from '@/components/Form/FormHermanos'
 import FormContacto from '@/components/Form/FormContacto'
 import FormPago from '@/components/Form/FormPago'
+import FormMamada from '@/components/Form/FormMamada'
 import FormEnd from '@/components/Form/FormEnd'
 
 import postForm from '@/utils/postForm'
 
 const Form = () => {
-  const { curp, form, currentStep, setCurrentStep, resetStates } =
-    useGlobalState()
+  const { curp, form, currentStep, setCurrentStep } = useGlobalState()
   const stepRef = useRef(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -23,6 +23,7 @@ const Form = () => {
     FormHermanos,
     FormContacto,
     FormPago,
+    FormMamada,
     FormEnd
   ]
 
@@ -66,7 +67,6 @@ const Form = () => {
       setIsLoading(false)
 
       toast.success('Formulario enviado correctamente')
-      resetStates()
     } catch (error) {
       toast.error(error.message)
       setIsLoading(false)
@@ -76,7 +76,7 @@ const Form = () => {
 
   return (
     <div className='h-full my-16 container'>
-      {currentStep !== 5 && (
+      {currentStep !== 6 && (
         <h3 className='text-center font-bold text-4xl mb-6'>
           Registro del Alumno
         </h3>
@@ -84,7 +84,7 @@ const Form = () => {
 
       <CurrentComponent ref={stepRef} />
 
-      {currentStep !== 5 && (
+      {currentStep !== 6 && (
         <div className='mt-4 flex justify-between'>
           {currentStep > 0 && (
             <button

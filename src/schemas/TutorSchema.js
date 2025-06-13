@@ -45,5 +45,5 @@ export const TutorSchema = z.object({
   domicilio: z.string().min(1, 'El domicilio es requerido'),
   colonia: z.string().min(1, 'La colonia es requerida'),
   codigo_postal: z.string().min(1, 'El código postal es requerido'),
-  primario: z.boolean('El campo de tutor principal es requerido'),
+  primario: z.boolean('El campo de tutor principal es requerido')
 })
