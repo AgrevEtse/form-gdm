@@ -7,7 +7,7 @@ const FormMamada = forwardRef(() => {
         <h2 className='text-5xl font-extrabold mb-4'>
           ¿Enviar los datos guardados?
         </h2>
-        <p className='mb-6'>
+        <p className='mb-6 text-lg'>
           Completaste todos los pasos del formulario. ¿Estás seguro de que
           deseas enviar los datos guardados?
         </p>
