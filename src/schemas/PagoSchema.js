@@ -1,4 +1,4 @@
-import { z } from 'zod/v4'
+import { z } from 'zod'
 
 export const PagoSchema = z.object({
   nombre: z.string().min(1, 'El nombre es requerido'),

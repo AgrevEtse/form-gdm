@@ -1,4 +1,4 @@
-import { z } from 'zod/v4'
+import { z } from 'zod'
 
 export const DomicilioSchema = z.object({
   domicilio: z.string().min(1, 'El domicilio es obligatorio'),
