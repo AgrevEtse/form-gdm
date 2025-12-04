@@ -1,9 +1,9 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
-import HomePage from '@/HomePage'
-import NotFound404 from '@/NotFound404'
-import Form from '@/components/Form/Form'
+import HomePage from '@/components/Pages/HomePage'
+import NotFound404 from '@/components/Pages/NotFound404'
+import Form from '@/components/Pages/Form/Form'
 
 const App = () => {
   const navigate = useNavigate()
