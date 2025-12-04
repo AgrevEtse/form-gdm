@@ -19,12 +19,12 @@ const FormPago = forwardRef((_, ref) => {
   }))
 
   return (
-    <div className='w-full mx-auto p-6 text-white rounded-md shadow-mds'>
-      <h2 className='font-bold text-2xl mb-6 text-center'>
+    <div className='shadow-mds mx-auto w-full rounded-md p-6 text-white'>
+      <h2 className='mb-6 text-center text-2xl font-bold'>
         Responsable de Pagos
       </h2>
 
-      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
+      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-16 lg:grid-cols-3'>
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>
             Nombre Completo <span className='text-rose-600'>*</span>

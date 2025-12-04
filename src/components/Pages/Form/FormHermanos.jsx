@@ -26,13 +26,13 @@ const FormHermanos = forwardRef((_, ref) => {
   }))
 
   return (
-    <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
-      <h2 className='font-bold text-2xl mb-6 text-center'>
+    <div className='mx-auto w-full rounded-md p-6 text-white shadow-md'>
+      <h2 className='mb-6 text-center text-2xl font-bold'>
         Hermanos Inscritos en el Colegio
       </h2>
 
-      <h3 className='font-bold text-center mb-4'>Hermano 1</h3>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:px-60 mb-16'>
+      <h3 className='mb-4 text-center font-bold'>Hermano 1</h3>
+      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-60 lg:grid-cols-2'>
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>Nombre Completo</span>
           <input
@@ -70,8 +70,8 @@ const FormHermanos = forwardRef((_, ref) => {
         </label>
       </div>
 
-      <h3 className='font-bold text-center mb-4'>Hermano 2</h3>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:px-60 mb-16'>
+      <h3 className='mb-4 text-center font-bold'>Hermano 2</h3>
+      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-60 lg:grid-cols-2'>
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>Nombre Completo</span>
           <input
@@ -109,8 +109,8 @@ const FormHermanos = forwardRef((_, ref) => {
         </label>
       </div>
 
-      <h3 className='font-bold text-center mb-4'>Hermano 3</h3>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:px-60 mb-16'>
+      <h3 className='mb-4 text-center font-bold'>Hermano 3</h3>
+      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-60 lg:grid-cols-2'>
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>Nombre Completo</span>
           <input

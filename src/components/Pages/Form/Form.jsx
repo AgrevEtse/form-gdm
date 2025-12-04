@@ -75,9 +75,9 @@ const Form = () => {
   }
 
   return (
-    <div className='h-full my-16 container'>
+    <div className='container my-16 h-full'>
       {currentStep !== 6 && (
-        <h3 className='text-center font-bold text-4xl mb-6'>
+        <h3 className='mb-6 text-center text-4xl font-bold'>
           Registro del Alumno
         </h3>
       )}
@@ -90,7 +90,7 @@ const Form = () => {
             <button
               onClick={prevStep}
               disabled={isLoading}
-              className='btn btn-error rounded px-4 py-2 ml-4 mr-auto'
+              className='btn btn-error mr-auto ml-4 rounded px-4 py-2'
             >
               Anterior
             </button>
@@ -99,7 +99,7 @@ const Form = () => {
             <button
               onClick={nextStep}
               disabled={isLoading}
-              className='btn btn-info rounded ml-auto mr-4 px-4 py-2'
+              className='btn btn-info mr-4 ml-auto rounded px-4 py-2'
             >
               {isLoading && (
                 <span className='loading loading-spinner loading-sm'></span>
@@ -110,7 +110,7 @@ const Form = () => {
             <button
               onClick={enviarForm}
               disabled={isLoading}
-              className='btn btn-success rounded ml-auto mr-4 px-4 py-2'
+              className='btn btn-success mr-4 ml-auto rounded px-4 py-2'
             >
               Enviar
             </button>

@@ -27,13 +27,13 @@ const FormContacto = forwardRef((_, ref) => {
   }))
 
   return (
-    <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
-      <h2 className='font-bold text-2xl mb-6 text-center'>
+    <div className='mx-auto w-full rounded-md p-6 text-white shadow-md'>
+      <h2 className='mb-6 text-center text-2xl font-bold'>
         Contactos de Emergencia
       </h2>
 
-      <h3 className='font-bold text-center mb-4'>Contacto de Emergencia 1</h3>
-      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
+      <h3 className='mb-4 text-center font-bold'>Contacto de Emergencia 1</h3>
+      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-16 lg:grid-cols-3'>
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>
             Nombre Completo <span className='text-rose-600'>*</span>
@@ -93,8 +93,8 @@ const FormContacto = forwardRef((_, ref) => {
         </label>
       </div>
 
-      <h3 className='font-bold text-center mb-4'>Contacto de Emergencia 2</h3>
-      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
+      <h3 className='mb-4 text-center font-bold'>Contacto de Emergencia 2</h3>
+      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-16 lg:grid-cols-3'>
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>
             Nombre Completo <span className='text-rose-600'>*</span>
@@ -154,8 +154,8 @@ const FormContacto = forwardRef((_, ref) => {
         </label>
       </div>
 
-      <h3 className='font-bold text-center mb-4'>Contacto de Emergencia 3</h3>
-      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-16 mb-16'>
+      <h3 className='mb-4 text-center font-bold'>Contacto de Emergencia 3</h3>
+      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-16 lg:grid-cols-3'>
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>
             Nombre Completo <span className='text-rose-600'>*</span>

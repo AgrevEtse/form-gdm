@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom'
 
 const HomePage = () => {
   return (
-    <div className='min-h-screen flex items-center justify-center p-4'>
-      <div className='bg-white shadow-2xl rounded-2xl p-8 max-w-md w-full text-center'>
-        <h1 className='text-3xl font-bold text-indigo-700 mb-4'>
+    <div className='flex min-h-screen items-center justify-center p-4'>
+      <div className='w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl'>
+        <h1 className='mb-4 text-3xl font-bold text-indigo-700'>
           Registro GDM
         </h1>
-        <p className='text-gray-600 mb-6'>
+        <p className='mb-6 text-gray-600'>
           Completa el formulario para asegurar tu lugar en el próximo ciclo
           escolar.
         </p>
@@ -15,7 +15,7 @@ const HomePage = () => {
           to='/form'
           className='block'
         >
-          <button className='w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-xl transition duration-300 cursor-pointer'>
+          <button className='w-full cursor-pointer rounded-xl bg-indigo-500 py-2 text-white transition duration-300 hover:bg-indigo-600'>
             Iniciar Registro
           </button>
         </Link>

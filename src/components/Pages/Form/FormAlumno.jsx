@@ -49,10 +49,10 @@ const FormAlumno = forwardRef((_, ref) => {
   }))
 
   return (
-    <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
-      <h2 className='font-bold text-2xl mb-6 text-center'>Datos del Alumno</h2>
+    <div className='mx-auto w-full rounded-md p-6 text-white shadow-md'>
+      <h2 className='mb-6 text-center text-2xl font-bold'>Datos del Alumno</h2>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
         <label className='floating-label'>
           <span>
             CCT de Procedencia <span className='text-rose-600'>*</span>

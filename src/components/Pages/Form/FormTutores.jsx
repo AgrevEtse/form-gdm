@@ -23,13 +23,13 @@ const FormTutores = forwardRef((_, ref) => {
   }))
 
   return (
-    <div className='w-full mx-auto p-6 text-white rounded-md shadow-md'>
-      <h2 className='font-bold text-2xl mb-6 text-center'>
+    <div className='mx-auto w-full rounded-md p-6 text-white shadow-md'>
+      <h2 className='mb-6 text-center text-2xl font-bold'>
         Datos de los Tutores
       </h2>
 
-      <h3 className='font-bold text-center mb-4'>Papá / Tutor 1</h3>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8'>
+      <h3 className='mb-4 text-center font-bold'>Papá / Tutor 1</h3>
+      <div className='mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
         <label className='floating-label'>
           <span>
             Nombre(s) <span className='text-rose-600'>*</span>
@@ -294,8 +294,8 @@ const FormTutores = forwardRef((_, ref) => {
 
       {/* --------------------------------------------------------------------------- */}
 
-      <h3 className='font-bold text-center mb-4'>Mamá / Tutor 2</h3>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      <h3 className='mb-4 text-center font-bold'>Mamá / Tutor 2</h3>
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
         <label className='floating-label'>
           <span>
             Nombre(s) <span className='text-rose-600'>*</span>

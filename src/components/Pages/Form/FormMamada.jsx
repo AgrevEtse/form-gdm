@@ -3,8 +3,8 @@ import { forwardRef } from 'react'
 const FormMamada = forwardRef(() => {
   return (
     <div className='flex items-center justify-center p-4'>
-      <div className='bg-primary text-primary-content shadow-2xl rounded-2xl p-8 max-w-md w-full text-center'>
-        <h2 className='text-5xl font-extrabold mb-4'>
+      <div className='bg-primary text-primary-content w-full max-w-md rounded-2xl p-8 text-center shadow-2xl'>
+        <h2 className='mb-4 text-5xl font-extrabold'>
           ¿Enviar los datos guardados?
         </h2>
         <p className='mb-6 text-lg'>

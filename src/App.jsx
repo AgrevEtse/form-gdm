@@ -11,7 +11,7 @@ const App = () => {
   return (
     <>
       <div className='container mx-auto'>
-        <div className='navbar bg-primary text-primary-content shadow-sm w-full rounded-2xl'>
+        <div className='navbar bg-primary text-primary-content w-full rounded-2xl shadow-sm'>
           <div className='flex flex-1 items-center'>
             <Link
               className='btn btn-ghost text-xl'

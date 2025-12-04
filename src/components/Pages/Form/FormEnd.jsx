@@ -14,18 +14,18 @@ const FormEnd = forwardRef(() => {
 
   return (
     <div className='flex items-center justify-center p-4'>
-      <div className='bg-primary text-primary-content shadow-2xl rounded-2xl p-8 max-w-md w-full text-center'>
-        <h2 className='text-5xl font-extrabold mb-4'>Registro Terminado</h2>
+      <div className='bg-primary text-primary-content w-full max-w-md rounded-2xl p-8 text-center shadow-2xl'>
+        <h2 className='mb-4 text-5xl font-extrabold'>Registro Terminado</h2>
         <p className='mb-3'>
           Concluiste satisfactoriamente el registro del alumno.
         </p>
-        <p className='mb-6 font-bold text-xl'>
+        <p className='mb-6 text-xl font-bold'>
           La inscripción termina con el pago de la misma.
         </p>
         <div className='flex flex-row justify-center gap-4'>
           <Link to='https://gomezdemendiola.edu.mx/'>
             <button
-              className='btn btn-info py-2 rounded-xl'
+              className='btn btn-info rounded-xl py-2'
               onClick={handleClick}
             >
               Salir
@@ -33,7 +33,7 @@ const FormEnd = forwardRef(() => {
           </Link>
           <Link to='/form'>
             <button
-              className='btn btn-success py-2 rounded-xl'
+              className='btn btn-success rounded-xl py-2'
               onClick={handleClick}
             >
               Registar otro Alumno
