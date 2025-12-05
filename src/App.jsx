@@ -2,6 +2,7 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
 import HomePage from '@/components/Pages/HomePage'
+import FormReinscripcion from '@/components/Pages/Form/FormReinscripcion'
 import NotFound404 from '@/components/Pages/NotFound404'
 import Form from '@/components/Pages/Form/Form'
 
@@ -37,6 +38,10 @@ const App = () => {
           <Route
             path='/'
             element={<HomePage />}
+          />
+          <Route
+            path='/reinscripcion'
+            element={<FormReinscripcion />}
           />
           <Route
             path='/form'

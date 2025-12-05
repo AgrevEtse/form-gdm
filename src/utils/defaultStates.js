@@ -76,6 +76,7 @@ export const DEFAULT_PAGO = {
   responsable: 0
 }
 
+// TODO: MAPEAR DATOS A LA RESPUESTA DE LA API
 export const DEFAULT_FORM = {
   escuela_procedencia: DEFAULT_ESCUELA_PROCEDENCIA,
   alumno: DEFAULT_ALUMNO,
