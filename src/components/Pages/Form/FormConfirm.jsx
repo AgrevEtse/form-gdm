@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-const FormMamada = forwardRef(() => {
+const FormConfirm = forwardRef(() => {
   return (
     <div className='flex items-center justify-center p-4'>
       <div className='bg-primary text-primary-content w-full max-w-md rounded-2xl p-8 text-center shadow-2xl'>
@@ -16,6 +16,6 @@ const FormMamada = forwardRef(() => {
   )
 })
 
-FormMamada.displayName = 'FormFinal'
+FormConfirm.displayName = 'FormFinal'
 
-export default FormMamada
+export default FormConfirm

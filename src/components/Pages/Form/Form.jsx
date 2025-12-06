@@ -7,7 +7,7 @@ import FormTutores from '@/components/Pages/Form/FormTutores'
 import FormHermanos from '@/components/Pages/Form/FormHermanos'
 import FormContacto from '@/components/Pages/Form/FormContacto'
 import FormPago from '@/components/Pages/Form/FormPago'
-import FormMamada from '@/components/Pages/Form/FormMamada'
+import FormConfirm from '@/components/Pages/Form/FormConfirm'
 import FormEnd from '@/components/Pages/Form/FormEnd'
 
 import postForm from '@/utils/postForm'
@@ -23,7 +23,7 @@ const Form = () => {
     FormHermanos,
     FormContacto,
     FormPago,
-    FormMamada,
+    FormConfirm,
     FormEnd
   ]
 
