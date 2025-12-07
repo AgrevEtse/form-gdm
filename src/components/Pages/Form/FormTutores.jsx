@@ -37,7 +37,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.nombre}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'nombre', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -62,7 +61,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.apellido_paterno}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'apellido_paterno', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -87,7 +85,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.apellido_materno}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'apellido_materno', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -112,7 +109,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.estado_nacimiento}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'estado_nacimiento', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -139,7 +135,6 @@ const FormTutores = forwardRef((_, ref) => {
             value={form.tutor_1.fecha_nacimiento}
             name='fecha_nacimiento'
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'fecha_nacimiento', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -158,7 +153,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.domicilio}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'domicilio', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -183,7 +177,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.colonia}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'colonia', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -208,7 +201,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.codigo_postal}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'codigo_postal', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -233,7 +225,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.telefono_movil}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'telefono_movil', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -257,7 +248,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.telefono_fijo}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'telefono_fijo', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -282,7 +272,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.correo_electronico}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'correo_electronico', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -307,7 +296,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_1.oupacion}
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'oupacion', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -334,7 +322,6 @@ const FormTutores = forwardRef((_, ref) => {
             value={form.tutor_1.grado_max_estudios}
             name='grado_max_estudios'
             onChange={(e) =>
-              // updateFieldForm('tutor1', 'grado_max_estudios', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -368,8 +355,6 @@ const FormTutores = forwardRef((_, ref) => {
             value={form.tutor_1.primario}
             name='primario'
             onChange={(e) => {
-              // updateFieldForm('tutor1', 'primario', e.target.value === 'true')
-              // updateFieldForm('tutor2', 'primario', e.target.value !== 'true')
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_1',
@@ -408,7 +393,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.nombre}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'nombre', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -433,7 +417,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.apellido_paterno}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'apellido_paterno', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -458,7 +441,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.apellido_materno}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'apellido_materno', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -483,7 +465,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.estado_nacimiento}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'estado_nacimiento', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -510,7 +491,6 @@ const FormTutores = forwardRef((_, ref) => {
             value={form.tutor_2.fecha_nacimiento}
             name='fecha_nacimiento'
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'fecha_nacimiento', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -529,7 +509,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.domicilio}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'domicilio', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -554,7 +533,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.colonia}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'colonia', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -579,7 +557,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.codigo_postal}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'codigo_postal', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -604,7 +581,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.telefono_movil}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'telefono_movil', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -628,7 +604,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.telefono_fijo}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'telefono_fijo', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -653,7 +628,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.correo_electronico}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'correo_electronico', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -678,7 +652,6 @@ const FormTutores = forwardRef((_, ref) => {
           <input
             value={form.tutor_2.oupacion}
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'oupacion', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -705,7 +678,6 @@ const FormTutores = forwardRef((_, ref) => {
             value={form.tutor_2.grado_max_estudios}
             name='grado_max_estudios'
             onChange={(e) =>
-              // updateFieldForm('tutor2', 'grado_max_estudios', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',
@@ -739,8 +711,6 @@ const FormTutores = forwardRef((_, ref) => {
             value={form.tutor_2.primario}
             name='primario'
             onChange={(e) => {
-              // updateFieldForm('tutor2', 'primario', e.target.value === 'true')
-              // updateFieldForm('tutor1', 'primario', e.target.value !== 'true')
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'tutor_2',

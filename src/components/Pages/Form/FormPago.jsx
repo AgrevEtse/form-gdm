@@ -33,7 +33,6 @@ const FormPago = forwardRef((_, ref) => {
             value={form.persona_pago.nombre}
             name='nombre'
             onChange={(e) =>
-              // updateFieldForm('pago', 'nombre', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'persona_pago',
@@ -55,7 +54,6 @@ const FormPago = forwardRef((_, ref) => {
             value={form.persona_pago.responsable}
             name='responsable'
             onChange={(e) =>
-              // updateFieldForm('pago', 'responsable', Number(e.target.value))
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'persona_pago',
@@ -89,7 +87,6 @@ const FormPago = forwardRef((_, ref) => {
             value={form.persona_pago.correo}
             name='correo'
             onChange={(e) =>
-              // updateFieldForm('pago', 'correo', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'persona_pago',
@@ -111,7 +108,6 @@ const FormPago = forwardRef((_, ref) => {
             value={form.persona_pago.telefono}
             name='telefono'
             onChange={(e) =>
-              // updateFieldForm('pago', 'telefono', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'persona_pago',
@@ -134,7 +130,6 @@ const FormPago = forwardRef((_, ref) => {
             value={form.persona_pago.factura}
             name='factura'
             onChange={(e) =>
-              // updateFieldForm('pago', 'factura', e.target.value === 'true')
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'persona_pago',

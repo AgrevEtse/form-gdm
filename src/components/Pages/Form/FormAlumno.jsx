@@ -10,7 +10,6 @@ import {
   getFirstGradoByEscolaridad,
   getGradosByEscolaridad,
   getIdEscolaridad
-  // getUUIDByEscolaridad
 } from '@/utils/escolaridadGradosHelpers'
 import { AlumnoSchema, CURPSchema } from '@/schemas/AlumnoSchema'
 import { EscuelaProcedenciaSchema } from '@/schemas/EscuelaProcedenciaSchema'
@@ -60,7 +59,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.escuela.cct}
             onChange={(e) =>
-              // updateFieldForm('escuela_procedencia', 'cct', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'escuela',
@@ -85,7 +83,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.escuela.nombre}
             onChange={(e) =>
-              // updateFieldForm('escuela', 'nombre', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'escuela',
@@ -108,11 +105,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.escuela.matricula}
             onChange={(e) =>
-              // updateFieldForm(
-              //   'escuela',
-              //   'matricula',
-              //   e.target.value
-              // )
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'escuela',
@@ -154,7 +146,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.alumno.nombre}
             onChange={(e) =>
-              // updateFieldForm('alumno', 'nombre', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -179,7 +170,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.alumno.apellido_paterno}
             onChange={(e) =>
-              // updateFieldForm('alumno', 'apellido_paterno', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -204,7 +194,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.alumno.apellido_materno}
             onChange={(e) =>
-              // updateFieldForm('alumno', 'apellido_materno', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -231,7 +220,6 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             name='genero'
             onChange={(e) =>
-              // updateFieldForm('alumno', 'genero', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -260,7 +248,6 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             name='tipo_sanguineo'
             onChange={(e) =>
-              // updateFieldForm('alumno', 'tipo_sanguineo', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -295,7 +282,6 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             name='es_diestro'
             onChange={(e) =>
-              // updateFieldForm('alumno', 'es_diestro', e.target.value === 'true')
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -324,7 +310,6 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             name='fecha_nacimiento'
             onChange={(e) =>
-              // updateFieldForm('alumno', 'fecha_nacimiento', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -345,7 +330,6 @@ const FormAlumno = forwardRef((_, ref) => {
             required
             name='nacionalidad'
             onChange={(e) =>
-              // updateFieldForm('alumno', 'nacionalidad', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -380,33 +364,6 @@ const FormAlumno = forwardRef((_, ref) => {
             name='escolaridad'
             value={form.inscripcion.escolaridad}
             onChange={(e) => {
-              // Actualizar escolaridad
-              // updateFieldForm('inscripcion', 'escolaridad', e.target.value)
-
-              // Actualizar grado por el primero de la escolaridad
-              // updateFieldForm(
-              //   'inscripcion',
-              //   'grado',
-              //   Number(getFirstGradoByEscolaridad(e.target.value))
-              // )
-
-              // Actualizar id_escolaridad
-              // updateFieldForm(
-              //   'inscripcion',
-              //   'id_escolaridad',
-              //   getIdEscolaridad(
-              //     e.target.value,
-              //     getFirstGradoByEscolaridad(e.target.value)
-              //   )
-              // )
-
-              // TODO: VER SI ES NECESARIO HACER ESTO
-              // updateFieldForm(
-              //   'inscripcion',
-              //   'id_ciclo',
-              //   getUUIDByEscolaridad(e.target.value)
-              // )
-
               // Actualizar escolaridad
               dispatch({
                 type: 'UPDATE_FIELD',
@@ -459,16 +416,6 @@ const FormAlumno = forwardRef((_, ref) => {
             value={form.inscripcion.grado}
             onChange={(e) => {
               // Actualizar grado
-              // updateFieldForm('inscripcion', 'grado', Number(e.target.value))
-
-              // Actualizar id_escolaridad
-              // updateFieldForm(
-              //   'inscripcion',
-              //   'id_escolaridad',
-              //   getIdEscolaridad(form.inscripcion.escolaridad, e.target.value)
-              // )
-
-              // Actualizar grado
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'inscripcion',
@@ -515,7 +462,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.alumno.estatura_cm}
             onChange={(e) =>
-              // updateFieldForm('alumno', 'estatura_cm', Number(e.target.value))
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -540,7 +486,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.alumno.peso_kg}
             onChange={(e) =>
-              // updateFieldForm('alumno', 'peso_kg', Number(e.target.value))
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -565,7 +510,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.domicilio.domicilio}
             onChange={(e) =>
-              // updateFieldForm('domicilio', 'domicilio', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'domicilio',
@@ -590,7 +534,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.domicilio.colonia}
             onChange={(e) =>
-              // updateFieldForm('domicilio', 'colonia', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'domicilio',
@@ -615,7 +558,6 @@ const FormAlumno = forwardRef((_, ref) => {
           <input
             value={form.domicilio.codigo_postal}
             onChange={(e) =>
-              // updateFieldForm('domicilio', 'codigo_postal', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'domicilio',
@@ -643,16 +585,6 @@ const FormAlumno = forwardRef((_, ref) => {
             name='estado'
             value={form.domicilio.estado}
             onChange={(e) => {
-              // Actualizar estado
-              // updateFieldForm('domicilio', 'estado', e.target.value)
-
-              // Actualizar ciudad con el primer municipio
-              // updateFieldForm(
-              //   'domicilio',
-              //   'ciudad',
-              //   getMunicipiosByEstado(e.target.value)[0]
-              // )
-
               // Actualizar estado
               dispatch({
                 type: 'UPDATE_FIELD',
@@ -697,7 +629,6 @@ const FormAlumno = forwardRef((_, ref) => {
             name='ciudad'
             value={form.domicilio.ciudad}
             onChange={(e) => {
-              // updateFieldForm('domicilio', 'ciudad', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'domicilio',
@@ -732,7 +663,6 @@ const FormAlumno = forwardRef((_, ref) => {
             value={form.alumno.nota_enfermedad}
             name='nota_enfermedad'
             onChange={(e) =>
-              // updateFieldForm('alumno', 'nota_enfermedad', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',
@@ -753,7 +683,6 @@ const FormAlumno = forwardRef((_, ref) => {
             value={form.alumno.nota_terapia}
             name='nota_terapia'
             onChange={(e) =>
-              // updateFieldForm('alumno', 'nota_terapia', e.target.value)
               dispatch({
                 type: 'UPDATE_FIELD',
                 section: 'alumno',

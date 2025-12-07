@@ -7,18 +7,7 @@ import { useReducer } from 'react'
 
 const GlobalStateProvider = ({ children }) => {
   const [curp, setCurp] = useState(DEFAULT_CURP)
-  // const [form, setForm] = useState(DEFAULT_FORM)
   const [currentStep, setCurrentStep] = useState(0)
-
-  // const updateFieldForm = (section, field, value) => {
-  //   setForm((prev) => ({
-  //     ...prev,
-  //     [section]: {
-  //       ...prev[section],
-  //       [field]: value
-  //     }
-  //   }))
-  // }
 
   const formReducer = (state, action) => {
     switch (action.type) {

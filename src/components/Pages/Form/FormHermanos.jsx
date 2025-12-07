@@ -41,7 +41,6 @@ const FormHermanos = forwardRef((_, ref) => {
                 <input
                   value={form.hermanos[i].nombre}
                   onChange={(e) =>
-                    // updateFieldForm('hermano1', 'nombre', e.target.value)
                     dispatch({
                       type: 'UPDATE_ARRAY_ITEM',
                       arrayName: 'hermanos',
@@ -65,7 +64,6 @@ const FormHermanos = forwardRef((_, ref) => {
                   value={form.hermanos[i].nivel}
                   name='nivel'
                   onChange={(e) =>
-                    // updateFieldForm('hermano1', 'nivel', e.target.value)
                     dispatch({
                       type: 'UPDATE_ARRAY_ITEM',
                       arrayName: 'hermanos',
@@ -91,123 +89,6 @@ const FormHermanos = forwardRef((_, ref) => {
           </>
         )
       })}
-
-      {/* <h3 className='mb-4 text-center font-bold'>Hermano 1</h3>
-      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-60 lg:grid-cols-2'>
-        <label className='floating-label m-auto w-sm md:w-md'>
-          <span>Nombre Completo</span>
-          <input
-            // value={form.hermano1.nombre}
-            // onChange={(e) =>
-            //   updateFieldForm('hermano1', 'nombre', e.target.value)
-            // }
-            minLength={0}
-            maxLength={70}
-            type='text'
-            placeholder='Nombre Completo'
-            className='input input-md border-white'
-          />
-        </label>
-
-        <label className='select select-md m-auto border-white'>
-          <span className='label'>Escolaridad</span>
-          <select
-            // value={form.hermano1.nivel}
-            // onChange={(e) =>
-            //   updateFieldForm('hermano1', 'nivel', e.target.value)
-            // }
-          >
-            <option
-              disabled
-              value='0'
-            >
-              Escoge la escolaridad...
-            </option>
-            <option value='Preescolar'>Preescolar</option>
-            <option value='Primaria'>Primaria</option>
-            <option value='Secundaria'>Secundaria</option>
-            <option value='Bachillerato'>Bachillerato</option>
-          </select>
-        </label>
-      </div>
-
-      <h3 className='mb-4 text-center font-bold'>Hermano 2</h3>
-      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-60 lg:grid-cols-2'>
-        <label className='floating-label m-auto w-sm md:w-md'>
-          <span>Nombre Completo</span>
-          <input
-            // value={form.hermano2.nombre}
-            // onChange={(e) =>
-            //   updateFieldForm('hermano2', 'nombre', e.target.value)
-            // }
-            minLength={0}
-            maxLength={70}
-            type='text'
-            placeholder='Nombre Completo'
-            className='input input-md border-white'
-          />
-        </label>
-
-        <label className='select select-md m-auto border-white'>
-          <span className='label'>Escolaridad</span>
-          <select
-            // value={form.hermano2.nivel}
-            // onChange={(e) =>
-            //   updateFieldForm('hermano2', 'nivel', e.target.value)
-            // }
-          >
-            <option
-              disabled
-              value='0'
-            >
-              Escoge la escolaridad...
-            </option>
-            <option value='Preescolar'>Preescolar</option>
-            <option value='Primaria'>Primaria</option>
-            <option value='Secundaria'>Secundaria</option>
-            <option value='Bachillerato'>Bachillerato</option>
-          </select>
-        </label>
-      </div>
-
-      <h3 className='mb-4 text-center font-bold'>Hermano 3</h3>
-      <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-60 lg:grid-cols-2'>
-        <label className='floating-label m-auto w-sm md:w-md'>
-          <span>Nombre Completo</span>
-          <input
-            // value={form.hermano3.nombre}
-            // onChange={(e) =>
-            //   updateFieldForm('hermano3', 'nombre', e.target.value)
-            // }
-            minLength={0}
-            maxLength={70}
-            type='text'
-            placeholder='Nombre Completo'
-            className='input input-md border-white'
-          />
-        </label>
-
-        <label className='select select-md m-auto border-white'>
-          <span className='label'>Escolaridad</span>
-          <select
-            // value={form.hermano3.nivel}
-            // onChange={(e) =>
-            //   updateFieldForm('hermano3', 'nivel', e.target.value)
-            // }
-          >
-            <option
-              disabled
-              value='0'
-            >
-              Escoge la escolaridad...
-            </option>
-            <option value='Preescolar'>Preescolar</option>
-            <option value='Primaria'>Primaria</option>
-            <option value='Secundaria'>Secundaria</option>
-            <option value='Bachillerato'>Bachillerato</option>
-          </select>
-        </label>
-      </div> */}
     </div>
   )
 })
