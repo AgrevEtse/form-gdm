@@ -29,6 +29,7 @@ const Form = () => {
 
   const CurrentComponent = components[currentStep]
 
+  // Hacer Scroll hacia arriba
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -36,16 +37,17 @@ const Form = () => {
     })
   }
 
+  // Obtener siguiente paso del formulario
   const nextStep = async () => {
     setIsLoading(true)
     try {
-      await stepRef.current?.validate?.()
+      await stepRef.current?.validate?.() // Primero valida los datos con el schema
 
-      scrollToTop()
-      setCurrentStep((prev) => prev + 1)
+      scrollToTop() // Scroll hacia arriba
+      setCurrentStep((prev) => prev + 1) // Avanza
       setIsLoading(false)
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message) // El stepRef.current?.validate?.() lanza un error si los datos son incorrectos
       setIsLoading(false)
       return
     }
@@ -56,6 +58,7 @@ const Form = () => {
     scrollToTop()
   }
 
+  // TODO: Actualizar esta función para que use el nuevo endpoint
   const enviarForm = async () => {
     setIsLoading(true)
     try {
@@ -76,7 +79,7 @@ const Form = () => {
 
   return (
     <div className='container my-16 h-full'>
-      {currentStep !== 6 && (
+      {currentStep !== 6 && ( // Si no es el último paso
         <h3 className='mb-6 text-center text-4xl font-bold'>
           Registro del Alumno
         </h3>
@@ -86,20 +89,21 @@ const Form = () => {
 
       {currentStep !== 6 && (
         <div className='mt-4 flex justify-between'>
-          {currentStep > 0 && (
+          {currentStep > 0 && ( // Mostar botón de Anterior a partir de la seunda página del form
             <button
               onClick={prevStep}
               disabled={isLoading}
-              className='btn btn-error mr-auto ml-4 rounded px-4 py-2'
+              className='btn btn-error mr-auto ml-4 rounded px-4 py-2 font-bold'
             >
               Anterior
             </button>
           )}
-          {currentStep < components.length - 2 ? (
+
+          {currentStep < components.length - 2 ? ( // Mostrar botón Siguiente hasta que sea la penúltima página
             <button
               onClick={nextStep}
               disabled={isLoading}
-              className='btn btn-info mr-4 ml-auto rounded px-4 py-2'
+              className='btn btn-info mr-4 ml-auto rounded px-4 py-2 font-bold'
             >
               {isLoading && (
                 <span className='loading loading-spinner loading-sm'></span>
@@ -107,12 +111,16 @@ const Form = () => {
               {!isLoading && 'Siguiente'}
             </button>
           ) : (
+            // Mostrar botón Enviar si es la última página
             <button
               onClick={enviarForm}
               disabled={isLoading}
-              className='btn btn-success mr-4 ml-auto rounded px-4 py-2'
+              className='btn btn-success mr-4 ml-auto rounded px-4 py-2 font-bold'
             >
-              Enviar
+              {isLoading && (
+                <span className='loading loading-spinner loading-sm'></span>
+              )}
+              {!isLoading && 'Enviar'}
             </button>
           )}
         </div>

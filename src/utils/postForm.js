@@ -3,6 +3,7 @@ import { DEFAULT_HERMANO, DEFAULT_CONTACTO } from '@/utils/defaultStates'
 
 const API_URL = import.meta.env.VITE_API_URL
 
+// TODO: Actualizar esta función para que use el nuevo endpoint
 const postForm = async ({ curp, form }) => {
   await fetch(`${API_URL}/alumno`, {
     method: 'POST',

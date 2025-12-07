@@ -5,21 +5,21 @@ import useGlobalState from '@/context/useGlobalState'
 import { HermanoSchema } from '@/schemas/HermanoSchema'
 
 const FormHermanos = forwardRef((_, ref) => {
-  const { form, updateFieldForm } = useGlobalState()
+  const { form, dispatch } = useGlobalState()
 
   useImperativeHandle(ref, () => ({
     validate: () => {
-      const hermano1Result = HermanoSchema.safeParse(form.hermano1)
+      const hermano1Result = HermanoSchema.safeParse(form.hermanos[0])
       if (!hermano1Result.success)
-        throw new Error(hermano1Result.error.issues[0].message)
+        throw new Error(`Hermano 1: ${hermano1Result.error.issues[0].message}`)
 
-      const hermano2Result = HermanoSchema.safeParse(form.hermano2)
+      const hermano2Result = HermanoSchema.safeParse(form.hermanos[1])
       if (!hermano2Result.success)
-        throw new Error(hermano2Result.error.issues[0].message)
+        throw new Error(`Hermano 2: ${hermano2Result.error.issues[0].message}`)
 
-      const hermano3Result = HermanoSchema.safeParse(form.hermano3)
+      const hermano3Result = HermanoSchema.safeParse(form.hermanos[2])
       if (!hermano3Result.success)
-        throw new Error(hermano3Result.error.issues[0].message)
+        throw new Error(`Hermano 3: ${hermano3Result.error.issues[0].message}`)
 
       toast.success('Hermanos Guardados')
     }
@@ -31,15 +31,76 @@ const FormHermanos = forwardRef((_, ref) => {
         Hermanos Inscritos en el Colegio
       </h2>
 
-      <h3 className='mb-4 text-center font-bold'>Hermano 1</h3>
+      {form.hermanos.map((_, i) => {
+        return (
+          <>
+            <h3 className='mb-4 text-center font-bold'>Hermano {i + 1}</h3>
+            <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-60 lg:grid-cols-2'>
+              <label className='floating-label m-auto w-sm md:w-md'>
+                <span>Nombre Completo</span>
+                <input
+                  value={form.hermanos[i].nombre}
+                  onChange={(e) =>
+                    // updateFieldForm('hermano1', 'nombre', e.target.value)
+                    dispatch({
+                      type: 'UPDATE_ARRAY_ITEM',
+                      arrayName: 'hermanos',
+                      index: i,
+                      field: e.target.name,
+                      value: e.target.value
+                    })
+                  }
+                  minLength={0}
+                  maxLength={70}
+                  name='nombre'
+                  type='text'
+                  placeholder='Nombre Completo'
+                  className='input input-md border-white'
+                />
+              </label>
+
+              <label className='select select-md m-auto border-white'>
+                <span className='label'>Escolaridad</span>
+                <select
+                  value={form.hermanos[i].nivel}
+                  name='nivel'
+                  onChange={(e) =>
+                    // updateFieldForm('hermano1', 'nivel', e.target.value)
+                    dispatch({
+                      type: 'UPDATE_ARRAY_ITEM',
+                      arrayName: 'hermanos',
+                      index: i,
+                      field: e.target.name,
+                      value: e.target.value
+                    })
+                  }
+                >
+                  <option
+                    disabled
+                    value='0'
+                  >
+                    Escoge la escolaridad...
+                  </option>
+                  <option value='Preescolar'>Preescolar</option>
+                  <option value='Primaria'>Primaria</option>
+                  <option value='Secundaria'>Secundaria</option>
+                  <option value='Bachillerato'>Bachillerato</option>
+                </select>
+              </label>
+            </div>
+          </>
+        )
+      })}
+
+      {/* <h3 className='mb-4 text-center font-bold'>Hermano 1</h3>
       <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-60 lg:grid-cols-2'>
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>Nombre Completo</span>
           <input
-            value={form.hermano1.nombre}
-            onChange={(e) =>
-              updateFieldForm('hermano1', 'nombre', e.target.value)
-            }
+            // value={form.hermano1.nombre}
+            // onChange={(e) =>
+            //   updateFieldForm('hermano1', 'nombre', e.target.value)
+            // }
             minLength={0}
             maxLength={70}
             type='text'
@@ -51,10 +112,10 @@ const FormHermanos = forwardRef((_, ref) => {
         <label className='select select-md m-auto border-white'>
           <span className='label'>Escolaridad</span>
           <select
-            value={form.hermano1.nivel}
-            onChange={(e) =>
-              updateFieldForm('hermano1', 'nivel', e.target.value)
-            }
+            // value={form.hermano1.nivel}
+            // onChange={(e) =>
+            //   updateFieldForm('hermano1', 'nivel', e.target.value)
+            // }
           >
             <option
               disabled
@@ -75,10 +136,10 @@ const FormHermanos = forwardRef((_, ref) => {
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>Nombre Completo</span>
           <input
-            value={form.hermano2.nombre}
-            onChange={(e) =>
-              updateFieldForm('hermano2', 'nombre', e.target.value)
-            }
+            // value={form.hermano2.nombre}
+            // onChange={(e) =>
+            //   updateFieldForm('hermano2', 'nombre', e.target.value)
+            // }
             minLength={0}
             maxLength={70}
             type='text'
@@ -90,10 +151,10 @@ const FormHermanos = forwardRef((_, ref) => {
         <label className='select select-md m-auto border-white'>
           <span className='label'>Escolaridad</span>
           <select
-            value={form.hermano2.nivel}
-            onChange={(e) =>
-              updateFieldForm('hermano2', 'nivel', e.target.value)
-            }
+            // value={form.hermano2.nivel}
+            // onChange={(e) =>
+            //   updateFieldForm('hermano2', 'nivel', e.target.value)
+            // }
           >
             <option
               disabled
@@ -114,10 +175,10 @@ const FormHermanos = forwardRef((_, ref) => {
         <label className='floating-label m-auto w-sm md:w-md'>
           <span>Nombre Completo</span>
           <input
-            value={form.hermano3.nombre}
-            onChange={(e) =>
-              updateFieldForm('hermano3', 'nombre', e.target.value)
-            }
+            // value={form.hermano3.nombre}
+            // onChange={(e) =>
+            //   updateFieldForm('hermano3', 'nombre', e.target.value)
+            // }
             minLength={0}
             maxLength={70}
             type='text'
@@ -129,10 +190,10 @@ const FormHermanos = forwardRef((_, ref) => {
         <label className='select select-md m-auto border-white'>
           <span className='label'>Escolaridad</span>
           <select
-            value={form.hermano3.nivel}
-            onChange={(e) =>
-              updateFieldForm('hermano3', 'nivel', e.target.value)
-            }
+            // value={form.hermano3.nivel}
+            // onChange={(e) =>
+            //   updateFieldForm('hermano3', 'nivel', e.target.value)
+            // }
           >
             <option
               disabled
@@ -146,7 +207,7 @@ const FormHermanos = forwardRef((_, ref) => {
             <option value='Bachillerato'>Bachillerato</option>
           </select>
         </label>
-      </div>
+      </div> */}
     </div>
   )
 })
