@@ -161,7 +161,7 @@ const FormTutores = forwardRef((_, ref) => {
               })
             }
             minLength={1}
-            maxLength={60}
+            maxLength={30}
             name='domicilio'
             required
             type='text'
@@ -517,7 +517,7 @@ const FormTutores = forwardRef((_, ref) => {
               })
             }
             minLength={1}
-            maxLength={60}
+            maxLength={30}
             name='domicilio'
             required
             type='text'

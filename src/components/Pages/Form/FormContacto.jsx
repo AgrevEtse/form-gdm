@@ -51,6 +51,7 @@ const FormContacto = forwardRef((_, ref) => {
                 </span>
                 <input
                   value={form.contactos[i].nombre}
+                  maxLength={70}
                   name='nombre'
                   onChange={(e) =>
                     dispatch({

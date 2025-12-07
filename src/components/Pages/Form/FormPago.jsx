@@ -31,6 +31,7 @@ const FormPago = forwardRef((_, ref) => {
           </span>
           <input
             value={form.persona_pago.nombre}
+            maxLength={70}
             name='nombre'
             onChange={(e) =>
               dispatch({
@@ -85,6 +86,7 @@ const FormPago = forwardRef((_, ref) => {
           </span>
           <input
             value={form.persona_pago.correo}
+            maxLength={50}
             name='correo'
             onChange={(e) =>
               dispatch({

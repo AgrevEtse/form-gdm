@@ -66,7 +66,7 @@ const FormAlumno = forwardRef((_, ref) => {
                 value: e.target.value
               })
             }
-            minLength={1}
+            minLength={10}
             maxLength={10}
             name='cct'
             required
@@ -469,8 +469,8 @@ const FormAlumno = forwardRef((_, ref) => {
                 value: Number(e.target.value)
               })
             }
-            min={1}
-            max={300}
+            min={50}
+            max={250}
             name='estatura_cm'
             required
             type='number'
@@ -494,7 +494,7 @@ const FormAlumno = forwardRef((_, ref) => {
               })
             }
             min={1}
-            max={300}
+            max={200}
             name='peso_kg'
             required
             type='number'
@@ -542,7 +542,7 @@ const FormAlumno = forwardRef((_, ref) => {
               })
             }
             minLength={1}
-            maxLength={60}
+            maxLength={30}
             name='colonia'
             required
             type='text'

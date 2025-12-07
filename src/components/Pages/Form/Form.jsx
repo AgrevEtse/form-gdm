@@ -49,7 +49,6 @@ const Form = () => {
     } catch (error) {
       toast.error(error.message) // El stepRef.current?.validate?.() lanza un error si los datos son incorrectos
       setIsLoading(false)
-      return
     }
   }
 
@@ -58,7 +57,6 @@ const Form = () => {
     scrollToTop()
   }
 
-  // TODO: Actualizar esta función para que use el nuevo endpoint
   const enviarForm = async () => {
     setIsLoading(true)
     try {
@@ -68,12 +66,11 @@ const Form = () => {
       scrollToTop()
       setCurrentStep((prev) => prev + 1)
       setIsLoading(false)
-
-      toast.success('Formulario enviado correctamente')
+      toast.success('Datos guardados exitosamente')
     } catch (error) {
       toast.error(error.message)
+      setCurrentStep(0)
       setIsLoading(false)
-      return
     }
   }
 
