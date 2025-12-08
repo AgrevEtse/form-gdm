@@ -1,8 +1,6 @@
 import gradosJSON from '@/assets/json/escolaridad-grados.json'
 import idEscolaridadJSON from '@/assets/json/id-escolaridad.json'
-
-const UUID_ANNUAL = import.meta.env.VITE_UUID_ANNUAL
-const UUID_BIANNUAL = import.meta.env.VITE_UUID_BIANNUAL
+import escolaridadIdJSON from '@/assets/json/escolaridad-id.json'
 
 export const getGradosByEscolaridad = (escolaridad) => {
   if (!gradosJSON[escolaridad]) {
@@ -32,6 +30,6 @@ export const getIdEscolaridad = (escolaridad, grado) => {
   return idEscolaridadJSON[escolaridad + grado]
 }
 
-export const getUUIDByEscolaridad = (escolaridad) => {
-  return escolaridad === 'Bachillerato' ? UUID_BIANNUAL : UUID_ANNUAL
+export const getDataByIdEscolaridad = (idEscolaridad) => {
+  return escolaridadIdJSON[idEscolaridad]
 }

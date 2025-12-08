@@ -1,4 +1,4 @@
-// This function creates a date string in the format 'YYYY-MM-DD' for the current date
+// Esta función crea la fecha actual en string con formato 'YYYY-MM-DD'
 export const createCurrentDate = () => {
   const date = new Date()
 
@@ -8,7 +8,7 @@ export const createCurrentDate = () => {
   return `${year}-${month}-${day}`
 }
 
-// This function takes a date string in the format 'YYYY-MM-DDTHH:mm:ss.sssZ' and returns it in the format 'YYYY-MM-DD'
+// Esta función toma la fecha en formato 'YYYY-MM-DDTHH:mm:ss.sssZ' y la retorna en formato 'YYYY-MM-DD'
 export const formatDate = (date) => {
   return date.split('T')[0]
 }

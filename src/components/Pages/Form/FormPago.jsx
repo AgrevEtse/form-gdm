@@ -6,11 +6,11 @@ import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
 import { PagoSchema } from '@/schemas/PagoSchema'
 
 const FormPago = forwardRef((_, ref) => {
-  const { form, updateFieldForm } = useGlobalState()
+  const { form, dispatch } = useGlobalState()
 
   useImperativeHandle(ref, () => ({
     validate: () => {
-      const pagoResult = PagoSchema.safeParse(form.pago)
+      const pagoResult = PagoSchema.safeParse(form.persona_pago)
       if (!pagoResult.success)
         throw new Error(pagoResult.error.issues[0].message)
 
@@ -30,8 +30,17 @@ const FormPago = forwardRef((_, ref) => {
             Nombre Completo <span className='text-rose-600'>*</span>
           </span>
           <input
-            value={form.pago.nombre}
-            onChange={(e) => updateFieldForm('pago', 'nombre', e.target.value)}
+            value={form.persona_pago.nombre}
+            maxLength={70}
+            name='nombre'
+            onChange={(e) =>
+              dispatch({
+                type: 'UPDATE_FIELD',
+                section: 'persona_pago',
+                field: e.target.name,
+                value: e.target.value
+              })
+            }
             type='text'
             placeholder='Nombre Completo *'
             className='input input-md border-white'
@@ -43,9 +52,15 @@ const FormPago = forwardRef((_, ref) => {
             Parentesco <span className='text-rose-600'>*</span>
           </span>
           <select
-            value={form.pago.responsable}
+            value={form.persona_pago.responsable}
+            name='responsable'
             onChange={(e) =>
-              updateFieldForm('pago', 'responsable', Number(e.target.value))
+              dispatch({
+                type: 'UPDATE_FIELD',
+                section: 'persona_pago',
+                field: e.target.name,
+                value: Number(e.target.value)
+              })
             }
           >
             <option
@@ -70,8 +85,17 @@ const FormPago = forwardRef((_, ref) => {
             Correo Electrónico <span className='text-rose-600'>*</span>
           </span>
           <input
-            value={form.pago.correo}
-            onChange={(e) => updateFieldForm('pago', 'correo', e.target.value)}
+            value={form.persona_pago.correo}
+            maxLength={50}
+            name='correo'
+            onChange={(e) =>
+              dispatch({
+                type: 'UPDATE_FIELD',
+                section: 'persona_pago',
+                field: e.target.name,
+                value: e.target.value
+              })
+            }
             type='email'
             placeholder='Correo Electrónico *'
             className='input input-md border-white'
@@ -83,9 +107,15 @@ const FormPago = forwardRef((_, ref) => {
             Teléfono (móvil) <span className='text-rose-600'>*</span>
           </span>
           <input
-            value={form.pago.telefono}
+            value={form.persona_pago.telefono}
+            name='telefono'
             onChange={(e) =>
-              updateFieldForm('pago', 'telefono', e.target.value)
+              dispatch({
+                type: 'UPDATE_FIELD',
+                section: 'persona_pago',
+                field: e.target.name,
+                value: e.target.value
+              })
             }
             type='tel'
             placeholder='Télefono (móvil) *'
@@ -99,9 +129,15 @@ const FormPago = forwardRef((_, ref) => {
             ¿Requiere Factura? <span className='text-rose-600'>*</span>
           </span>
           <select
-            value={form.pago.factura}
+            value={form.persona_pago.factura}
+            name='factura'
             onChange={(e) =>
-              updateFieldForm('pago', 'factura', e.target.value === 'true')
+              dispatch({
+                type: 'UPDATE_FIELD',
+                section: 'persona_pago',
+                field: e.target.name,
+                value: e.target.value === 'true'
+              })
             }
           >
             <option

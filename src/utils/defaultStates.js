@@ -37,7 +37,8 @@ export const DEFAULT_INSCRIPCION = {
   escolaridad: '0',
   grado: 0,
   fecha_inscripcion: createCurrentDate(),
-  esta_activo: false
+  esta_activo: false,
+  grupo: null
 }
 
 export const DEFAULT_TUTOR = {
@@ -65,7 +66,8 @@ export const DEFAULT_HERMANO = {
 export const DEFAULT_CONTACTO = {
   nombre: '',
   telefono: '',
-  parentesco: 0
+  parentesco: 0,
+  otro: ''
 }
 
 export const DEFAULT_PAGO = {
@@ -76,19 +78,14 @@ export const DEFAULT_PAGO = {
   responsable: 0
 }
 
-// TODO: MAPEAR DATOS A LA RESPUESTA DE LA API
 export const DEFAULT_FORM = {
-  escuela_procedencia: DEFAULT_ESCUELA_PROCEDENCIA,
+  escuela: DEFAULT_ESCUELA_PROCEDENCIA,
   alumno: DEFAULT_ALUMNO,
   domicilio: DEFAULT_DOMICILIO,
   inscripcion: DEFAULT_INSCRIPCION,
-  tutor1: DEFAULT_TUTOR,
-  tutor2: DEFAULT_TUTOR,
-  hermano1: DEFAULT_HERMANO,
-  hermano2: DEFAULT_HERMANO,
-  hermano3: DEFAULT_HERMANO,
-  contacto1: DEFAULT_CONTACTO,
-  contacto2: DEFAULT_CONTACTO,
-  contacto3: DEFAULT_CONTACTO,
-  pago: DEFAULT_PAGO
+  tutor_1: DEFAULT_TUTOR,
+  tutor_2: DEFAULT_TUTOR,
+  hermanos: [DEFAULT_HERMANO, DEFAULT_HERMANO, DEFAULT_HERMANO],
+  contactos: [DEFAULT_CONTACTO, DEFAULT_CONTACTO, DEFAULT_CONTACTO],
+  persona_pago: DEFAULT_PAGO
 }
