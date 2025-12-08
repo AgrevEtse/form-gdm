@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom'
 import useGlobalState from '@/context/useGlobalState'
 
 const FormEnd = forwardRef(() => {
-  const { resetStates, setCurrentStep } = useGlobalState()
+  const { resetStates } = useGlobalState()
 
   const handleClick = () => {
     resetStates()
-    setCurrentStep(0)
   }
 
   return (
@@ -23,20 +22,28 @@ const FormEnd = forwardRef(() => {
           La inscripción termina con el pago de la misma.
         </p>
         <div className='flex flex-row justify-center gap-4'>
+          <Link to='/form'>
+            <button
+              className='btn btn-warning rounded-xl py-2'
+              onClick={handleClick}
+            >
+              Nueva Inscripcion
+            </button>
+          </Link>
+          <Link to='/reinscripcion'>
+            <button
+              className='btn btn-success rounded-xl py-2'
+              onClick={handleClick}
+            >
+              Reinscripcion
+            </button>
+          </Link>
           <Link to='https://gomezdemendiola.edu.mx/'>
             <button
               className='btn btn-info rounded-xl py-2'
               onClick={handleClick}
             >
               Salir
-            </button>
-          </Link>
-          <Link to='/form'>
-            <button
-              className='btn btn-success rounded-xl py-2'
-              onClick={handleClick}
-            >
-              Registar otro Alumno
             </button>
           </Link>
         </div>

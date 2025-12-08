@@ -2,12 +2,19 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
 import HomePage from '@/components/Pages/HomePage'
-import FormReinscripcion from '@/components/Pages/Form/FormReinscripcion'
+import Reinscripcion from '@/components/Pages/Reinscripcion'
 import NotFound404 from '@/components/Pages/NotFound404'
 import Form from '@/components/Pages/Form/Form'
+import useGlobalState from '@/context/useGlobalState'
 
 const App = () => {
   const navigate = useNavigate()
+
+  const { resetStates } = useGlobalState()
+
+  const handleClick = () => {
+    resetStates()
+  }
 
   return (
     <>
@@ -15,22 +22,30 @@ const App = () => {
         <div className='navbar bg-primary text-primary-content w-full rounded-2xl shadow-sm'>
           <div className='flex flex-1 items-center'>
             <Link
-              className='btn btn-ghost text-xl'
+              className='btn btn-secondary text-xl'
               to='/'
             >
               GDM
             </Link>
           </div>
+
           <div>
-            <button
-              onClick={() => {
-                navigate('/')
-                setTimeout(() => navigate('/form'), 0)
-              }}
-              className='btn btn-warning mx-1'
-            >
-              Formulario de Registro
-            </button>
+            <Link to='/form'>
+              <button
+                onClick={handleClick}
+                className='btn btn-warning mx-1'
+              >
+                Nueva Inscripción
+              </button>
+            </Link>
+            <Link to='/reinscripcion'>
+              <button
+                onClick={handleClick}
+                className='btn btn-success mx-1'
+              >
+                Reinscripción
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -41,7 +56,7 @@ const App = () => {
           />
           <Route
             path='/reinscripcion'
-            element={<FormReinscripcion />}
+            element={<Reinscripcion />}
           />
           <Route
             path='/form'

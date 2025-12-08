@@ -10,10 +10,11 @@ import FormPago from '@/components/Pages/Form/FormPago'
 import FormConfirm from '@/components/Pages/Form/FormConfirm'
 import FormEnd from '@/components/Pages/Form/FormEnd'
 
-import postForm from '@/utils/postForm'
+import { postForm, postReiscripcion } from '@/utils/postForm'
 
 const Form = () => {
-  const { curp, form, currentStep, setCurrentStep } = useGlobalState()
+  const { curp, form, currentStep, setCurrentStep, isReinscripcion } =
+    useGlobalState()
   const stepRef = useRef(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -61,7 +62,12 @@ const Form = () => {
     setIsLoading(true)
     try {
       await stepRef.current?.validate?.()
-      await postForm({ curp, form })
+
+      if (isReinscripcion) {
+        await postReiscripcion({ curp, form })
+      } else {
+        await postForm({ curp, form })
+      }
 
       scrollToTop()
       setCurrentStep((prev) => prev + 1)

@@ -1,5 +1,6 @@
 import gradosJSON from '@/assets/json/escolaridad-grados.json'
 import idEscolaridadJSON from '@/assets/json/id-escolaridad.json'
+import escolaridadIdJSON from '@/assets/json/escolaridad-id.json'
 
 export const getGradosByEscolaridad = (escolaridad) => {
   if (!gradosJSON[escolaridad]) {
@@ -27,4 +28,8 @@ export const getIdEscolaridad = (escolaridad, grado) => {
   }
 
   return idEscolaridadJSON[escolaridad + grado]
+}
+
+export const getDataByIdEscolaridad = (idEscolaridad) => {
+  return escolaridadIdJSON[idEscolaridad]
 }
