@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
 import HomePage from '@/components/Pages/HomePage'
@@ -8,8 +8,6 @@ import Form from '@/components/Pages/Form/Form'
 import useGlobalState from '@/context/useGlobalState'
 
 const App = () => {
-  const navigate = useNavigate()
-
   const { resetStates } = useGlobalState()
 
   const handleClick = () => {
@@ -20,7 +18,7 @@ const App = () => {
     <>
       <div className='container mx-auto'>
         <div className='navbar bg-primary text-primary-content w-full rounded-2xl shadow-sm'>
-          <div className='flex flex-1 items-center'>
+          <div className='navbar-start'>
             <Link
               className='btn btn-secondary text-xl'
               to='/'
@@ -29,7 +27,7 @@ const App = () => {
             </Link>
           </div>
 
-          <div>
+          <div className='navbar-end'>
             <Link to='/form'>
               <button
                 onClick={handleClick}
