@@ -23,6 +23,8 @@ export const postForm = async ({ curp, form }) => {
 
     escuela: {
       ...form.escuela,
+      matricula:
+        form.escuela.matricula === '' ? undefined : form.escuela.matricula,
       curp_alumno: curp
     },
 
@@ -84,9 +86,10 @@ export const postForm = async ({ curp, form }) => {
     body: JSON.stringify(transaccionBody)
   })
 
-  if (res.status !== 201) {
-    throw new Error('Hubo un problema al guardar los datos. Volver a intentar')
-  }
+  const data = await res.json()
+
+  if (data.statusCode === 400)
+    throw new Error(data.errors[0])
 }
 
 export const postReiscripcion = async ({ curp, form }) => {
@@ -108,6 +111,8 @@ export const postReiscripcion = async ({ curp, form }) => {
 
     escuela: {
       ...form.escuela,
+      matricula:
+        form.escuela.matricula === '' ? undefined : form.escuela.matricula,
       curp_alumno: curp,
       id: undefined
     },
@@ -175,7 +180,8 @@ export const postReiscripcion = async ({ curp, form }) => {
     body: JSON.stringify(reinscripcionBody)
   })
 
-  if (res.status !== 201) {
-    throw new Error('Hubo un problema al guardar los datos. Volver a intentar')
-  }
+  const data = await res.json()
+
+  if (data.statusCode === 400)
+    throw new Error(data.errors[0])
 }

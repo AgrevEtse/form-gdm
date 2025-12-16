@@ -4,7 +4,7 @@ export const TutorSchema = z.object({
   nombre: z
     .string()
     .min(1, 'El nombre es requerido')
-    .max(40, 'El nombre no puede tenier más de 40 caracteres'),
+    .max(40, 'El nombre no puede tener más de 40 caracteres'),
   apellido_paterno: z
     .string()
     .min(1, 'El apellido paterno es requerido')
