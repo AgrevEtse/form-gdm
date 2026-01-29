@@ -88,8 +88,7 @@ export const postForm = async ({ curp, form }) => {
 
   const data = await res.json()
 
-  if (data.statusCode === 400)
-    throw new Error(data.errors[0])
+  if (data.statusCode === 400) throw new Error(data.errors[0])
 }
 
 export const postReiscripcion = async ({ curp, form }) => {
@@ -182,6 +181,5 @@ export const postReiscripcion = async ({ curp, form }) => {
 
   const data = await res.json()
 
-  if (data.statusCode === 400)
-    throw new Error(data.errors[0])
+  if (data.statusCode === 400) throw new Error(data.errors[0])
 }

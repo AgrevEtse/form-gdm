@@ -35,7 +35,8 @@ const Reinscripcion = () => {
 
       // CURP Baneado
       if (data.statusCode === 400 && data.message) {
-        toast.error(data.message)
+        confirm(data.message)
+        //toast.error(data.message)
         return
       }
 
@@ -187,7 +188,10 @@ const Reinscripcion = () => {
   return (
     <div className='container my-16 flex h-full flex-col items-center justify-center'>
       <h2 className='mb-10 text-center text-5xl font-bold'>Reinscripción</h2>
-      <h3 className='mb-10 text-center text-3xl'>Ingresa la CURP del alumno</h3>
+      <h3 className='mb-4 text-center text-3xl'>Ingresa la CURP del alumno</h3>
+      <h4 className='mb-4 text-center text-xl'>
+        Si cambio la información, favor de actualizarla
+      </h4>
       <label className='floating-label w-2xs'>
         <span>CURP</span>
         <input
@@ -203,7 +207,7 @@ const Reinscripcion = () => {
         <button
           className='btn btn-primary'
           onClick={fetchDataFromCurp}
-          disabled={isLoading}
+          disabled={isLoading || !curp}
         >
           {isLoading && (
             <span className='loading loading-spinner loading-sm'></span>
