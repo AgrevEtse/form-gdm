@@ -23,7 +23,7 @@ const App = () => {
               className='btn btn-secondary text-xl'
               to='/'
             >
-              GDM
+              Inscripciones GDM
             </Link>
           </div>
 
