@@ -95,7 +95,7 @@ export const postReiscripcion = async ({ curp, form }) => {
   const hermanosArray = (() => {
     const arr = form.hermanos
       .filter((h) => !equalObjects(h, DEFAULT_HERMANO))
-      .map((h) => ({ ...h, curp_alumno: curp }))
+      .map((h) => ({ ...h, curp_alumno: curp, id: undefined }))
     return arr.length > 0 ? arr : undefined
   })()
 

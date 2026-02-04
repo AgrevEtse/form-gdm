@@ -74,7 +74,7 @@ const Form = () => {
       setIsLoading(false)
       toast.success('Datos guardados exitosamente')
     } catch (error) {
-      toast.error(`TEST ${error.message}`)
+      toast.error(`${error.message}`)
       setCurrentStep(0)
       setIsLoading(false)
     }
