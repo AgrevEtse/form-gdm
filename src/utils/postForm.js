@@ -9,7 +9,12 @@ export const postForm = async ({ curp, form }) => {
   // Si no hay hermanos, se retorna undefined porque la API llora
   const hermanosArray = (() => {
     const arr = form.hermanos
-      .filter((h) => !equalObjects(h, DEFAULT_HERMANO))
+      .filter(
+        (h) =>
+          !equalObjects(h, DEFAULT_HERMANO) &&
+          h.nombre !== '' &&
+          h.nivel !== '0'
+      )
       .map((h) => ({ ...h, curp_alumno: curp }))
     return arr.length > 0 ? arr : undefined
   })()
@@ -84,7 +89,8 @@ export const postForm = async ({ curp, form }) => {
     body: JSON.stringify(transaccionBody)
   })
 
-  if (res.status === 500) throw new Error('Hubo un problema al guardar la inscripción')
+  if (res.status === 500)
+    throw new Error('Hubo un problema al guardar la inscripción')
 
   const data = await res.json()
 
@@ -94,7 +100,12 @@ export const postForm = async ({ curp, form }) => {
 export const postReiscripcion = async ({ curp, form }) => {
   const hermanosArray = (() => {
     const arr = form.hermanos
-      .filter((h) => !equalObjects(h, DEFAULT_HERMANO))
+      .filter(
+        (h) =>
+          !equalObjects(h, DEFAULT_HERMANO) &&
+          h.nombre !== '' &&
+          h.nivel !== '0'
+      )
       .map((h) => ({ ...h, curp_alumno: curp, id: undefined }))
     return arr.length > 0 ? arr : undefined
   })()
@@ -178,7 +189,8 @@ export const postReiscripcion = async ({ curp, form }) => {
     body: JSON.stringify(reinscripcionBody)
   })
 
-  if (res.status === 500) throw new Error('Hubo un problema al guardar la inscripción')
+  if (res.status === 500)
+    throw new Error('Hubo un problema al guardar la inscripción')
 
   const data = await res.json()
 
