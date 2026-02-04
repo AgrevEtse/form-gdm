@@ -35,11 +35,9 @@ export const postForm = async ({ curp, form }) => {
 
     inscripcion: {
       ...form.inscripcion,
-      fecha_inscripcion: new Date(
-        form.inscripcion.fecha_inscripcion
-      ).toISOString(),
       curp_alumno: curp,
 
+      fecha_inscripcion: undefined,
       escolaridad: undefined,
       grado: undefined,
       id_ciclo: undefined
@@ -124,11 +122,9 @@ export const postReiscripcion = async ({ curp, form }) => {
 
     inscripcion: {
       ...form.inscripcion,
-      fecha_inscripcion: new Date(
-        form.inscripcion.fecha_inscripcion
-      ).toISOString(),
       curp_alumno: curp,
 
+      fecha_inscripcion: undefined,
       escolaridad: undefined,
       grado: undefined,
       id_ciclo: undefined,
