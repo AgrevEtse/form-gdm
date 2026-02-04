@@ -84,6 +84,8 @@ export const postForm = async ({ curp, form }) => {
     body: JSON.stringify(transaccionBody)
   })
 
+  if (res.status === 500) throw new Error('Hubo un problema al guardar la inscripción')
+
   const data = await res.json()
 
   if (data.statusCode === 400) throw new Error(data.errors[0])
@@ -175,6 +177,8 @@ export const postReiscripcion = async ({ curp, form }) => {
     },
     body: JSON.stringify(reinscripcionBody)
   })
+
+  if (res.status === 500) throw new Error('Hubo un problema al guardar la inscripción')
 
   const data = await res.json()
 
