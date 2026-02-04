@@ -132,7 +132,8 @@ export const postReiscripcion = async ({ curp, form }) => {
       escolaridad: undefined,
       grado: undefined,
       id_ciclo: undefined,
-      id: undefined
+      id: undefined,
+      esta_activo: undefined
     },
 
     tutor_1: {
