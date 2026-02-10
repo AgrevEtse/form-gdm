@@ -1,12 +1,17 @@
-import { forwardRef, useImperativeHandle } from 'react'
+import { forwardRef, useImperativeHandle, useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { GRADO_MAX_ESTUDIOS_ARRAY } from '@/utils/gradoMaxEstudiosHelpers'
 import { TutorSchema } from '@/schemas/TutorSchema'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const FormTutores = forwardRef((_, ref) => {
   const { form, dispatch } = useGlobalState()
+
+  useEffect(() => {
+    cambiarTitulo('Tutores')
+  }, [])
 
   useImperativeHandle(ref, () => ({
     validate: () => {

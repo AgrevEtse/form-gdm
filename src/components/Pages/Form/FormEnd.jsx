@@ -1,11 +1,16 @@
-import { forwardRef } from 'react'
+import { forwardRef, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'
 
 import useGlobalState from '@/context/useGlobalState'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const FormEnd = forwardRef(() => {
   const { resetStates } = useGlobalState()
+
+  useEffect(() => {
+    cambiarTitulo('¡Registro Terminado!')
+  }, [])
 
   const handleClick = () => {
     resetStates()
@@ -38,7 +43,7 @@ const FormEnd = forwardRef(() => {
               Reinscripcion
             </button>
           </Link>
-          <Link to='https://gomezdemendiola.edu.mx/'>
+          <Link to='https://gomezdemendiola.net/'>
             <button
               className='btn btn-info rounded-xl py-2'
               onClick={handleClick}

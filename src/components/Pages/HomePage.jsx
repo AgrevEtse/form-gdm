@@ -1,6 +1,13 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
+
 const HomePage = () => {
+  useEffect(() => {
+    cambiarTitulo('Inicio')
+  }, [])
+
   return (
     <div className='flex min-h-screen items-center justify-center p-4'>
       <div className='w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl'>

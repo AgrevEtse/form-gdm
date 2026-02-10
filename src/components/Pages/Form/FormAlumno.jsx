@@ -1,8 +1,7 @@
-import { forwardRef, useImperativeHandle } from 'react'
+import { forwardRef, useImperativeHandle, useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
-
 import { PAISES_ARRAY } from '@/utils/paisesHelpers'
 import { ESTADOS_ARRAY } from '@/utils/estadosHelpers'
 import { getMunicipiosByEstado } from '@/utils/municipiosHelpers'
@@ -15,9 +14,14 @@ import { AlumnoSchema, CURPSchema } from '@/schemas/AlumnoSchema'
 import { EscuelaProcedenciaSchema } from '@/schemas/EscuelaProcedenciaSchema'
 import { InscripcionSchema } from '@/schemas/InscripcionSchema'
 import { DomicilioSchema } from '@/schemas/DomicilioSchema'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const FormAlumno = forwardRef((_, ref) => {
   const { curp, setCurp, form, dispatch } = useGlobalState()
+
+  useEffect(() => {
+    cambiarTitulo('Datos Alumno')
+  }, [])
 
   useImperativeHandle(ref, () => ({
     validate: () => {

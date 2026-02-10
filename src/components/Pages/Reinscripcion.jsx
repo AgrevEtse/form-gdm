@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { formatDate } from '@/utils/dateFormater'
 import { getDataByIdEscolaridad } from '@/utils/escolaridadGradosHelpers'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -14,6 +15,10 @@ const Reinscripcion = () => {
   const { curp, setCurp, dispatch, setIsReinscripcion } = useGlobalState()
 
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    cambiarTitulo('Reinscripción')
+  }, [])
 
   const fetchDataFromCurp = async () => {
     if (curp === '' || curp.length < 18) {

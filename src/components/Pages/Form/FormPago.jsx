@@ -1,12 +1,17 @@
-import { forwardRef, useImperativeHandle } from 'react'
+import { forwardRef, useImperativeHandle, useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { PARENTESCO_ARRAY } from '@/utils/parentescoHelpers'
 import { PagoSchema } from '@/schemas/PagoSchema'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const FormPago = forwardRef((_, ref) => {
   const { form, dispatch } = useGlobalState()
+
+  useEffect(() => {
+    cambiarTitulo('Persona de Pagos')
+  }, [])
 
   useImperativeHandle(ref, () => ({
     validate: () => {

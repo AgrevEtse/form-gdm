@@ -1,6 +1,11 @@
-import { forwardRef } from 'react'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
+import { forwardRef, useEffect } from 'react'
 
 const FormConfirm = forwardRef(() => {
+  useEffect(() => {
+    cambiarTitulo('¿Enviar?')
+  }, [])
+
   return (
     <div className='flex items-center justify-center p-4'>
       <div className='bg-primary text-primary-content w-full max-w-md rounded-2xl p-8 text-center shadow-2xl'>

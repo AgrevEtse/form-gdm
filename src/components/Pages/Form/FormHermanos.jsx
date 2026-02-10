@@ -1,11 +1,16 @@
-import { forwardRef, useImperativeHandle } from 'react'
+import { forwardRef, useImperativeHandle, useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
 import useGlobalState from '@/context/useGlobalState'
 import { HermanoSchema } from '@/schemas/HermanoSchema'
+import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const FormHermanos = forwardRef((_, ref) => {
   const { form, dispatch } = useGlobalState()
+
+  useEffect(() => {
+    cambiarTitulo('Hermanos')
+  }, [])
 
   useImperativeHandle(ref, () => ({
     validate: () => {
