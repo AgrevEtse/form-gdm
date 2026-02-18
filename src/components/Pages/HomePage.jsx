@@ -10,11 +10,11 @@ const HomePage = () => {
 
   return (
     <div className='flex min-h-screen items-center justify-center p-4'>
-      <div className='w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl'>
-        <h1 className='mb-4 text-3xl font-bold text-indigo-700'>
-          Inscripciones GDM
+      <div className='bg-base-300 text-base-content w-full max-w-md rounded-2xl p-8 text-center shadow-2xl'>
+        <h1 className='text-primary mb-4 text-3xl font-bold'>
+          GDM Inscripciones
         </h1>
-        <p className='mb-6 text-gray-600'>
+        <p className='mb-6'>
           Completa el formulario para asegurar tu lugar en el próximo ciclo
           escolar.
         </p>
@@ -23,7 +23,7 @@ const HomePage = () => {
             to='/form'
             className='block'
           >
-            <button className='btn btn-warning w-full rounded-xl'>
+            <button className='btn btn-secondary w-full rounded-xl'>
               Nueva Inscripción
             </button>
           </Link>
@@ -31,7 +31,7 @@ const HomePage = () => {
             to='/reinscripcion'
             className='block'
           >
-            <button className='btn btn-success w-full rounded-xl'>
+            <button className='btn btn-accent w-full rounded-xl'>
               Reinscripción
             </button>
           </Link>

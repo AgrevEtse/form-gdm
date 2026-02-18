@@ -17,13 +17,13 @@ const App = () => {
   return (
     <>
       <div className='container mx-auto'>
-        <div className='navbar bg-primary text-primary-content w-full rounded-2xl shadow-sm'>
+        <div className='navbar bg-base-200 text-base-content w-full rounded-2xl shadow-sm'>
           <div className='navbar-start'>
             <Link
-              className='btn btn-secondary text-xl'
+              className='btn btn-primary text-xl'
               to='/'
             >
-              Inscripciones GDM
+              GDM Inscripciones
             </Link>
           </div>
 
@@ -31,7 +31,7 @@ const App = () => {
             <Link to='/form'>
               <button
                 onClick={handleClick}
-                className='btn btn-warning mx-1'
+                className='btn btn-secondary mx-1'
               >
                 Nueva Inscripción
               </button>
@@ -39,7 +39,7 @@ const App = () => {
             <Link to='/reinscripcion'>
               <button
                 onClick={handleClick}
-                className='btn btn-success mx-1'
+                className='btn btn-accent mx-1'
               >
                 Reinscripción
               </button>

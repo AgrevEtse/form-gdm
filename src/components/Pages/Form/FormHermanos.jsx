@@ -31,17 +31,17 @@ const FormHermanos = forwardRef((_, ref) => {
   }))
 
   return (
-    <div className='mx-auto w-full rounded-md p-6 text-white shadow-md'>
+    <div className='text-base-content bg-base-300 mx-auto flex w-full flex-col rounded-md p-6 shadow-md'>
       <h2 className='mb-6 text-center text-2xl font-bold'>
         Hermanos Inscritos en el Colegio
       </h2>
 
       {form.hermanos.map((_, i) => {
         return (
-          <>
+          <div key={i}>
             <h3 className='mb-4 text-center font-bold'>Hermano {i + 1}</h3>
-            <div className='mb-16 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-60 lg:grid-cols-2'>
-              <label className='floating-label m-auto w-sm md:w-md'>
+            <div className='mb-16 grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2'>
+              <label className='floating-label'>
                 <span>Nombre Completo</span>
                 <input
                   value={form.hermanos[i].nombre}
@@ -59,11 +59,11 @@ const FormHermanos = forwardRef((_, ref) => {
                   name='nombre'
                   type='text'
                   placeholder='Nombre Completo'
-                  className='input input-md border-white'
+                  className='input input-md border-base-content m-auto w-full'
                 />
               </label>
 
-              <label className='select select-md m-auto border-white'>
+              <label className='select select-md border-base-content w-full'>
                 <span className='label'>Escolaridad</span>
                 <select
                   value={form.hermanos[i].nivel}
@@ -91,7 +91,7 @@ const FormHermanos = forwardRef((_, ref) => {
                 </select>
               </label>
             </div>
-          </>
+          </div>
         )
       })}
     </div>
