@@ -17,7 +17,7 @@ import { DomicilioSchema } from '@/schemas/DomicilioSchema'
 import { cambiarTitulo } from '@/utils/cambiarTitulo'
 
 const FormAlumno = forwardRef((_, ref) => {
-  const { curp, setCurp, form, dispatch } = useGlobalState()
+  const { curp, setCurp, form, dispatch, isReinscripcion } = useGlobalState()
 
   useEffect(() => {
     cambiarTitulo('Datos Alumno')
@@ -51,6 +51,28 @@ const FormAlumno = forwardRef((_, ref) => {
     }
   }))
 
+  const handleChange = (e, section) => {
+    const { name, value } = e.target
+
+    dispatch({
+      type: 'UPDATE_FIELD',
+      section: section,
+      field: name,
+      value: value
+    })
+  }
+
+  const handleBlur = (e, section) => {
+    const { name, value } = e.target
+
+    dispatch({
+      type: 'UPDATE_FIELD',
+      section: section,
+      field: name,
+      value: value.trim()
+    })
+  }
+
   return (
     <div className='bg-base-300 text-base-content mx-auto flex w-full flex-col items-center justify-center rounded-md p-6 shadow-md'>
       <h2 className='mb-6 text-center text-2xl font-bold'>Datos del Alumno</h2>
@@ -62,14 +84,8 @@ const FormAlumno = forwardRef((_, ref) => {
           </span>
           <input
             value={form.escuela.cct}
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'escuela',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'escuela')}
+            onBlur={(e) => handleBlur(e, 'escuela')}
             minLength={10}
             maxLength={10}
             name='cct'
@@ -86,14 +102,8 @@ const FormAlumno = forwardRef((_, ref) => {
           </span>
           <input
             value={form.escuela.nombre}
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'escuela',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'escuela')}
+            onBlur={(e) => handleBlur(e, 'escuela')}
             minLength={1}
             maxLength={100}
             name='nombre'
@@ -108,14 +118,8 @@ const FormAlumno = forwardRef((_, ref) => {
           <span>Matricula de Escuela de Procedencia</span>
           <input
             value={form.escuela.matricula}
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'escuela',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'escuela')}
+            onBlur={(e) => handleBlur(e, 'escuela')}
             name='matricula'
             minLength={1}
             maxLength={10}
@@ -131,15 +135,15 @@ const FormAlumno = forwardRef((_, ref) => {
           </span>
           <input
             value={curp}
-            onChange={(e) => {
-              setCurp(e.target.value)
-            }}
+            onChange={(e) => setCurp(e.target.value)}
+            onBlur={(e) => setCurp(e.target.value.trim())}
             minLength={18}
             maxLength={20}
             required
             type='text'
             placeholder='CURP *'
             className='input input-md border-base-content w-full'
+            disabled={isReinscripcion}
           />
         </label>
 
@@ -149,14 +153,8 @@ const FormAlumno = forwardRef((_, ref) => {
           </span>
           <input
             value={form.alumno.nombre}
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'alumno',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'alumno')}
+            onBlur={(e) => handleBlur(e, 'alumno')}
             minLength={1}
             maxLength={40}
             name='nombre'
@@ -173,14 +171,8 @@ const FormAlumno = forwardRef((_, ref) => {
           </span>
           <input
             value={form.alumno.apellido_paterno}
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'alumno',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'alumno')}
+            onBlur={(e) => handleBlur(e, 'alumno')}
             minLength={1}
             maxLength={40}
             name='apellido_paterno'
@@ -197,14 +189,8 @@ const FormAlumno = forwardRef((_, ref) => {
           </span>
           <input
             value={form.alumno.apellido_materno}
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'alumno',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'alumno')}
+            onBlur={(e) => handleBlur(e, 'alumno')}
             minLength={1}
             maxLength={40}
             name='apellido_materno'
@@ -223,14 +209,7 @@ const FormAlumno = forwardRef((_, ref) => {
             value={form.alumno.genero}
             required
             name='genero'
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'alumno',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'alumno')}
           >
             <option
               disabled
@@ -251,14 +230,7 @@ const FormAlumno = forwardRef((_, ref) => {
             value={form.alumno.tipo_sanguineo}
             required
             name='tipo_sanguineo'
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'alumno',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'alumno')}
           >
             <option
               disabled
@@ -313,14 +285,7 @@ const FormAlumno = forwardRef((_, ref) => {
             value={form.alumno.fecha_nacimiento}
             required
             name='fecha_nacimiento'
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'alumno',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'alumno')}
             type='date'
           />
         </label>
@@ -333,14 +298,7 @@ const FormAlumno = forwardRef((_, ref) => {
             value={form.alumno.nacionalidad}
             required
             name='nacionalidad'
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'alumno',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'alumno')}
           >
             <option
               disabled
@@ -513,14 +471,8 @@ const FormAlumno = forwardRef((_, ref) => {
           </span>
           <input
             value={form.domicilio.domicilio}
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'domicilio',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'domicilio')}
+            onBlur={(e) => handleBlur(e, 'domicilio')}
             minLength={1}
             maxLength={30}
             name='domicilio'
@@ -537,14 +489,8 @@ const FormAlumno = forwardRef((_, ref) => {
           </span>
           <input
             value={form.domicilio.colonia}
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'domicilio',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'domicilio')}
+            onBlur={(e) => handleBlur(e, 'domicilio')}
             minLength={1}
             maxLength={30}
             name='colonia'
@@ -561,14 +507,8 @@ const FormAlumno = forwardRef((_, ref) => {
           </span>
           <input
             value={form.domicilio.codigo_postal}
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'domicilio',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'domicilio')}
+            onBlur={(e) => handleBlur(e, 'domicilio')}
             type='number'
             placeholder='C.P. *'
             min={100000}
@@ -632,14 +572,7 @@ const FormAlumno = forwardRef((_, ref) => {
             disabled={form.domicilio.estado === '0'}
             name='ciudad'
             value={form.domicilio.ciudad}
-            onChange={(e) => {
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'domicilio',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }}
+            onChange={(e) => handleChange(e, 'domicilio')}
           >
             <option
               disabled
@@ -666,14 +599,8 @@ const FormAlumno = forwardRef((_, ref) => {
           <textarea
             value={form.alumno.nota_enfermedad}
             name='nota_enfermedad'
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'alumno',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'alumno')}
+            onBlur={(e) => handleBlur(e, 'alumno')}
             minLength={0}
             maxLength={200}
             className='textarea border-base-content h-24 w-full'
@@ -686,14 +613,8 @@ const FormAlumno = forwardRef((_, ref) => {
           <textarea
             value={form.alumno.nota_terapia}
             name='nota_terapia'
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'alumno',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={(e) => handleChange(e, 'alumno')}
+            onBlur={(e) => handleBlur(e, 'alumno')}
             minLength={0}
             maxLength={200}
             className='textarea border-base-content h-24 w-full'

@@ -30,6 +30,30 @@ const FormHermanos = forwardRef((_, ref) => {
     }
   }))
 
+  const handleChange = (e, index) => {
+    const { name, value } = e.target
+
+    dispatch({
+      type: 'UPDATE_ARRAY_ITEM',
+      arrayName: 'hermanos',
+      index: index,
+      field: name,
+      value: value
+    })
+  }
+
+  const handleBlur = (e, index) => {
+    const { name, value } = e.target
+
+    dispatch({
+      type: 'UPDATE_ARRAY_ITEM',
+      arrayName: 'hermanos',
+      index: index,
+      field: name,
+      value: value.trim()
+    })
+  }
+
   return (
     <div className='text-base-content bg-base-300 mx-auto flex w-full flex-col rounded-md p-6 shadow-md'>
       <h2 className='mb-6 text-center text-2xl font-bold'>
@@ -45,15 +69,8 @@ const FormHermanos = forwardRef((_, ref) => {
                 <span>Nombre Completo</span>
                 <input
                   value={form.hermanos[i].nombre}
-                  onChange={(e) =>
-                    dispatch({
-                      type: 'UPDATE_ARRAY_ITEM',
-                      arrayName: 'hermanos',
-                      index: i,
-                      field: e.target.name,
-                      value: e.target.value
-                    })
-                  }
+                  onChange={(e) => handleChange(e, i)}
+                  onBlur={(e) => handleBlur(e, i)}
                   minLength={0}
                   maxLength={70}
                   name='nombre'
@@ -68,15 +85,7 @@ const FormHermanos = forwardRef((_, ref) => {
                 <select
                   value={form.hermanos[i].nivel}
                   name='nivel'
-                  onChange={(e) =>
-                    dispatch({
-                      type: 'UPDATE_ARRAY_ITEM',
-                      arrayName: 'hermanos',
-                      index: i,
-                      field: e.target.name,
-                      value: e.target.value
-                    })
-                  }
+                  onChange={(e) => handleChange(e, i)}
                 >
                   <option
                     disabled

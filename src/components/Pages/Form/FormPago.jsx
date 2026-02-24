@@ -23,6 +23,28 @@ const FormPago = forwardRef((_, ref) => {
     }
   }))
 
+  const handleChange = (e) => {
+    const { name, value } = e.target
+
+    dispatch({
+      type: 'UPDATE_FIELD',
+      section: 'persona_pago',
+      field: name,
+      value: value
+    })
+  }
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target
+
+    dispatch({
+      type: 'UPDATE_FIELD',
+      section: 'persona_pago',
+      field: name,
+      value: value.trim()
+    })
+  }
+
   return (
     <div className='text-base-content bg-base-300 mx-auto flex w-full flex-col items-center justify-center rounded-md p-6 shadow-md'>
       <h2 className='mb-6 text-center text-2xl font-bold'>
@@ -38,14 +60,8 @@ const FormPago = forwardRef((_, ref) => {
             value={form.persona_pago.nombre}
             maxLength={70}
             name='nombre'
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'persona_pago',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={handleChange}
+            onBlur={handleBlur}
             type='text'
             placeholder='Nombre Completo *'
             className='input input-md border-base-content w-full'
@@ -93,14 +109,8 @@ const FormPago = forwardRef((_, ref) => {
             value={form.persona_pago.correo}
             maxLength={50}
             name='correo'
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'persona_pago',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={handleChange}
+            onBlur={handleBlur}
             type='email'
             placeholder='Correo Electrónico *'
             className='input input-md border-base-content w-full'
@@ -114,14 +124,8 @@ const FormPago = forwardRef((_, ref) => {
           <input
             value={form.persona_pago.telefono}
             name='telefono'
-            onChange={(e) =>
-              dispatch({
-                type: 'UPDATE_FIELD',
-                section: 'persona_pago',
-                field: e.target.name,
-                value: e.target.value
-              })
-            }
+            onChange={handleChange}
+            onBlur={handleBlur}
             type='tel'
             placeholder='Télefono (móvil) *'
             pattern='[0-9]{10}'

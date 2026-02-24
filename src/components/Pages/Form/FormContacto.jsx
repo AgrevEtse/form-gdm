@@ -37,6 +37,30 @@ const FormContacto = forwardRef((_, ref) => {
     }
   }))
 
+  const handleChange = (e, index) => {
+    const { name, value } = e.target
+
+    dispatch({
+      type: 'UPDATE_ARRAY_ITEM',
+      arrayName: 'contactos',
+      index: index,
+      field: name,
+      value: value
+    })
+  }
+
+  const handleBlur = (e, index) => {
+    const { name, value } = e.target
+
+    dispatch({
+      type: 'UPDATE_ARRAY_ITEM',
+      arrayName: 'contactos',
+      index: index,
+      field: name,
+      value: value.trim()
+    })
+  }
+
   return (
     <div className='text-base-content bg-base-300 mx-auto flex w-full flex-col rounded-md p-6 shadow-md'>
       <h2 className='mb-6 text-center text-2xl font-bold'>
@@ -58,15 +82,8 @@ const FormContacto = forwardRef((_, ref) => {
                   value={form.contactos[i].nombre}
                   maxLength={70}
                   name='nombre'
-                  onChange={(e) =>
-                    dispatch({
-                      type: 'UPDATE_ARRAY_ITEM',
-                      arrayName: 'contactos',
-                      index: i,
-                      field: e.target.name,
-                      value: e.target.value
-                    })
-                  }
+                  onChange={(e) => handleChange(e, i)}
+                  onBlur={(e) => handleBlur(e, i)}
                   type='text'
                   placeholder='Nombre Completo *'
                   className='input input-md border-base-content m-auto w-full'
@@ -80,15 +97,8 @@ const FormContacto = forwardRef((_, ref) => {
                 <input
                   value={form.contactos[i].telefono}
                   name='telefono'
-                  onChange={(e) =>
-                    dispatch({
-                      type: 'UPDATE_ARRAY_ITEM',
-                      arrayName: 'contactos',
-                      index: i,
-                      field: e.target.name,
-                      value: e.target.value
-                    })
-                  }
+                  onChange={(e) => handleChange(e, i)}
+                  onBlur={(e) => handleBlur(e, i)}
                   type='tel'
                   placeholder='Télefono *'
                   pattern='[0-9]{10}'
@@ -138,15 +148,8 @@ const FormContacto = forwardRef((_, ref) => {
                   <input
                     value={form.contactos[i].otro}
                     name='otro'
-                    onChange={(e) =>
-                      dispatch({
-                        type: 'UPDATE_ARRAY_ITEM',
-                        arrayName: 'contactos',
-                        index: i,
-                        field: e.target.name,
-                        value: e.target.value
-                      })
-                    }
+                    onChange={(e) => handleChange(e, i)}
+                    onBlur={(e) => handleBlur(e, i)}
                     type='text'
                     placeholder='Especifica el parentesco...'
                     className='input input-md border-base-content m-auto w-full'
